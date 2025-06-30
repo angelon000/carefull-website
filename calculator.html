@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요양 비용 계산기 - 케어풀</title>
+    <meta name="description" content="장기요양보험 등급별, 서비스별 본인부담금을 쉽고 빠르게 계산해보세요.">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Calculator specific styles */
+        .calculator {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .calculator__step {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .calculator__progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .calculator__progress::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-300);
+            z-index: 0;
+        }
+        
+        .progress__step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .progress__number {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-300);
+            color: var(--gray-600);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .progress__step.active .progress__number {
+            background: var(--primary-teal);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .progress__label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .option-card {
+            padding: 1.5rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary-teal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary-teal);
+            background: rgba(74, 193, 188, 0.05);
+        }
+        
+        .option-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+        
+        .option-card p {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin: 0;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, var(--primary-teal), #3AABA5);
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .result-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        .result-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .breakdown-item {
+            text-align: center;
+        }
+        
+        .breakdown-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .breakdown-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .service-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .service-item {
+            padding: 1.25rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .service-item:hover {
+            border-color: var(--primary-teal);
+        }
+        
+        .service-item.selected {
+            border-color: var(--primary-teal);
+            background: rgba(74, 193, 188, 0.05);
+        }
+        
+        .service-item h5 {
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+        
+        .service-item p {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/케어풀 로고.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">
+                <img src="img/케어풀 로고.png" alt="케어풀 로고">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
+                <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
+                <li><a href="calculator.html" class="nav__link">계산기</a></li>
+                <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
+                <li><a href="#contact" class="nav__link">문의</a></li>
+            </ul>
+            <div class="nav__cta">
+                <a href="/#contact" class="btn btn--primary">무료 상담 신청</a>
+            </div>
+            <button class="nav__toggle" aria-label="메뉴 열기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="hero" style="min-height: 50vh; position: relative; overflow: hidden;">
+        <!-- Hero Background Image -->
+        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
+            <img src="img/roi-calculator.jpg" 
+                 alt="태블릿으로 계산하는 모습" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.85) 0%, rgba(255, 138, 72, 0.7) 100%);"></div>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="hero__content text-center">
+                <h1 class="hero__title" style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">요양 비용 계산기</h1>
+                <p class="hero__subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">쉽고 간편하게 본인부담금을 확인하세요.<br>모두와 함께 만드는 투명한 돌봄.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="calculator">
+                <!-- Progress -->
+                <div class="calculator__progress">
+                    <div class="progress__step active" id="progress-1">
+                        <div class="progress__number">1</div>
+                        <div class="progress__label">등급 선택</div>
+                    </div>
+                    <div class="progress__step" id="progress-2">
+                        <div class="progress__number">2</div>
+                        <div class="progress__label">서비스 선택</div>
+                    </div>
+                    <div class="progress__step" id="progress-3">
+                        <div class="progress__number">3</div>
+                        <div class="progress__label">감경 여부</div>
+                    </div>
+                    <div class="progress__step" id="progress-4">
+                        <div class="progress__number">4</div>
+                        <div class="progress__label">결과 확인</div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Grade Selection -->
+                <div class="calculator__step" id="step-1">
+                    <!-- Step Image -->
+                    <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 2rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/professional-consultation.jpg" 
+                             alt="장기요양 등급 평가" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h2>어르신의 장기요양 등급을 선택해주세요</h2>
+                    <p class="subtitle">등급을 모르시면 <a href="ltci-guide.html#grades" style="color: var(--primary-teal);">등급 안내</a>를 참고하세요</p>
+                    
+                    <div class="option-grid">
+                        <div class="option-card" data-grade="1">
+                            <h4>1등급</h4>
+                            <p>95점 이상</p>
+                        </div>
+                        <div class="option-card" data-grade="2">
+                            <h4>2등급</h4>
+                            <p>75점 이상</p>
+                        </div>
+                        <div class="option-card" data-grade="3">
+                            <h4>3등급</h4>
+                            <p>60점 이상</p>
+                        </div>
+                        <div class="option-card" data-grade="4">
+                            <h4>4등급</h4>
+                            <p>51점 이상</p>
+                        </div>
+                        <div class="option-card" data-grade="5">
+                            <h4>5등급</h4>
+                            <p>45점 이상<br>(치매)</p>
+                        </div>
+                        <div class="option-card" data-grade="cognitive">
+                            <h4>인지지원등급</h4>
+                            <p>45점 미만<br>(치매)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn--primary btn--large" id="next-1" disabled>다음 단계</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Service Selection -->
+                <div class="calculator__step hidden" id="step-2">
+                    <!-- Step Image -->
+                    <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 2rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/healthcare-technology-app.jpg" 
+                             alt="요양 서비스 선택" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h2>어떤 서비스를 이용하실 예정인가요?</h2>
+                    <p class="subtitle">여러 서비스를 함께 이용할 수 있어요</p>
+                    
+                    <div class="option-grid">
+                        <div class="option-card" data-service="home">
+                            <h4>재가급여</h4>
+                            <p>집에서 받는 서비스</p>
+                        </div>
+                        <div class="option-card" data-service="facility">
+                            <h4>시설급여</h4>
+                            <p>요양시설 입소</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-selector hidden mt-4" id="home-services">
+                        <h3 class="mb-3">재가급여 서비스 선택</h3>
+                        <div class="service-item" data-home-service="visit-care">
+                            <h5>방문요양</h5>
+                            <p>요양보호사가 집으로 방문</p>
+                        </div>
+                        <div class="service-item" data-home-service="day-care">
+                            <h5>주야간보호</h5>
+                            <p>낮 동안 센터에서 돌봄</p>
+                        </div>
+                        <div class="service-item" data-home-service="visit-bath">
+                            <h5>방문목욕</h5>
+                            <p>목욕 전문 서비스</p>
+                        </div>
+                        <div class="service-item" data-home-service="equipment">
+                            <h5>복지용구</h5>
+                            <p>휠체어, 전동침대 등</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn--secondary btn--large" id="prev-2">이전 단계</button>
+                        <button class="btn btn--primary btn--large ml-2" id="next-2" disabled>다음 단계</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Reduction -->
+                <div class="calculator__step hidden" id="step-3">
+                    <h2>정부 지원 감경 대상이신가요?</h2>
+                    <p class="subtitle">소득 수준에 따라 본인부담금이 줄어들어요</p>
+                    
+                    <div class="option-grid">
+                        <div class="option-card" data-reduction="0">
+                            <h4>일반</h4>
+                            <p>감경 없음</p>
+                        </div>
+                        <div class="option-card" data-reduction="40">
+                            <h4>40% 감경</h4>
+                            <p>차상위계층</p>
+                        </div>
+                        <div class="option-card" data-reduction="60">
+                            <h4>60% 감경</h4>
+                            <p>저소득층</p>
+                        </div>
+                        <div class="option-card" data-reduction="100">
+                            <h4>100% 감경</h4>
+                            <p>기초생활수급자</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn--secondary btn--large" id="prev-3">이전 단계</button>
+                        <button class="btn btn--primary btn--large ml-2" id="calculate" disabled>계산하기</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Result -->
+                <div class="calculator__step hidden" id="step-4">
+                    <div class="result-card">
+                        <h2 style="color: white;">예상 월 본인부담금</h2>
+                        <div class="result-amount" id="result-amount">0원</div>
+                        <p style="opacity: 0.9;">2025년 1월 기준 예상 금액입니다</p>
+                        
+                        <div class="result-breakdown">
+                            <div class="breakdown-item">
+                                <div class="breakdown-label">총 서비스 비용</div>
+                                <div class="breakdown-value" id="total-cost">0원</div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-label">정부 지원금</div>
+                                <div class="breakdown-value" id="gov-support">0원</div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-label">본인부담률</div>
+                                <div class="breakdown-value" id="self-rate">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background: white; border-radius: 16px; overflow: hidden;">
+                        <!-- Info Image -->
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/success-stories.jpg" 
+                                 alt="요양 관련 정보" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h3>💡 알아두세요!</h3>
+                        <ul style="line-height: 2;">
+                            <li>실제 비용은 이용 시간과 횟수에 따라 달라질 수 있습니다</li>
+                            <li>식사재료비, 이미용비 등은 별도로 부담하셔야 합니다</li>
+                            <li>월 한도액을 초과하면 전액 본인부담입니다</li>
+                            <li>정확한 비용은 이용하실 기관에 문의해주세요</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn--secondary btn--large" id="recalculate">다시 계산하기</button>
+                        <a href="/#contact" class="btn btn--primary btn--large ml-2">상담 신청하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <div class="footer__logos">
+                        <img src="img/케어풀 로고.png" alt="케어풀" class="footer__logo">
+                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
+                    </div>
+                    <p class="footer__description">
+                        케어풀은 시니어라이프랩이 만드는<br>
+                        시니어 케어 통합 플랫폼입니다.<br>
+                        함께 만드는 돌봄, 모두가 안심하는 내일.
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h4>요양 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="ltci-guide.html">장기요양보험이란?</a></li>
+                        <li><a href="ltci-guide.html#grades">등급 체계</a></li>
+                        <li><a href="ltci-guide.html#services">서비스 종류</a></li>
+                        <li><a href="#">비용 계산기</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>기관 파트너</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">창업 컨설팅</a></li>
+                        <li><a href="#">운영 고도화</a></li>
+                        <li><a href="#">평가 대비</a></li>
+                        <li><a href="#">M&A 자문</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>회사 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">케어풀 소개</a></li>
+                        <li><a href="#">시니어라이프랩</a></li>
+                        <li><a href="#">채용 정보</a></li>
+                        <li><a href="#">제휴 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>주식회사 시니어라이프랩 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+                    <p>© 2024 CareFull. All rights reserved.</p>
+                </div>
+                <div class="footer__legal">
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="image-manager.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>

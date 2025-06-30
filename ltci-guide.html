@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장기요양보험 안내 - 케어풀</title>
+    <meta name="description" content="장기요양보험제도의 모든 것. 등급 신청부터 서비스 종류, 비용까지 쉽게 설명해드립니다.">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/케어풀 로고.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">
+                <img src="img/케어풀 로고.png" alt="케어풀 로고">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
+                <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
+                <li><a href="calculator.html" class="nav__link">계산기</a></li>
+                <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
+                <li><a href="#contact" class="nav__link">문의</a></li>
+            </ul>
+            <div class="nav__cta">
+                <a href="#contact" class="btn btn--primary">무료 상담 신청</a>
+            </div>
+            <button class="nav__toggle" aria-label="메뉴 열기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="hero" style="min-height: 50vh; position: relative; overflow: hidden;">
+        <!-- Hero Background Image -->
+        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
+            <img src="img/education.jpg" 
+                 alt="요양보험 안내" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.9) 0%, rgba(126, 211, 33, 0.8) 100%);"></div>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="hero__content">
+                <h1 class="hero__title" style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">장기요양보험,<br>이제 쉽게 이해하세요</h1>
+                <p class="hero__subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">쉽고 간편하고 편리한 요양 정보,<br>모두와 함께 만드는 돌봄의 시작</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section class="section" style="padding: 40px 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2>원하는 정보를 빠르게 찾아보세요</h2>
+            </div>
+            <div class="grid grid--4">
+                <a href="#what-is-ltci" class="card" style="text-decoration: none; text-align: center; overflow: hidden;">
+                    <div style="height: 120px; overflow: hidden; margin: -2rem -2rem 1rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/medical-consultation.jpg" 
+                             alt="제도 소개" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(74, 193, 188, 0.1); color: var(--primary-teal); margin: 0 auto;">📋</div>
+                    <h4>제도 소개</h4>
+                    <p style="font-size: 1rem; color: var(--gray-600);">기본 개념과 대상자</p>
+                </a>
+                <a href="#grades" class="card" style="text-decoration: none; text-align: center; overflow: hidden;">
+                    <div style="height: 120px; overflow: hidden; margin: -2rem -2rem 1rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/self-diagnosis.jpg" 
+                             alt="등급 체계" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(255, 138, 72, 0.1); color: var(--primary-orange); margin: 0 auto;">📊</div>
+                    <h4>등급 체계</h4>
+                    <p style="font-size: 1rem; color: var(--gray-600);">1-5등급과 인지지원</p>
+                </a>
+                <a href="#services" class="card" style="text-decoration: none; text-align: center; overflow: hidden;">
+                    <div style="height: 120px; overflow: hidden; margin: -2rem -2rem 1rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/services.jpg" 
+                             alt="서비스 종류" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(126, 211, 33, 0.1); color: var(--primary-green); margin: 0 auto;">🏠</div>
+                    <h4>서비스 종류</h4>
+                    <p style="font-size: 1rem; color: var(--gray-600);">재가·시설 급여</p>
+                </a>
+                <a href="#process" class="card" style="text-decoration: none; text-align: center; overflow: hidden;">
+                    <div style="height: 120px; overflow: hidden; margin: -2rem -2rem 1rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/faq.jpg" 
+                             alt="이용 절차" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(60, 72, 88, 0.1); color: var(--primary-dark); margin: 0 auto;">📝</div>
+                    <h4>이용 절차</h4>
+                    <p style="font-size: 1rem; color: var(--gray-600);">신청부터 이용까지</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is LTCI -->
+    <section id="what-is-ltci" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>장기요양보험이란?</h2>
+                <p class="subtitle">고령이나 노인성 질병으로 혼자 생활이 어려운 어르신을 돕는 사회보험입니다</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature__content">
+                    <h3>누가 이용할 수 있나요?</h3>
+                    <ul style="line-height: 2; font-size: 1.125rem; color: var(--gray-700);">
+                        <li>✅ 65세 이상 어르신</li>
+                        <li>✅ 65세 미만이지만 치매, 뇌혈관질환 등 노인성 질병이 있는 분</li>
+                        <li>✅ 6개월 이상 혼자서 일상생활이 어려운 분</li>
+                    </ul>
+                    <p class="mt-4">장기요양보험은 <strong>건강보험료와 함께 자동으로 납부</strong>되고 있어요.<br>
+                    필요할 때 신청하면 등급 판정을 받아 서비스를 이용할 수 있습니다.</p>
+                </div>
+                <div class="feature__image">
+                    <img src="img/caregiver-helping-senior-v2.jpg" 
+                         alt="어르신과 가족이 함께하는 모습" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 16px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grade System -->
+    <section id="grades" class="section" style="background: var(--bg-secondary); position: relative; overflow: hidden;">
+        <!-- Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.05;">
+            <img src="img/medical-assessment.jpg" 
+                 alt="등급 체계 배경" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 class="text-center mb-5">장기요양 등급 체계</h2>
+            <p class="text-center subtitle mb-5">신체 기능과 인지 기능을 종합적으로 평가해 6개 등급으로 구분합니다</p>
+            
+            <div class="grid grid--3">
+                <div class="card">
+                    <h3 style="color: var(--primary-orange);">1등급</h3>
+                    <p class="mb-3"><strong>인정점수: 95점 이상</strong></p>
+                    <p>일상생활에서 전적으로 다른 사람의 도움이 필요한 상태</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-orange);">2등급</h3>
+                    <p class="mb-3"><strong>인정점수: 75점 이상</strong></p>
+                    <p>일상생활에서 상당 부분 다른 사람의 도움이 필요한 상태</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-teal);">3등급</h3>
+                    <p class="mb-3"><strong>인정점수: 60점 이상</strong></p>
+                    <p>일상생활에서 부분적으로 다른 사람의 도움이 필요한 상태</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-teal);">4등급</h3>
+                    <p class="mb-3"><strong>인정점수: 51점 이상</strong></p>
+                    <p>일상생활에서 일정 부분 다른 사람의 도움이 필요한 상태</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-green);">5등급</h3>
+                    <p class="mb-3"><strong>인정점수: 45점 이상</strong><br><small>(치매 환자만 해당)</small></p>
+                    <p>치매로 인해 일상생활에 어려움이 있는 상태</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--primary-green);">인지지원등급</h3>
+                    <p class="mb-3"><strong>인정점수: 45점 미만</strong><br><small>(치매 환자만 해당)</small></p>
+                    <p>경증 치매로 인지 기능 개선이 필요한 상태</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem;">어떤 서비스를 받을 수 있나요?</h2>
+            
+            <!-- 재가급여 -->
+            <div class="service-card" style="margin-bottom: 3rem;">
+                <!-- Service Background -->
+                <div style="position: absolute; top: 0; right: 0; width: 400px; height: 100%; opacity: 0.05; z-index: 0;">
+                    <img src="img/home-healthcare-visit.jpg" 
+                         alt="재가 서비스" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: relative; z-index: 1;">
+                    <h3 class="mb-4" style="font-size: 2rem;">🏠 재가급여 (집에서 받는 서비스)</h3>
+                <div class="grid grid--2">
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/visit.jpg" alt="방문요양" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-teal); font-size: 1.5rem;">방문요양</h4>
+                        <p style="font-size: 1.25rem;">요양보호사가 집으로 찾아와 신체 활동과 일상생활을 도와드려요.</p>
+                        <ul style="font-size: 1.125rem; color: var(--gray-600); margin-top: 1rem;">
+                            <li>식사, 목욕, 이동 도움</li>
+                            <li>청소, 세탁 등 가사 지원</li>
+                            <li>말벗, 산책 동행</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/senior-care-professional.jpg" alt="주야간보호" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-teal); font-size: 1.5rem;">주야간보호</h4>
+                        <p style="font-size: 1.25rem;">낮이나 저녁 시간 동안 센터에서 돌봄과 프로그램을 제공해요.</p>
+                        <ul style="font-size: 1.125rem; color: var(--gray-600); margin-top: 1rem;">
+                            <li>인지 훈련 프로그램</li>
+                            <li>물리치료, 작업치료</li>
+                            <li>식사 제공 및 송영 서비스</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/caregiver-helping-senior-v2.jpg" alt="방문목욕" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-teal); font-size: 1.5rem;">방문목욕</h4>
+                        <p style="font-size: 1.25rem;">목욕 전문 차량과 장비를 갖춘 요양보호사가 목욕을 도와드려요.</p>
+                        <ul style="font-size: 1.125rem; color: var(--gray-600); margin-top: 1rem;">
+                            <li>이동식 욕조 제공</li>
+                            <li>전신 목욕 서비스</li>
+                            <li>목욕 전후 건강 체크</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/senior-assistive-devices.jpg" alt="복지용구" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-teal); font-size: 1.5rem;">복지용구</h4>
+                        <p style="font-size: 1.25rem;">일상생활에 필요한 복지용구를 구입하거나 대여할 수 있어요.</p>
+                        <ul style="font-size: 1.125rem; color: var(--gray-600); margin-top: 1rem;">
+                            <li>전동침대, 휠체어</li>
+                            <li>보행기, 지팡이</li>
+                            <li>욕창 예방 매트리스</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+            
+            <!-- 시설급여 -->
+            <div class="service-card" style="margin-bottom: 3rem;">
+                <!-- Service Background -->
+                <div style="position: absolute; top: 0; right: 0; width: 400px; height: 100%; opacity: 0.05; z-index: 0;">
+                    <img src="img/hospital-environment.jpg" 
+                         alt="시설 서비스" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: relative; z-index: 1;">
+                    <h3 class="mb-4" style="font-size: 2rem;">🏢 시설급여 (요양시설 입소)</h3>
+                <div class="grid grid--2">
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/hospital-environment.jpg" alt="노인요양시설" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-orange); font-size: 1.5rem;">노인요양시설</h4>
+                        <p style="font-size: 1.25rem;">24시간 전문적인 돌봄이 필요한 어르신이 생활하는 시설이에요.</p>
+                        <ul style="font-size: 1.125rem; color: var(--gray-600); margin-top: 1rem;">
+                            <li>입소 정원: 10명 이상</li>
+                            <li>의료진 상주</li>
+                            <li>재활 프로그램 운영</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/family-caregiving.jpg" alt="노인요양공동생활가정" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-orange); font-size: 1.5rem;">노인요양공동생활가정</h4>
+                        <p style="font-size: 1.25rem;">가정과 같은 환경에서 소규모로 생활하는 시설이에요.</p>
+                        <ul style="font-size: 1.125rem; color: var(--gray-600); margin-top: 1rem;">
+                            <li>입소 정원: 9명 이하</li>
+                            <li>가정적인 분위기</li>
+                            <li>개인별 맞춤 돌봄</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+            
+            <!-- 특별현금급여 -->
+            <div class="service-card">
+                <!-- Service Background -->
+                <div style="position: absolute; top: 0; right: 0; width: 400px; height: 100%; opacity: 0.05; z-index: 0;">
+                    <img src="img/emotional-support.jpg" 
+                         alt="가족 요양비" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: relative; z-index: 1;">
+                    <h3 class="mb-4" style="font-size: 2rem;">💰 특별현금급여</h3>
+                    <div class="card" style="overflow: hidden;">
+                        <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                            <img src="img/emotional-support.jpg" alt="가족요양비" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <h4 style="color: var(--primary-green); font-size: 1.5rem;">가족요양비</h4>
+                        <p style="font-size: 1.25rem;">도서·벽지 지역이나 특별한 사유로 시설 이용이 어려운 경우, 가족이 직접 돌보면서 받는 현금 급여예요.</p>
+                        <p class="mt-3" style="font-size: 1rem; color: var(--gray-600);">
+                            ※ 신청 조건과 절차가 까다로우니 반드시 공단에 문의 후 신청하세요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section" style="background: var(--bg-secondary); position: relative; overflow: hidden;">
+        <!-- Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.05;">
+            <img src="img/senior-assistive-devices.jpg" 
+                 alt="등급 신청 절차" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 class="text-center mb-5">등급 신청, 이렇게 하세요</h2>
+            <p class="text-center subtitle mb-5">쉽고 간편한 절차로 모두와 함께 시작하는 돌봄</p>
+            
+            <div class="process">
+                <div class="process__step">
+                    <div class="process__number">1</div>
+                    <h4 class="process__title">신청 준비</h4>
+                    <p class="process__description">
+                        국민건강보험공단에<br>
+                        장기요양 인정 신청
+                    </p>
+                </div>
+                <div class="process__step">
+                    <div class="process__number">2</div>
+                    <h4 class="process__title">방문 조사</h4>
+                    <p class="process__description">
+                        공단 직원이 집으로 방문해<br>
+                        어르신의 상태를 확인
+                    </p>
+                </div>
+                <div class="process__step">
+                    <div class="process__number">3</div>
+                    <h4 class="process__title">등급 판정</h4>
+                    <p class="process__description">
+                        의사 소견서와 조사 결과로<br>
+                        등급 결정 (약 30일 소요)
+                    </p>
+                </div>
+                <div class="process__step">
+                    <div class="process__number">4</div>
+                    <h4 class="process__title">서비스 이용</h4>
+                    <p class="process__description">
+                        등급에 맞는 서비스를<br>
+                        선택해서 이용 시작
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <div class="service-card" style="margin: 3rem auto; max-width: 800px;">
+                    <h3 style="color: var(--primary-teal); margin-bottom: 2rem; font-size: 2rem; text-align: center;">
+                        <span style="display: inline-block; background: rgba(74, 193, 188, 0.1); padding: 0.5rem 1rem; border-radius: 12px;">
+                            💡 신청 시 필요한 서류
+                        </span>
+                    </h3>
+                    <div class="grid grid--2" style="gap: 2rem;">
+                        <div class="card" style="background: rgba(74, 193, 188, 0.05); border: 1px solid rgba(74, 193, 188, 0.2);">
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 2rem; margin-right: 1rem;">📄</span>
+                                <h4 style="margin: 0; font-size: 1.5rem; color: var(--primary-teal);">기본 서류</h4>
+                            </div>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="font-size: 1.25rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(74, 193, 188, 0.1);">
+                                    <span style="color: var(--primary-teal); font-weight: 600;">✓</span> 장기요양인정신청서
+                                </li>
+                                <li style="font-size: 1.25rem; padding: 0.75rem 0;">
+                                    <span style="color: var(--primary-teal); font-weight: 600;">✓</span> 의사소견서
+                                    <span style="display: block; font-size: 1rem; color: var(--gray-600); margin-left: 1.5rem; margin-top: 0.25rem;">의료기관에서 발급</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card" style="background: rgba(255, 138, 72, 0.05); border: 1px solid rgba(255, 138, 72, 0.2);">
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 2rem; margin-right: 1rem;">🆔</span>
+                                <h4 style="margin: 0; font-size: 1.5rem; color: var(--primary-orange);">추가 서류</h4>
+                            </div>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="font-size: 1.25rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 138, 72, 0.1);">
+                                    <span style="color: var(--primary-orange); font-weight: 600;">✓</span> 신분증 사본
+                                </li>
+                                <li style="font-size: 1.25rem; padding: 0.75rem 0;">
+                                    <span style="color: var(--primary-orange); font-weight: 600;">✓</span> 위임장
+                                    <span style="display: block; font-size: 1rem; color: var(--gray-600); margin-left: 1.5rem; margin-top: 0.25rem;">대리 신청 시 필요</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: rgba(126, 211, 33, 0.1); padding: 1.5rem; border-radius: 12px; margin-top: 2rem; text-align: center;">
+                        <p style="margin: 0; color: var(--gray-700); font-size: 1.25rem;">
+                            <span style="color: var(--primary-green); font-weight: 600;">💚 Tip:</span> 
+                            서류는 가까운 국민건강보험공단 지사나 온라인으로도 제출 가능합니다
+                        </p>
+                    </div>
+                </div>
+                <a href="calculator.html" class="btn btn--primary btn--large">비용 계산기로 예상 본인부담금 확인하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost Information -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>비용은 얼마나 드나요?</h2>
+                <p class="subtitle">정부에서 대부분 지원하고, 본인은 일부만 부담하시면 됩니다</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat__number">15%</div>
+                    <div class="stat__label">재가급여 본인부담률</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number">20%</div>
+                    <div class="stat__label">시설급여 본인부담률</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number">40~60%</div>
+                    <div class="stat__label">저소득층 감경</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number">0원</div>
+                    <div class="stat__label">기초수급자</div>
+                </div>
+            </div>
+
+            <div class="card text-center mt-5" style="background: var(--primary-teal); color: white;">
+                <h3 style="color: white;">우리 가족 비용 미리 계산해보기</h3>
+                <p style="color: rgba(255,255,255,0.9);">등급과 서비스 종류만 선택하면 예상 비용을 바로 확인할 수 있어요</p>
+                <a href="#calculator" class="btn btn--secondary btn--large mt-3">비용 계산기 바로가기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container text-center">
+            <h2>아직도 복잡하고 어려우신가요?</h2>
+            <p class="subtitle mb-4">케어풀 전문가가 직접 상담해드립니다</p>
+            <a href="/#contact" class="btn btn--primary btn--large">무료 상담 신청하기</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <div class="footer__logos">
+                        <img src="img/케어풀 로고.png" alt="케어풀" class="footer__logo">
+                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
+                    </div>
+                    <p class="footer__description">
+                        케어풀은 시니어라이프랩이 만드는<br>
+                        시니어 케어 통합 플랫폼입니다.<br>
+                        함께 만드는 돌봄, 모두가 안심하는 내일.<br><br>
+                        <strong>시니어 서비스를 쉽고 간편하고 편리하게,<br>
+                        모두와 함께 만들어 갑니다.</strong>
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h4>요양 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="#what-is-ltci">장기요양보험이란?</a></li>
+                        <li><a href="#grades">등급 체계</a></li>
+                        <li><a href="#services">서비스 종류</a></li>
+                        <li><a href="#process">신청 절차</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>기관 파트너</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">창업 컨설팅</a></li>
+                        <li><a href="#">운영 고도화</a></li>
+                        <li><a href="#">평가 대비</a></li>
+                        <li><a href="#">M&A 자문</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>회사 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">케어풀 소개</a></li>
+                        <li><a href="#">시니어라이프랩</a></li>
+                        <li><a href="#">채용 정보</a></li>
+                        <li><a href="#">제휴 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>주식회사 시니어라이프랩 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+                    <p>© 2024 CareFull. All rights reserved.</p>
+                </div>
+                <div class="footer__legal">
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="image-manager.js"></script>
+</body>
+</html>

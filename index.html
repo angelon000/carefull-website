@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>케어풀 - 막막한 어르신 돌봄, 투명하고 든든한 길잡이</title>
+    <meta name="description" content="장기요양보험 등급 신청부터 비용 계산, 우리 동네 좋은 기관 찾기까지. 케어풀이 함께 만드는 돌봄의 시작.">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/케어풀 로고.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">
+                <img src="img/케어풀 로고.png" alt="케어풀 로고">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
+                <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
+                <li><a href="calculator.html" class="nav__link">계산기</a></li>
+                <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
+                <li><a href="#contact" class="nav__link">문의</a></li>
+            </ul>
+            <div class="nav__cta">
+                <a href="#contact" class="btn btn--primary">무료 상담 신청</a>
+            </div>
+            <button class="nav__toggle" aria-label="메뉴 열기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="position: relative; overflow: hidden;">
+        <!-- Hero Background Image -->
+        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
+            <img src="img/main1.jpg" 
+                 alt="행복한 시니어 가족" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="hero__content">
+                <h1 class="hero__title" style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">막막한 어르신 돌봄,<br>케어풀이 투명하고 든든한<br>길잡이가 되어드릴게요.</h1>
+                <p class="hero__subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">시니어 서비스를 쉽고 간편하고 편리하게,<br>모두와 함께 만들어 갑니다.</p>
+                <div class="hero__buttons">
+                    <a href="ltci-guide.html" class="btn btn--primary btn--large" style="background: white; color: var(--primary-teal); border: none;">우리 가족 요양 정보 찾기</a>
+                    <a href="b2b_services.html" class="btn btn--secondary btn--large" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; backdrop-filter: blur(10px);">요양기관 파트너십 문의</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2C Value Proposition -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-5">케어풀에서는 이 모든 것이 가능합니다</h2>
+            <div class="grid grid--3">
+                <div class="card" style="overflow: hidden;">
+                    <!-- Feature Image -->
+                    <div style="height: 200px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/hero-multi-generation.jpg" 
+                             alt="가족이 함께 요양 정보를 확인하는 모습" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(74, 193, 188, 0.1); color: var(--primary-teal);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11H3m6 0v6m0-6l-6 6m11-6h6m-6 0v6m0-6l6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="card__title">알기 쉬운 요양 정보</h3>
+                    <p class="card__description">정부 문서 그대로 보지 마세요. 케어풀이 딱 필요한 내용만 골라 그림과 함께 설명해드려요.</p>
+                    <a href="ltci-guide.html" class="btn btn--outline btn--block mt-3">자세히 보기</a>
+                </div>
+                <div class="card" style="overflow: hidden;">
+                    <!-- Feature Image -->
+                    <div style="height: 200px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/roi-calculator.jpg" 
+                             alt="태블릿으로 비용을 계산하는 모습" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(255, 138, 72, 0.1); color: var(--primary-orange);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="card__title">1분만에 비용 계산</h3>
+                    <p class="card__description">등급만 입력하면 우리 가족 본인부담금, 한 눈에 보여드려요. 복잡한 계산은 이제 그만.</p>
+                    <a href="calculator.html" class="btn btn--outline btn--block mt-3">비용 계산하기</a>
+                </div>
+                <div class="card" style="overflow: hidden;">
+                    <!-- Feature Image -->
+                    <div style="height: 200px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/home-healthcare-visit.jpg" 
+                             alt="요양보호사가 어르신을 돕는 모습" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card__icon" style="background: rgba(126, 211, 33, 0.1); color: var(--primary-green);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="card__title">검증된 기관 검색</h3>
+                    <p class="card__description">광고가 아닌 실제 데이터 기반으로 우리 동네 요양시설, 주간보호센터를 찾아보세요.</p>
+                    <a href="#search" class="btn btn--outline btn--block mt-3">기관 찾아보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof & Trust -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="feature">
+                <div class="feature__content">
+                    <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩" style="height: 120px; margin-bottom: 2rem;">
+                    <h2>연구와 현장 경험이 만나<br>탄생한 케어풀</h2>
+                    <p class="subtitle mb-4">케어풀은 시니어라이프랩의 연구와 전문성을 바탕으로 만들어졌습니다. 12개의 노드가 연결된 시니어 생태계를 구축하며, 데이터와 현장 경험을 결합해 더 나은 노년을 설계합니다.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat__number">10년+</div>
+                            <div class="stat__label">현장 경험</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__number">500개+</div>
+                            <div class="stat__label">파트너 기관</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__number">98%</div>
+                            <div class="stat__label">만족도</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature__image">
+                    <img src="img/family-caregiving.jpg" 
+                         alt="전문 케어 상담" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 16px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="section" style="position: relative; overflow: hidden;">
+        <!-- Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.05;">
+            <img src="img/healthcare-professionals-team.jpg" 
+                 alt="가족과 함께하는 돌봄" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="text-center mb-5">
+                <h2>함께 만드는 돌봄</h2>
+                <p class="subtitle">케어풀의 4색 퍼즐 하트처럼, 네 조각이 맞춰져야 완전한 돌봄이 완성됩니다</p>
+            </div>
+            <div class="grid grid--4">
+                <div class="text-center">
+                    <div class="card__icon" style="background: rgba(255, 138, 72, 0.1); color: var(--primary-orange); margin: 0 auto;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h4 class="mt-3">시니어</h4>
+                    <p style="font-size: 0.875rem; color: var(--gray-600);">필요할 때 필요한 도움을 쉽게 찾고</p>
+                </div>
+                <div class="text-center">
+                    <div class="card__icon" style="background: rgba(126, 211, 33, 0.1); color: var(--primary-green); margin: 0 auto;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h4 class="mt-3">가족</h4>
+                    <p style="font-size: 0.875rem; color: var(--gray-600);">안심할 수 있고</p>
+                </div>
+                <div class="text-center">
+                    <div class="card__icon" style="background: rgba(74, 193, 188, 0.1); color: var(--primary-teal); margin: 0 auto;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <polyline points="17 11 19 13 23 9"></polyline>
+                        </svg>
+                    </div>
+                    <h4 class="mt-3">서비스 제공자</h4>
+                    <p style="font-size: 0.875rem; color: var(--gray-600);">행정 부담 없이 역량을 펼치고</p>
+                </div>
+                <div class="text-center">
+                    <div class="card__icon" style="background: rgba(60, 72, 88, 0.1); color: var(--primary-dark); margin: 0 auto;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h4 class="mt-3">플랫폼 운영자</h4>
+                    <p style="font-size: 0.875rem; color: var(--gray-600);">표준화된 프로세스로 신뢰를 보증합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B Teaser -->
+    <section class="section" style="background: var(--gray-900); color: white; position: relative; overflow: hidden;">
+        <!-- B2B Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.15;">
+            <img src="img/senior-care-professional.jpg" 
+                 alt="전문 요양기관 컨설팅" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="text-center">
+                <h2 style="color: white; margin-bottom: 1rem;">요양기관 운영자이신가요?</h2>
+                <p class="subtitle" style="color: var(--gray-400); margin-bottom: 2rem;">2025년 신규 평가 대비, 운영 효율화, 성공적인 M&A까지.<br>케어풀은 기관의 성장을 돕는 최고의 파트너입니다.</p>
+                <a href="b2b_services.html" class="btn btn--primary btn--large">전문가 컨설팅 자세히 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="scroll-margin-top: 84px; background: var(--bg-secondary); position: relative; overflow: hidden;">
+        <!-- Contact Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.1;">
+            <img src="img/healthcare-technology-app.jpg" 
+                 alt="상담 서비스" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="text-center mb-5">
+                <h2>무료 상담 신청</h2>
+                <p class="subtitle">어떤 도움이 필요하신지 알려주세요. 전문가가 연락드리겠습니다.</p>
+            </div>
+            <div class="card" style="max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">
+                <form id="contactForm">
+                    <div class="grid grid--2">
+                        <div class="form-group">
+                            <label class="form-label" for="name">성함 *</label>
+                            <input type="text" id="name" class="form-input" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">연락처 *</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="010-1234-5678" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">이메일</label>
+                        <input type="email" id="email" class="form-input" placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="type">문의 유형 *</label>
+                        <select id="type" class="form-input" required>
+                            <option value="">선택해주세요</option>
+                            <option value="family">가족 요양 상담</option>
+                            <option value="institution">기관 운영 상담</option>
+                            <option value="other">기타 문의</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">문의 내용</label>
+                        <textarea id="message" class="form-input" rows="4" placeholder="궁금하신 점을 자유롭게 작성해주세요"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--large btn--block">상담 신청하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <div class="footer__logos">
+                        <img src="img/케어풀 로고.png" alt="케어풀" class="footer__logo">
+                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
+                    </div>
+                    <p class="footer__description">
+                        케어풀은 시니어라이프랩이 만드는<br>
+                        시니어 케어 통합 플랫폼입니다.<br>
+                        함께 만드는 돌봄, 모두가 안심하는 내일.<br><br>
+                        <strong>시니어 서비스를 쉽고 간편하고 편리하게,<br>
+                        모두와 함께 만들어 갑니다.</strong>
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h4>요양 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">장기요양보험이란?</a></li>
+                        <li><a href="#">등급 신청 방법</a></li>
+                        <li><a href="#">서비스 종류</a></li>
+                        <li><a href="#">비용 계산기</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>기관 파트너</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">창업 컨설팅</a></li>
+                        <li><a href="#">운영 고도화</a></li>
+                        <li><a href="#">평가 대비</a></li>
+                        <li><a href="#">M&A 자문</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>회사 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">케어풀 소개</a></li>
+                        <li><a href="#">시니어라이프랩</a></li>
+                        <li><a href="#">채용 정보</a></li>
+                        <li><a href="#">제휴 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>주식회사 시니어라이프랩 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+                    <p>© 2024 CareFull. All rights reserved.</p>
+                </div>
+                <div class="footer__legal">
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="image-manager.js"></script>
+</body>
+</html>

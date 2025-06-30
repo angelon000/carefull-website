@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>케어풀 소개 - 함께 만드는 돌봄</title>
+    <meta name="description" content="케어풀은 시니어라이프랩의 연구와 전문성을 바탕으로 만들어진 시니어 케어 통합 플랫폼입니다.">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About page specific styles */
+        .story-section {
+            padding: 100px 0;
+        }
+        
+        .story-hero {
+            background: linear-gradient(135deg, rgba(74, 193, 188, 0.1) 0%, rgba(255, 138, 72, 0.1) 100%);
+        }
+        
+        .brand-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+        }
+        
+        .brand-story--reverse {
+            direction: rtl;
+        }
+        
+        .brand-story--reverse > * {
+            direction: ltr;
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .puzzle-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .puzzle-piece {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            margin: -10px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .puzzle-piece:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        .puzzle-piece--orange {
+            background: var(--primary-orange);
+        }
+        
+        .puzzle-piece--teal {
+            background: var(--primary-teal);
+        }
+        
+        .puzzle-piece--green {
+            background: var(--primary-green);
+        }
+        
+        .puzzle-piece--dark {
+            background: var(--primary-dark);
+        }
+        
+        .network-visual {
+            position: relative;
+            padding: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+        
+        .network-node {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            position: absolute;
+            box-shadow: var(--shadow-md);
+            font-size: 0.75rem;
+            text-align: center;
+        }
+        
+        .network-center {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-dark);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .network-line {
+            position: absolute;
+            height: 2px;
+            background: var(--gray-300);
+            transform-origin: center;
+        }
+        
+        .vision-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-teal), var(--primary-green));
+        }
+        
+        .vision-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .brand-story {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .puzzle-piece {
+                width: 80px;
+                height: 80px;
+                font-size: 0.875rem;
+                margin: -5px;
+            }
+            
+            .story-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/케어풀 로고.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">
+                <img src="img/케어풀 로고.png" alt="케어풀 로고">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
+                <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
+                <li><a href="calculator.html" class="nav__link">계산기</a></li>
+                <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
+                <li><a href="#contact" class="nav__link">문의</a></li>
+            </ul>
+            <div class="nav__cta">
+                <a href="#contact" class="btn btn--primary">무료 상담 신청</a>
+            </div>
+            <button class="nav__toggle" aria-label="메뉴 열기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="story-section story-hero" style="position: relative; overflow: hidden;">
+            <!-- Hero Background Image -->
+            <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
+                <img src="img/hero-professional-setting.jpg" 
+                     alt="가족이 함께하는 따뜻한 모습" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
+            </div>
+            
+            <div class="container text-center" style="position: relative; z-index: 1;">
+                <h1 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">두 개의 브랜드,<br>하나의 이야기</h1>
+                <p class="subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">12개의 노드가 이어져 만드는 더 나은 노년 생태계,<br>함께 만드는 돌봄으로 완성되는 따뜻한 내일</p>
+            </div>
+        </section>
+
+        <!-- Senior Life Lab Story -->
+        <section class="story-section">
+            <div class="container">
+                <div class="brand-story">
+                    <div class="story-content">
+                        <h2>시니어라이프랩</h2>
+                        <h3 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Lab-powered better ageing</h3>
+                        <p>2012년, 우리는 한 가지 질문에서 시작했습니다.<br>
+                        "왜 노년은 항상 '문제'로만 여겨질까?"</p>
+                        
+                        <p>시니어라이프랩은 노년을 바라보는 관점을 바꾸는 것에서 출발했습니다. 
+                        노화는 극복해야 할 문제가 아닌, 새로운 가능성의 시작입니다. 
+                        우리는 12년간 시니어의 진짜 목소리를 들으며, 데이터로 증명하며, 
+                        현장에서 실행하며 노년의 새로운 표준을 만들어왔습니다.</p>
+                        
+                        <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                            <h4 style="color: var(--primary-dark); margin-bottom: 1rem;">우리가 만드는 변화</h4>
+                            <ul style="line-height: 2;">
+                                <li>✨ 노년을 바라보는 새로운 시각</li>
+                                <li>📊 데이터로 증명하는 시니어의 가치</li>
+                                <li>🔬 연구와 현장을 잇는 실용적 솔루션</li>
+                                <li>🌱 지속가능한 시니어 케어 생태계</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="network-visual">
+                        <div class="network-center network-node">시니어<br>라이프랩</div>
+                        <div class="network-node" style="top: 0; left: 50%; transform: translateX(-50%);">연구</div>
+                        <div class="network-node" style="top: 25%; right: 0;">교육</div>
+                        <div class="network-node" style="bottom: 25%; right: 0;">컨설팅</div>
+                        <div class="network-node" style="bottom: 0; left: 50%; transform: translateX(-50%);">플랫폼</div>
+                        <div class="network-node" style="bottom: 25%; left: 0;">데이터</div>
+                        <div class="network-node" style="top: 25%; left: 0;">정책</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CareFull Story -->
+        <section class="story-section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <div class="brand-story brand-story--reverse">
+                    <div class="puzzle-visual">
+                        <div class="puzzle-piece puzzle-piece--orange">시니어</div>
+                        <div class="puzzle-piece puzzle-piece--teal">가족</div>
+                        <div class="puzzle-piece puzzle-piece--green">서비스<br>제공자</div>
+                        <div class="puzzle-piece puzzle-piece--dark">플랫폼<br>운영자</div>
+                    </div>
+                    <div class="story-content">
+                        <h2>케어풀</h2>
+                        <h3 style="color: var(--primary-orange); margin-bottom: 1.5rem;">함께 만드는 돌봄</h3>
+                        <p>케어풀은 시니어라이프랩의 12년 연구와 경험이 만든 결실입니다.</p>
+                        
+                        <p>시니어 돌봄 시장에는 네 주체가 있습니다. 시니어, 가족, 서비스 제공자, 
+                        그리고 플랫폼 운영자. 지금까지 이 네 조각은 서로 단절되어 있었습니다. 
+                        정보의 비대칭, 신뢰의 부재, 소통의 단절이 반복되었죠.</p>
+                        
+                        <p>케어풀의 4색 퍼즐 하트는 이 네 조각을 하나로 맞춰 '완전한 돌봄'을 
+                        만들겠다는 약속입니다. 각자의 색깔을 유지하면서도 하나의 완성된 
+                        그림을 만드는 것, 그것이 케어풀이 꿈꾸는 돌봄입니다.</p>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; box-shadow: var(--shadow-sm);">
+                            <h4 style="color: var(--primary-dark); margin-bottom: 1rem;">4색 퍼즐의 의미</h4>
+                            <ul style="line-height: 2;">
+                                <li>🧡 <strong>주황색</strong>: 시니어의 따뜻한 경험과 지혜</li>
+                                <li>💙 <strong>청록색</strong>: 가족의 깊은 사랑과 신뢰</li>
+                                <li>💚 <strong>초록색</strong>: 서비스 제공자의 전문성과 성장</li>
+                                <li>🖤 <strong>검정색</strong>: 플랫폼의 견고한 기반과 혁신</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission -->
+        <section class="story-section">
+            <div class="container">
+                <h2 class="text-center mb-5">우리가 만들어가는 내일</h2>
+                <div class="grid grid--3">
+                    <div class="vision-card">
+                        <div class="vision-icon">🎯</div>
+                        <h3>비전</h3>
+                        <p>모든 시니어가 존엄하고<br>행복한 노년을 보내는 세상</p>
+                    </div>
+                    <div class="vision-card">
+                        <div class="vision-icon">🚀</div>
+                        <h3>미션</h3>
+                        <p>데이터와 기술로 시니어 케어의<br>새로운 표준을 만듭니다</p>
+                    </div>
+                    <div class="vision-card">
+                        <div class="vision-icon">💎</div>
+                        <h3>핵심가치</h3>
+                        <p>신뢰, 혁신, 공감<br>그리고 지속가능성</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Brands One Story -->
+        <section class="story-section" style="background: var(--bg-secondary); position: relative; overflow: hidden;">
+            <!-- Background Image -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.05;">
+                <img src="img/history.jpg" 
+                     alt="연구와 실행의 조화" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="container" style="position: relative; z-index: 1;">
+                <h2 class="text-center mb-5">두 브랜드, 하나의 이야기</h2>
+                <p class="text-center subtitle mb-5">시니어라이프랩이 연구하고, 케어풀이 실행합니다</p>
+                
+                <div class="feature">
+                    <div class="feature__content">
+                        <h3>시니어라이프랩은 '왜'를 묻습니다</h3>
+                        <p>왜 노년은 문제로만 여겨질까? 왜 시니어 케어는 이렇게 복잡할까? 
+                        왜 좋은 의도가 좋은 결과로 이어지지 않을까?</p>
+                        
+                        <p>12년간의 연구, 수천 명의 시니어와의 만남, 수백 개 기관과의 협업을 통해 
+                        우리는 답을 찾았습니다. 그리고 그 답을 케어풀이라는 이름으로 세상에 내놓았습니다.</p>
+                    </div>
+                    <div class="feature__content">
+                        <h3>케어풀은 '어떻게'를 실행합니다</h3>
+                        <p>어떻게 하면 요양원 원장님이 서류가 아닌 어르신께 집중할 수 있을까? 
+                        어떻게 하면 가족들이 안심하고 부모님을 맡길 수 있을까? 
+                        어떻게 하면 모두가 신뢰하는 돌봄 생태계를 만들 수 있을까?</p>
+                        
+                        <p>케어풀은 이 모든 '어떻게'에 대한 구체적인 답입니다. 
+                        플랫폼으로, 컨설팅으로, 교육으로, 우리는 매일 더 나은 돌봄을 만들어갑니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CI Message -->
+        <section class="story-section" style="background: linear-gradient(135deg, rgba(74, 193, 188, 0.1) 0%, rgba(255, 138, 72, 0.1) 100%);">
+            <div class="container text-center">
+                <h2>CI에 담긴 우리의 다짐</h2>
+                <div class="grid grid--2" style="max-width: 800px; margin: 3rem auto;">
+                    <div>
+                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩 로고" style="max-width: 200px; margin-bottom: 1rem;">
+                        <p><strong>열린 네트워크</strong><br>
+                        12개의 노드가 연결된 네트워크는<br>
+                        시니어 생태계의 모든 이해관계자를<br>
+                        하나로 연결하는 열린 플랫폼을 상징합니다.</p>
+                    </div>
+                    <div>
+                        <img src="img/케어풀 로고.png" alt="케어풀 로고" style="max-width: 200px; margin-bottom: 1rem;">
+                        <p><strong>완성되는 퍼즐</strong><br>
+                        4색의 퍼즐 조각이 만드는 하트는<br>
+                        모두가 함께할 때 비로소 완성되는<br>
+                        따뜻한 돌봄의 마음을 담았습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card" style="background: var(--primary-dark); color: white; max-width: 600px; margin: 3rem auto; position: relative; overflow: hidden;">
+                    <!-- Quote Background -->
+                    <div style="position: absolute; top: 0; right: 0; width: 200px; height: 150px; opacity: 0.1; z-index: 0;">
+                        <img src="img/greeting.jpg" 
+                             alt="비전 배경" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="position: relative; z-index: 1;">
+                        <p style="font-size: 1.25rem; line-height: 1.8; margin: 0; color: white;">
+                            "우리는 믿습니다.<br>
+                            노년은 인생의 황금기이며,<br>
+                            모든 시니어는 존중받을 자격이 있고,<br>
+                            함께하면 더 나은 노년을 만들 수 있다고."
+                        </p>
+                        <p style="font-size: 1rem; opacity: 0.8; margin-top: 1rem; font-style: italic;">
+                            - 시니어 서비스를 쉽고 간편하고 편리하게, 모두와 함께 만들어 갑니다
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <div class="footer__logos">
+                        <img src="img/케어풀 로고.png" alt="케어풀" class="footer__logo">
+                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
+                    </div>
+                    <p class="footer__description">
+                        케어풀은 시니어라이프랩이 만드는<br>
+                        시니어 케어 통합 플랫폼입니다.<br>
+                        함께 만드는 돌봄, 모두가 안심하는 내일.<br><br>
+                        <strong>시니어 서비스를 쉽고 간편하고 편리하게,<br>
+                        모두와 함께 만들어 갑니다.</strong>
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h4>요양 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="ltci-guide.html">장기요양보험이란?</a></li>
+                        <li><a href="ltci-guide.html#grades">등급 체계</a></li>
+                        <li><a href="ltci-guide.html#services">서비스 종류</a></li>
+                        <li><a href="calculator.html">비용 계산기</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>기관 파트너</h4>
+                    <ul class="footer__list">
+                        <li><a href="b2b_services.html">창업 컨설팅</a></li>
+                        <li><a href="b2b_services.html">운영 고도화</a></li>
+                        <li><a href="b2b_services.html">평가 대비</a></li>
+                        <li><a href="b2b_services.html">M&A 자문</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>회사 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="about.html">케어풀 소개</a></li>
+                        <li><a href="about.html">시니어라이프랩</a></li>
+                        <li><a href="#contact">채용 정보</a></li>
+                        <li><a href="#contact">제휴 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>주식회사 시니어라이프랩 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+                    <p>© 2024 CareFull. All rights reserved.</p>
+                </div>
+                <div class="footer__legal">
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="image-manager.js"></script>
+</body>
+</html>

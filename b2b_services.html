@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기관 파트너 서비스 - 케어풀</title>
+    <meta name="description" content="요양기관의 성공적인 내일을 위한 전문 컨설팅. 창업부터 운영, 평가 대비, M&A까지 원스톱 솔루션.">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/케어풀 로고.png">
+    <style>
+        /* B2B specific styles */
+        .service-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
+            color: white;
+        }
+        
+        .service-hero h1,
+        .service-hero p {
+            color: white;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-teal);
+        }
+        
+        .service-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--primary-teal);
+            color: white;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .problem-box,
+        .solution-box {
+            padding: 2rem;
+            border-radius: 16px;
+        }
+        
+        .problem-box {
+            background: rgba(244, 67, 54, 0.05);
+            border: 1px solid rgba(244, 67, 54, 0.2);
+        }
+        
+        .solution-box {
+            background: rgba(74, 193, 188, 0.05);
+            border: 1px solid rgba(74, 193, 188, 0.2);
+        }
+        
+        .problem-box h4 {
+            color: #F44336;
+            margin-bottom: 1rem;
+        }
+        
+        .solution-box h4 {
+            color: var(--primary-teal);
+            margin-bottom: 1rem;
+        }
+        
+        .membership-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .membership-table th,
+        .membership-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .membership-table th {
+            background: var(--bg-secondary);
+            font-weight: 700;
+        }
+        
+        .membership-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .check-mark {
+            color: var(--primary-teal);
+            font-size: 1.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--primary-teal) 0%, rgba(74, 193, 188, 0.2) 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 140px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(74, 193, 188, 0.08);
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-orange));
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 60px rgba(0, 0, 0, 0.12);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -80px;
+            top: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-teal), #3AABA5);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.375rem;
+            box-shadow: 0 8px 32px rgba(74, 193, 188, 0.3);
+            border: 4px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .problem-solution {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .timeline {
+                padding: 2rem 0;
+                max-width: 100%;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding-left: 80px;
+                margin-bottom: 3rem;
+            }
+            
+            .timeline-content {
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+            
+            .timeline-dot {
+                left: -50px;
+                width: 48px;
+                height: 48px;
+                border-radius: 16px;
+                font-size: 1.5rem;
+            }
+            
+            .timeline-content [style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+            
+            .timeline-content [style*="display: flex"][style*="justify-content: space-between"] {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+                text-align: center !important;
+            }
+            
+            .timeline-content [style*="display: flex"][style*="gap: 1.5rem"] {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            .timeline-content [style*="width: 80px; height: 80px"] {
+                width: 64px !important;
+                height: 64px !important;
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/케어풀 로고.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav__container">
+            <a href="index.html" class="nav__logo">
+                <img src="img/케어풀 로고.png" alt="케어풀 로고">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
+                <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
+                <li><a href="calculator.html" class="nav__link">계산기</a></li>
+                <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
+                <li><a href="#contact" class="nav__link">문의</a></li>
+            </ul>
+            <div class="nav__cta">
+                <a href="#contact" class="btn btn--primary">무료 초기 진단</a>
+            </div>
+            <button class="nav__toggle" aria-label="메뉴 열기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero service-hero" style="position: relative; overflow: hidden;">
+        <!-- Hero Background Image -->
+        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
+            <img src="img/hero-services-main.jpg" 
+                 alt="비즈니스 컨설팅 모습" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(60, 72, 88, 0.85) 0%, rgba(74, 193, 188, 0.7) 100%);"></div>
+        </div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="hero__content">
+                <h1 class="hero__title">요양기관의 성공적인 내일,<br>케어풀이 함께 만듭니다</h1>
+                <p class="hero__subtitle">신규 창업부터 운영 고도화, 2025년 평가 대비, M&A까지.<br>업계 최고의 전문가 그룹이 원스톱 솔루션을 제공합니다.</p>
+                <div class="hero__buttons">
+                    <a href="#services" class="btn btn--secondary btn--large">서비스 둘러보기</a>
+                    <a href="#contact" class="btn btn--primary btn--large" style="background: white; color: var(--primary-dark);">무료 초기 진단 신청</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem;">케어풀의 전문 컨설팅 서비스</h2>
+            
+            <!-- Service 1: 창업 지원 -->
+            <div class="service-card">
+                <!-- Service Image -->
+                <div style="height: 200px; overflow: hidden; margin: -3rem -3rem 2rem; border-radius: 24px 24px 0 0;">
+                    <img src="img/business-handshake-healthcare.jpg" 
+                         alt="요양기관 창업 컨설팅" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="service-number">1</div>
+                <h3 style="font-size: 2rem;">창업 지원 솔루션</h3>
+                <p class="subtitle mb-4" style="font-size: 1.5rem;">입지 분석부터 인허가, 금융 설계, 사업계획서까지. 수많은 변수로 가득한 창업 과정의 리스크를 제거하고 성공적인 시작을 보장합니다.</p>
+                
+                <div class="problem-solution">
+                    <div class="problem-box">
+                        <h4>😰 이런 고민이 있으신가요?</h4>
+                        <ul>
+                            <li>어디에 시설을 열어야 할지 모르겠어요</li>
+                            <li>인허가 절차가 너무 복잡해요</li>
+                            <li>초기 투자 비용이 얼마나 들지 막막해요</li>
+                            <li>수익성 있는 운영이 가능할지 걱정돼요</li>
+                        </ul>
+                    </div>
+                    <div class="solution-box">
+                        <h4>✅ 케어풀이 해결해드립니다</h4>
+                        <ul>
+                            <li>빅데이터 기반 최적 입지 분석</li>
+                            <li>인허가 전 과정 대행 및 관리</li>
+                            <li>맞춤형 금융 컨설팅 및 정부 지원 연계</li>
+                            <li>5년 단위 수익성 시뮬레이션 제공</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: 운영 고도화 -->
+            <div class="service-card">
+                <!-- Service Image -->
+                <div style="height: 200px; overflow: hidden; margin: -3rem -3rem 2rem; border-radius: 24px 24px 0 0;">
+                    <img src="img/corporate-healthcare-setting.jpg" 
+                         alt="요양기관 운영 평가" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="service-number">2</div>
+                <h3 style="font-size: 2rem;">운영 고도화 솔루션</h3>
+                <p class="subtitle mb-4" style="font-size: 1.5rem;">2025년 신규 평가 완벽 대비, 수억 원대 환수 리스크 방지. 데이터 기반의 컨설팅으로 기관의 행정 부담을 줄이고 서비스 질을 높여 경쟁력을 극대화합니다.</p>
+                
+                <div class="problem-solution">
+                    <div class="problem-box">
+                        <h4>😰 2025년 평가, 준비되셨나요?</h4>
+                        <ul>
+                            <li>직원 인권보호 지표 신설</li>
+                            <li>생애말기돌봄 지표 추가</li>
+                            <li>안전관리 기준 대폭 강화</li>
+                            <li>직원 처우개선 요구사항 증가</li>
+                        </ul>
+                    </div>
+                    <div class="solution-box">
+                        <h4>✅ 2025 평가 완벽 대비 패키지</h4>
+                        <ul>
+                            <li>Gap Analysis로 현재 수준 정밀 진단</li>
+                            <li>신규 지표 맞춤형 서식 50종 제공</li>
+                            <li>전 직원 대상 맞춤 교육 프로그램</li>
+                            <li>실전과 같은 모의 평가 3회 실시</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn--primary btn--large">2025년 평가 대비 체크리스트 무료 다운로드</a>
+                </div>
+            </div>
+
+            <!-- Service 3: M&A 자문 -->
+            <div class="service-card">
+                <!-- Service Image -->
+                <div style="height: 200px; overflow: hidden; margin: -3rem -3rem 2rem; border-radius: 24px 24px 0 0;">
+                    <img src="img/healthcare-business-meeting.jpg" 
+                         alt="M&A 자문 서비스" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="service-number">3</div>
+                <h3 style="font-size: 2rem;">가치 극대화 M&A 솔루션</h3>
+                <p class="subtitle mb-4" style="font-size: 1.5rem;">단순 중개를 넘어, 기업가치 평가와 전략적 M&A 자문을 통해 대표님의 노력이 담긴 기관의 가치를 최고로 인정받도록 돕습니다.</p>
+                
+                <div class="grid grid--3 mt-4">
+                    <div class="text-center">
+                        <h4 style="color: var(--primary-teal); font-size: 2.5rem; margin-bottom: 0.5rem;">500+</h4>
+                        <p>성공적인 M&A 사례</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 style="color: var(--primary-orange); font-size: 2.5rem; margin-bottom: 0.5rem;">125%</h4>
+                        <p>평균 매각가 상승률</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 style="color: var(--primary-green); font-size: 2.5rem; margin-bottom: 0.5rem;">45일</h4>
+                        <p>평균 거래 완료 기간</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="section" style="background: var(--bg-secondary); position: relative; overflow: hidden;">
+        <!-- Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.1;">
+            <img src="img/healthcare-technology-app.jpg" 
+                 alt="디지털 트랜스포메이션 배경" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="text-center mb-5">
+                <h2 class="text-center mb-5" style="font-size: 2.5rem;">성공적인 디지털 트랜스포메이션</h2>
+                <p class="text-center subtitle mb-5">데이터 기반 의사결정과 체계적 실행으로 A등급 달성률 95%를 기록한 검증된 방법론</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">01</div>
+                    <div class="timeline-content">
+                        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-orange), #FFB07A); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: 700; box-shadow: 0 8px 24px rgba(255, 138, 72, 0.2);">
+                                📊
+                            </div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.5rem 0; font-size: 2rem; font-weight: 700; color: var(--gray-900);">전략적 현황 진단</h3>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.6;">종합적 현황 진단을 통한 데이터 기반 전략 수립의 출발점</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0;">
+                            <div style="padding: 1.5rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px; border: 1px solid rgba(255, 138, 72, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.5rem; font-weight: 700; color: var(--gray-900);">운영 효율성 감사</h5>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.5;">150개 체크포인트 기반<br>현장 운영 효율성 정밀 분석</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px; border: 1px solid rgba(255, 138, 72, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.5rem; font-weight: 700; color: var(--gray-900);">규제 준수 격차 분석</h5>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.5;">2025년 신규 평가지표<br>준수 현황 정량적 분석</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px; border: 1px solid rgba(255, 138, 72, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.5rem; font-weight: 700; color: var(--gray-900);">재무 성과 검토</h5>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.5;">수익성·유동성·안정성<br>3차원 재무 건전성 진단</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px; border: 1px solid rgba(255, 138, 72, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.5rem; font-weight: 700; color: var(--gray-900);">성장 전략 프레임워크</h5>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.5;">3가지 성장 시나리오별<br>투자수익률 예측 모델</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Step Image -->
+                        <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
+                            <img src="img/consulting.jpg" 
+                                 alt="전략적 현황 진단 과정" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(255, 138, 72, 0.8), rgba(255, 138, 72, 0.6));"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                                <div style="font-size: 1.125rem; font-weight: 700;">데이터 기반 진단</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, var(--primary-orange), #E67644); color: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(255, 138, 72, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 1.375rem;">⏱️</span>
+                                <span style="font-size: 1.375rem; font-weight: 600;">소요기간: 7일</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 1.375rem;">📋</span>
+                                <span style="font-size: 1.375rem; font-weight: 600;">결과물: 30페이지 전략보고서</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">02</div>
+                    <div class="timeline-content">
+                        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-teal), #6DD4CF); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: 700; box-shadow: 0 8px 24px rgba(74, 193, 188, 0.2);">
+                                🎯
+                            </div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.5rem 0; font-size: 2.25rem; font-weight: 700; color: var(--gray-900);">전문가 팀 구성</h3>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.6;">검증된 전문가 네트워크를 통한 최적의 프로젝트 팀 구성</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0;">
+                            <div style="text-align: center; padding: 1.75rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px; border: 1px solid rgba(74, 193, 188, 0.15);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-teal), #3AABA5); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700; box-shadow: 0 4px 16px rgba(74, 193, 188, 0.2);">🏛️</div>
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">운영 총괄 이사</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.4;">前 건보공단 평가팀장<br>15년+ 규제 준수 전문가</p>
+                            </div>
+                            <div style="text-align: center; padding: 1.75rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px; border: 1px solid rgba(74, 193, 188, 0.15);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-teal), #3AABA5); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700; box-shadow: 0 4px 16px rgba(74, 193, 188, 0.2);">💎</div>
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">재무전략 책임자</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.4;">공인회계사 자격 보유<br>20년+ 헬스케어 재무 경험</p>
+                            </div>
+                            <div style="text-align: center; padding: 1.75rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px; border: 1px solid rgba(74, 193, 188, 0.15);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-teal), #3AABA5); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700; box-shadow: 0 4px 16px rgba(74, 193, 188, 0.2);">⚖️</div>
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">법무 전문 변호사</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.4;">법무법인 파트너 출신<br>요양기관 전문 변호사</p>
+                            </div>
+                            <div style="text-align: center; padding: 1.75rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px; border: 1px solid rgba(74, 193, 188, 0.15);">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-teal), #3AABA5); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700; box-shadow: 0 4px 16px rgba(74, 193, 188, 0.2);">📋</div>
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">프로그램 매니저</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.4;">프로젝트관리 전문가 인증<br>애자일 방법론 전문가</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Step Image -->
+                        <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
+                            <img src="img/healthcare-professionals-team.jpg" 
+                                 alt="전문가 팀 구성" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(74, 193, 188, 0.8), rgba(74, 193, 188, 0.6));"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                                <div style="font-size: 1.125rem; font-weight: 700;">전문가 팀 구성</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, var(--primary-teal), #3AABA5); color: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(74, 193, 188, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="font-size: 1.5rem;">⚡</span>
+                                <span style="font-size: 1.375rem; font-weight: 600;">24시간 내 전담팀 구성 및 킥오프 미팅 완료</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">03</div>
+                    <div class="timeline-content">
+                        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-green), #95E439); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: 700; box-shadow: 0 8px 24px rgba(126, 211, 33, 0.2);">
+                                📈
+                            </div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.5rem 0; font-size: 2.25rem; font-weight: 700; color: var(--gray-900);">전략적 실행계획 수립</h3>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.6;">데이터 기반 전략적 실행계획 수립으로 체계적 성과 관리 체계 구축</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0;">
+                            <div style="padding: 1.5rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px; border: 1px solid rgba(126, 211, 33, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">위험-우선순위 매트릭스</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">고위험·고영향 과제 우선<br>4단계 ROI 기반 우선순위</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px; border: 1px solid rgba(126, 211, 33, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">규제 준수 문서화</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">2025년 신규지표 완전 대응<br>50종 전문 서식 패키지</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px; border: 1px solid rgba(126, 211, 33, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">변화 관리 프로그램</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">직급별 맞춤 교육과정<br>3단계 역량 강화 커리큘럼</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px; border: 1px solid rgba(126, 211, 33, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">성과 대시보드</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">실시간 KPI 모니터링<br>월별 성과지표 대시보드</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Step Image -->
+                        <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
+                            <img src="img/operation.jpg" 
+                                 alt="전략적 실행계획 수립" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(126, 211, 33, 0.8), rgba(126, 211, 33, 0.6));"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📈</div>
+                                <div style="font-size: 1.125rem; font-weight: 700;">전략 수립</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, var(--primary-green), #95E439); color: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(126, 211, 33, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 1.375rem;">⏱️</span>
+                                <span style="font-size: 1.375rem; font-weight: 600;">소요기간: 14일</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 1.375rem;">📊</span>
+                                <span style="font-size: 1.375rem; font-weight: 600;">결과물: 전략 로드맵</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot">04</div>
+                    <div class="timeline-content">
+                        <div style="display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-dark), #5A6C7D); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: 700; box-shadow: 0 8px 24px rgba(60, 72, 88, 0.2);">
+                                🎯
+                            </div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.5rem 0; font-size: 2.25rem; font-weight: 700; color: var(--gray-900);">성과 관리 및 최적화</h3>
+                                <p style="margin: 0; font-size: 1.375rem; color: var(--gray-600); line-height: 1.6;">지속적 성과 개선과 A등급 달성을 위한 전문적 장기 관리 시스템</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0;">
+                            <div style="padding: 1.5rem; background: rgba(60, 72, 88, 0.05); border-radius: 12px; border: 1px solid rgba(60, 72, 88, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">정기 현장 모니터링</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">월별 전문가 현장 점검<br>실시간 개선사항 모니터링</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(60, 72, 88, 0.05); border-radius: 12px; border: 1px solid rgba(60, 72, 88, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">모의 평가 프로그램</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">3회 실전 수준 모의평가<br>의사결정지원시스템 활용</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(60, 72, 88, 0.05); border-radius: 12px; border: 1px solid rgba(60, 72, 88, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">정책 변화 대응</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">신속한 정책변화 대응<br>전문가 긴급 컨설팅 지원</p>
+                            </div>
+                            <div style="padding: 1.5rem; background: rgba(60, 72, 88, 0.05); border-radius: 12px; border: 1px solid rgba(60, 72, 88, 0.15);">
+                                <h5 style="margin: 0 0 0.75rem 0; font-size: 1.375rem; font-weight: 700; color: var(--gray-900);">성공 보장 지원</h5>
+                                <p style="margin: 0; font-size: 1.5rem; color: var(--gray-600); line-height: 1.5;">A등급 달성시까지<br>무제한 사후지원 서비스</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Step Image -->
+                        <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
+                            <img src="img/performance.jpg" 
+                                 alt="성과 관리 및 최적화" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(60, 72, 88, 0.8), rgba(60, 72, 88, 0.6));"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                                <div style="font-size: 1.125rem; font-weight: 700;">성과 최적화</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, var(--primary-dark), #5A6C7D); color: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(60, 72, 88, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 2rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="font-size: 1.375rem;">🏆</span>
+                                    <span style="font-size: 1.375rem; font-weight: 600;">A등급 달성률 95%</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="font-size: 1.375rem;">⏱️</span>
+                                    <span style="font-size: 1.375rem; font-weight: 600;">평균 6개월 소요</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem;">케어풀 멤버십</h2>
+            <p class="text-center subtitle mb-5">지속적인 성장을 위한 특별한 혜택을 누리세요</p>
+            
+            <div class="grid grid--2">
+                <div class="card" style="display: flex; flex-direction: column;">
+                    <!-- Membership Image -->
+                    <div style="height: 120px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/hero-performance.jpg" 
+                             alt="베이직 멤버십" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <h3 style="color: var(--primary-teal);">베이직 멤버십</h3>
+                        <p class="subtitle mb-3">월 99,000원</p>
+                        <ul style="line-height: 2; flex: 1;">
+                            <li>✅ 월간 정책 브리핑 자료</li>
+                            <li>✅ 온라인 교육 콘텐츠 무제한</li>
+                            <li>✅ 긴급 상담 핫라인</li>
+                            <li>✅ 분기별 운영 리포트</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--outline btn--block mt-4">가입 문의</a>
+                    </div>
+                </div>
+                
+                <div class="card" style="border: 2px solid var(--primary-teal); display: flex; flex-direction: column;">
+                    <!-- Premium Membership Image -->
+                    <div style="height: 120px; overflow: hidden; margin: -2rem -2rem 0.5rem; border-radius: 16px 16px 0 0;">
+                        <img src="img/hero-insights.jpg" 
+                             alt="프리미엄 멤버십" 
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="background: var(--primary-teal); color: white; padding: 0.5rem; margin: 0 -2rem 1rem; border-radius: 0;">
+                        <p class="text-center" style="margin: 0; font-weight: 700;">BEST CHOICE</p>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <h3 style="color: var(--primary-teal);">프리미엄 멤버십</h3>
+                        <p class="subtitle mb-3">월 299,000원</p>
+                        <ul style="line-height: 2; flex: 1;">
+                            <li>✅ 베이직 멤버십의 모든 혜택</li>
+                            <li>✅ <strong>케어풀 플랫폼 우선 홍보</strong></li>
+                            <li>✅ 연 2회 현장 컨설팅</li>
+                            <li>✅ 모의 현지조사 연 1회</li>
+                            <li>✅ 전문가 1:1 멘토링</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--primary btn--block mt-4">가입 문의</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--primary-dark); color: white; position: relative; overflow: hidden;">
+        <!-- CTA Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.2;">
+            <img src="img/success-stories.jpg" 
+                 alt="케어풀과 함께하는 성공" 
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="container text-center" style="position: relative; z-index: 1;">
+            <h2 style="color: white; font-size: 2.5rem;">지금 시작하세요</h2>
+            <p class="subtitle mb-4" style="color: rgba(255,255,255,0.8);">
+                10년의 현장 경험과 데이터가 만든 검증된 솔루션.<br>
+                케어풀과 함께라면 요양기관 운영이 달라집니다.
+            </p>
+            <a href="#contact" class="btn btn--primary btn--large" style="background: white; color: var(--primary-dark);">무료 초기 진단 신청하기</a>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="font-size: 2.5rem;">무료 초기 진단 신청</h2>
+                <p class="subtitle">전문가가 직접 방문하여 기관의 현재 상황을 진단하고 맞춤형 솔루션을 제안합니다</p>
+            </div>
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <form id="b2bContactForm">
+                    <div class="grid grid--2">
+                        <div class="form-group">
+                            <label class="form-label" for="institution">기관명 *</label>
+                            <input type="text" id="institution" class="form-input" placeholder="○○요양원" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="position">직책 *</label>
+                            <input type="text" id="position" class="form-input" placeholder="원장/시설장" required>
+                        </div>
+                    </div>
+                    <div class="grid grid--2">
+                        <div class="form-group">
+                            <label class="form-label" for="name">담당자명 *</label>
+                            <input type="text" id="name" class="form-input" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">연락처 *</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="010-1234-5678" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">이메일 *</label>
+                        <input type="email" id="email" class="form-input" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="service">관심 서비스 *</label>
+                        <select id="service" class="form-input" required>
+                            <option value="">선택해주세요</option>
+                            <option value="startup">창업 컨설팅</option>
+                            <option value="operation">운영 고도화</option>
+                            <option value="evaluation">2025년 평가 대비</option>
+                            <option value="ma">M&A 자문</option>
+                            <option value="membership">멤버십 가입</option>
+                            <option value="other">기타</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">상담 내용</label>
+                        <textarea id="message" class="form-input" rows="4" placeholder="현재 고민이나 필요하신 도움을 자유롭게 작성해주세요"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--large btn--block">무료 진단 신청하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <div class="footer__logos">
+                        <img src="img/케어풀 로고.png" alt="케어풀" class="footer__logo">
+                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
+                    </div>
+                    <p class="footer__description">
+                        케어풀은 시니어라이프랩이 만드는<br>
+                        시니어 케어 통합 플랫폼입니다.<br>
+                        함께 만드는 돌봄, 모두가 안심하는 내일.
+                    </p>
+                </div>
+                <div class="footer__column">
+                    <h4>요양 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="ltci-guide.html">장기요양보험이란?</a></li>
+                        <li><a href="ltci-guide.html#grades">등급 체계</a></li>
+                        <li><a href="ltci-guide.html#services">서비스 종류</a></li>
+                        <li><a href="calculator.html">비용 계산기</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>기관 파트너</h4>
+                    <ul class="footer__list">
+                        <li><a href="#services">창업 컨설팅</a></li>
+                        <li><a href="#services">운영 고도화</a></li>
+                        <li><a href="#services">평가 대비</a></li>
+                        <li><a href="#services">M&A 자문</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>회사 정보</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">케어풀 소개</a></li>
+                        <li><a href="#">시니어라이프랩</a></li>
+                        <li><a href="#">채용 정보</a></li>
+                        <li><a href="#">제휴 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>주식회사 시니어라이프랩 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
+                    <p>© 2024 CareFull. All rights reserved.</p>
+                </div>
+                <div class="footer__legal">
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="image-manager.js"></script>
+    <script>
+        // B2B Contact form handling
+        const b2bForm = document.getElementById('b2bContactForm');
+        b2bForm?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                institution: document.getElementById('institution').value,
+                position: document.getElementById('position').value,
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Here you would normally send the data to a server
+            console.log('B2B Form submitted:', formData);
+            
+            // Show success message
+            alert('무료 진단 신청이 완료되었습니다. 영업일 기준 1일 이내에 담당자가 연락드리겠습니다.');
+            
+            // Reset form
+            b2bForm.reset();
+        });
+    </script>
+</body>
+</html>
