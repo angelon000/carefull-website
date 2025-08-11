@@ -39,17 +39,34 @@ const costData = {
 
 // Step 1: Grade selection
 document.querySelectorAll('[data-grade]').forEach(card => {
-    card.addEventListener('click', function() {
+    // 접근성 속성
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-pressed', 'false');
+
+    function selectGrade() {
         // Remove previous selection
-        document.querySelectorAll('[data-grade]').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('[data-grade]').forEach(c => {
+            c.classList.remove('selected');
+            c.setAttribute('aria-pressed', 'false');
+        });
         
         // Add selection
-        this.classList.add('selected');
-        calculatorState.grade = this.dataset.grade;
+        card.classList.add('selected');
+        card.setAttribute('aria-pressed', 'true');
+        calculatorState.grade = card.dataset.grade;
         
         // Enable next button
         document.getElementById('next-1').disabled = false;
         document.getElementById('next-1').setAttribute('aria-disabled', 'false');
+    }
+
+    card.addEventListener('click', selectGrade);
+    card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            selectGrade();
+        }
     });
 });
 
