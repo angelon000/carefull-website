@@ -1238,6 +1238,9 @@ small, .text-sm {
     text-align: center;
 }
 
+/* Prevent line break for specific inline chunks */
+.nowrap { white-space: nowrap; }
+
 .text-left {
     text-align: left;
 }
