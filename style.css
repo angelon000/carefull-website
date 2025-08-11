@@ -566,12 +566,7 @@ p {
 }
 
 /* Story hero (About page) */
-.story-hero {
-    padding-top: 200px;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-}
+.story-hero { padding-top: 200px; min-height: 70vh; display: flex; align-items: center; }
 
 .hero::before {
     content: '';
@@ -631,16 +626,14 @@ p {
 }
 
 /* Create consistent spacing after hero across pages */
-.hero + .section {
-    padding-top: 40px;
-}
+.hero + .section { padding-top: 64px; }
 
 .hero__buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
-    .hero__content { margin-top: 0; }
+    .hero__content { margin-top: 2vh; }
 
 /* Grid System */
 .grid {
