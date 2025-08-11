@@ -76,6 +76,23 @@
             text-align: center;
         }
         
+        /* Puzzle image container (new design) */
+        .puzzle-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: min(680px, 54vw);
+            padding: 16px;
+            background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(74,193,188,0.06) 100%);
+            border: 1px solid var(--gray-100);
+            border-radius: 28px;
+            box-shadow: 0 16px 30px rgba(74, 193, 188, 0.12);
+        }
+        .puzzle-image img { width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18)); }
+        @media (max-width: 768px) {
+            .puzzle-image { width: 100%; border-radius: 20px; }
+        }
+        
         .puzzle-piece:hover {
             transform: scale(1.1);
             z-index: 10;
@@ -357,11 +374,8 @@
         <section class="story-section" style="background: var(--bg-secondary);">
             <div class="container">
                 <div class="brand-story brand-story--reverse">
-                    <div class="puzzle-visual">
-                        <div class="puzzle-piece puzzle-piece--orange">시니어</div>
-                        <div class="puzzle-piece puzzle-piece--teal">가족</div>
-                        <div class="puzzle-piece puzzle-piece--green">서비스<br>제공자</div>
-                        <div class="puzzle-piece puzzle-piece--dark">플랫폼<br>운영자</div>
+                    <div class="puzzle-image" aria-label="케어풀 4색 퍼즐 구성">
+                        <img src="img/시니어라이브랩 구성.png" alt="시니어, 가족, 서비스 제공자, 플랫폼 운영자 퍼즐 구성" width="1200" height="700" loading="lazy" decoding="async">
                     </div>
                     <div class="story-content">
                         <h2>케어풀</h2>
