@@ -21,21 +21,50 @@
     <!-- Styles -->
         <link rel="stylesheet" href="style.css?v=20250811">
     <style>
-        /* About page specific styles */
+        /* About page specific styles - Modern Design 2024/2025 */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --backdrop-blur: blur(20px);
+            --section-spacing: clamp(80px, 12vw, 120px);
+            --content-max-width: 1400px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --text-shadow-soft: 0 2px 8px rgba(0,0,0,0.1);
+            --animation-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         .story-section {
-            padding: 100px 0;
+            padding: var(--section-spacing) 0;
+            position: relative;
+            overflow: hidden;
         }
         
         .story-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             background: linear-gradient(135deg, rgba(74, 193, 188, 0.1) 0%, rgba(255, 138, 72, 0.1) 100%);
+            position: relative;
+        }
+        
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
         
         .brand-story {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
+            gap: clamp(2rem, 5vw, 4rem);
             align-items: center;
-            padding: 3rem 0;
+            padding: clamp(2rem, 4vw, 4rem) 0;
+            max-width: var(--content-max-width);
+            margin: 0 auto;
         }
         
         .brand-story--reverse {
@@ -47,9 +76,27 @@
         }
         
         .story-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
             color: var(--primary-dark);
+            font-weight: 800;
+            line-height: 1.1;
+            text-shadow: var(--text-shadow-soft);
+            letter-spacing: -0.02em;
+        }
+        
+        .story-content p {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--gray-700);
+        }
+        
+        .story-content .lead {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: var(--primary-teal);
+            margin-bottom: 2rem;
         }
         
         .puzzle-visual {
@@ -76,21 +123,67 @@
             text-align: center;
         }
         
-        /* Puzzle image container (new design) */
-        .puzzle-image {
+        /* Modern Image Container with Glassmorphism */
+        .puzzle-image, .circle-visual {
             display: flex;
             align-items: center;
             justify-content: center;
             width: min(680px, 54vw);
-            padding: 16px;
-            background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(74,193,188,0.06) 100%);
-            border: 1px solid var(--gray-100);
-            border-radius: 28px;
-            box-shadow: 0 16px 30px rgba(74, 193, 188, 0.12);
+            padding: clamp(16px, 3vw, 32px);
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(74,193,188,0.08) 100%),
+                rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: var(--border-radius-xl);
+            box-shadow: 
+                0 20px 40px rgba(74, 193, 188, 0.15),
+                0 4px 12px rgba(0,0,0,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.4s var(--animation-smooth);
+            position: relative;
+            overflow: hidden;
         }
-        .puzzle-image img { width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18)); }
+        
+        .puzzle-image::before, .circle-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .puzzle-image:hover::before, .circle-visual:hover::before {
+            opacity: 1;
+        }
+        
+        .puzzle-image:hover, .circle-visual:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(74, 193, 188, 0.2),
+                0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .puzzle-image img, .circle-visual img { 
+            width: 100%; 
+            height: auto; 
+            object-fit: contain; 
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+        
         @media (max-width: 768px) {
-            .puzzle-image { width: 100%; border-radius: 20px; }
+            .puzzle-image, .circle-visual { 
+                width: 100%; 
+                border-radius: var(--border-radius-lg);
+                padding: 16px;
+            }
         }
         
         .puzzle-piece:hover {
@@ -238,13 +331,28 @@
         }
         
         .vision-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: var(--shadow-lg);
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%),
+                rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            padding: clamp(2rem, 4vw, 3rem);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.04),
+                inset 0 1px 0 rgba(255,255,255,0.9);
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: all 0.4s var(--animation-smooth);
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.15),
+                0 12px 24px rgba(0,0,0,0.08);
         }
         
         .vision-card::before {
@@ -253,20 +361,33 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary-orange), var(--primary-teal), var(--primary-green));
+            border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
         }
         
         .vision-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-secondary);
-            border-radius: 20px;
+            width: clamp(70px, 10vw, 90px);
+            height: clamp(70px, 10vw, 90px);
+            background: 
+                linear-gradient(145deg, rgba(74,193,188,0.1) 0%, rgba(255,138,72,0.1) 100%),
+                rgba(248,250,252,0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74,193,188,0.2);
+            border-radius: var(--border-radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            transition: all 0.3s ease;
+        }
+        
+        .vision-card:hover .vision-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: 
+                linear-gradient(145deg, rgba(74,193,188,0.2) 0%, rgba(255,138,72,0.2) 100%),
+                rgba(248,250,252,0.9);
         }
         
         /* Color legend */
@@ -279,41 +400,1376 @@
         .legend__dot--green { background: var(--primary-green); }
         .legend__dot--navy { background: var(--primary-dark); }
         
+        /* Enhanced Mobile Responsiveness */
         @media (max-width: 768px) {
+            :root {
+                --section-spacing: clamp(60px, 10vw, 80px);
+                --border-radius-lg: 20px;
+                --border-radius-xl: 24px;
+            }
+            
+            .story-hero {
+                min-height: 100svh;
+            }
+            
             .brand-story {
+                grid-template-columns: 1fr;
+                gap: clamp(1.5rem, 4vw, 2rem);
+                text-align: center;
+            }
+            
+            .brand-story--reverse {
+                direction: ltr;
+            }
+            
+            .story-content h2 {
+                font-size: clamp(1.75rem, 8vw, 2.5rem);
+            }
+            
+            .hero__content {
+                padding: clamp(2rem, 8vw, 3rem) !important;
+                margin: 1rem !important;
+            }
+            
+            .puzzle-piece {
+                width: 70px;
+                height: 70px;
+                font-size: 0.75rem;
+                margin: -3px;
+            }
+            
+            .vision-icon {
+                width: 60px !important;
+                height: 60px !important;
+                font-size: 1.75rem !important;
+            }
+            
+            .grid--3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .glass-card {
+                background: rgba(255,255,255,0.05);
+                border-color: rgba(255,255,255,0.1);
+            }
+            
+            .puzzle-image, .circle-visual {
+                background: 
+                    linear-gradient(145deg, rgba(0,0,0,0.3) 0%, rgba(74,193,188,0.1) 100%),
+                    rgba(0,0,0,0.2);
+            }
+        }
+        
+        /* Senior Life Lab Section - Modern Design */
+        .senior-lab-section {
+            background: 
+                linear-gradient(135deg, rgba(74,193,188,0.03) 0%, rgba(255,255,255,1) 50%, rgba(255,138,72,0.03) 100%),
+                #fafbfc;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background Patterns */
+        .section-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        
+        .floating-elements {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .float-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(74,193,188,0.1) 0%, rgba(255,138,72,0.1) 100%);
+            backdrop-filter: blur(20px);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .float-circle--1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+        
+        .float-circle--2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: -30px;
+            animation-delay: -7s;
+        }
+        
+        .float-circle--3 {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 70%;
+            animation-delay: -14s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(0px) rotate(180deg); }
+            75% { transform: translateY(-10px) rotate(270deg); }
+        }
+        
+        /* Section Header */
+        .section-header-modern {
+            text-align: center;
+            margin-bottom: clamp(4rem, 8vw, 6rem);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .eyebrow-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: 
+                linear-gradient(135deg, rgba(74,193,188,0.1) 0%, rgba(255,138,72,0.1) 100%),
+                rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(74,193,188,0.2);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-teal);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(74,193,188,0.1);
+        }
+        
+        .eyebrow-icon {
+            font-size: 1.1rem;
+        }
+        
+        .section-title-xl {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .title-primary {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--primary-dark);
+            line-height: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        
+        .title-accent {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            color: var(--primary-teal);
+            font-style: italic;
+        }
+        
+        .section-intro {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            line-height: 1.6;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content Grid - 상하 배치로 변경 */
+        .lab-content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(4rem, 8vw, 6rem);
+            margin-bottom: clamp(4rem, 8vw, 6rem);
+            align-items: center;
+            justify-items: center;
+        }
+        
+        /* Story Card */
+        .lab-story-card {
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%),
+                rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: var(--border-radius-xl);
+            padding: clamp(2.5rem, 5vw, 3.5rem);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.08),
+                0 8px 16px rgba(0,0,0,0.04),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-badge {
+            position: absolute;
+            top: -1px;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-orange) 100%);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0 0 1rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Quote Styling */
+        .story-quote {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: 
+                linear-gradient(135deg, rgba(74,193,188,0.05) 0%, rgba(255,138,72,0.05) 100%);
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--primary-teal);
+            position: relative;
+        }
+        
+        .story-quote::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            font-size: 4rem;
+            color: var(--primary-teal);
+            font-family: serif;
+            line-height: 1;
+            opacity: 0.3;
+        }
+        
+        .quote-text {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0 0 1rem 0;
+            line-height: 1.4;
+        }
+        
+        .quote-year {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        
+        /* Story Content */
+        .story-content-modern {
+            margin-bottom: 2.5rem;
+        }
+        
+        .story-paragraph {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.7;
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-paragraph strong {
+            color: var(--primary-teal);
+            font-weight: 700;
+        }
+        
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .impact-item {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.8);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s var(--animation-smooth);
+        }
+        
+        .impact-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(74,193,188,0.1);
+        }
+        
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-item h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .impact-item p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        /* Network Container - 중앙 배치 및 크기 확대 */
+        .network-container-modern {
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(74,193,188,0.08) 100%);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(74,193,188,0.15);
+            border-radius: var(--border-radius-xl);
+            padding: clamp(3rem, 6vw, 5rem);
+            text-align: center;
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            box-shadow: 
+                0 25px 50px rgba(74,193,188,0.12),
+                0 8px 16px rgba(0,0,0,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+            transition: all 0.4s var(--animation-smooth);
+        }
+        
+        .network-container-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 35px 70px rgba(74,193,188,0.18),
+                0 12px 24px rgba(0,0,0,0.12),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+        
+        .network-header {
+            margin-bottom: 2rem;
+        }
+        
+        .network-header h3 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+        
+        .network-header p {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            color: var(--gray-600);
+            margin: 0 auto 2rem;
+            font-weight: 600;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        
+        .circle-visual-enhanced {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            background: 
+                radial-gradient(circle at center, rgba(74,193,188,0.08) 0%, transparent 60%),
+                rgba(255,255,255,0.4);
+            border-radius: var(--border-radius-xl);
+            backdrop-filter: blur(10px);
+        }
+        
+        .circle-visual-enhanced img {
+            width: 100%;
+            max-width: 850px;
+            height: auto;
+            filter: drop-shadow(0 12px 30px rgba(74,193,188,0.2));
+            transition: all 0.5s var(--animation-smooth);
+            border-radius: 16px;
+        }
+        
+        .circle-visual-enhanced:hover img {
+            transform: scale(1.03) rotateX(2deg) rotateY(2deg);
+            filter: drop-shadow(0 20px 50px rgba(74,193,188,0.25));
+        }
+        
+        /* Enhanced Pulse Animation */
+        .network-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 70%;
+            transform: translate(-50%, -50%);
+            border: 3px solid var(--primary-teal);
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .network-pulse::before,
+        .network-pulse::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 2px solid var(--primary-orange);
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
+        .network-pulse::before {
+            width: 120%;
+            height: 120%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s infinite ease-in-out 1s;
+        }
+        
+        .network-pulse::after {
+            width: 150%;
+            height: 150%;
+            transform: translate(-50%, -50%);
+            border-color: var(--primary-green);
+            animation: pulse 4s infinite ease-in-out 2s;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.6);
+                opacity: 0;
+            }
+        }
+        
+        /* Metrics Showcase */
+        .metrics-showcase {
+            background: 
+                linear-gradient(135deg, var(--primary-dark) 0%, rgba(74,193,188,0.9) 100%);
+            border-radius: var(--border-radius-xl);
+            padding: clamp(3rem, 6vw, 4rem);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metrics-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.15"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></svg>');
+            pointer-events: none;
+        }
+        
+        .metrics-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .metrics-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .metric-card-modern {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s var(--animation-smooth);
+        }
+        
+        .metric-card-modern:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .metric-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .metric-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        /* Enhanced Visual Hierarchy */
+        .network-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(74,193,188,0.1);
+        }
+        
+        .network-stat {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.8) 0%, rgba(74,193,188,0.05) 100%);
+            border: 1px solid rgba(74,193,188,0.1);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s var(--animation-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .network-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-orange), var(--primary-green));
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .network-stat:hover {
+            transform: translateY(-4px) scale(1.02);
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(74,193,188,0.1) 100%);
+            border-color: rgba(74,193,188,0.2);
+            box-shadow: 0 12px 24px rgba(74,193,188,0.15);
+        }
+        
+        .network-stat:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-number {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--gray-600);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Interactive Network Features */
+        .network-info-panel {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: 
+                linear-gradient(145deg, rgba(74,193,188,0.03) 0%, rgba(255,255,255,0.8) 100%);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(74,193,188,0.1);
+        }
+        
+        .network-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(74,193,188,0.1);
+            color: var(--primary-teal);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(74,193,188,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-tag:hover {
+            background: rgba(74,193,188,0.15);
+            border-color: rgba(74,193,188,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .feature-icon {
+            font-size: 1rem;
+        }
+        
+        /* Mobile Responsiveness for Lab Section */
+        @media (max-width: 768px) {
+            .lab-content-grid {
+                gap: 3rem;
+            }
+            
+            .network-container-modern {
+                padding: clamp(2rem, 5vw, 3rem);
+                margin: 1rem;
+            }
+            
+            .circle-visual-enhanced img {
+                max-width: 100%;
+            }
+            
+            .network-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .network-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .feature-tag {
+                font-size: 0.85rem;
+                padding: 0.6rem 0.8rem;
+            }
+        }
+        
+        /* Senior-friendly accessibility enhancements */
+        @media (max-width: 480px) {
+            .network-container-modern {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+            
+            .network-header h3 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+            
+            .network-header p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            .stat-number {
+                font-size: 1.75rem;
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+            
+            .network-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .metrics-grid-modern {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .section-title-xl {
+                align-items: center;
+            }
+            
+            .float-circle {
+                display: none; /* Hide floating elements on mobile */
+            }
+        }
+        
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .puzzle-image:hover, .circle-visual:hover, .vision-card:hover {
+                transform: none;
+            }
+            
+            .float-circle {
+                animation: none;
+            }
+            
+            .network-pulse {
+                animation: none;
+            }
+        }
+        
+        /* CareFull Section - Modern Interactive Design */
+        .carefull-section {
+            background: 
+                linear-gradient(135deg, rgba(255,138,72,0.03) 0%, rgba(255,255,255,1) 50%, rgba(74,193,188,0.03) 100%),
+                #fefefe;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Animated Background */
+        .carefull-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .bg-gradient-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,138,72,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(74,193,188,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 70%, rgba(132,204,22,0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% {
+                transform: translateX(0) translateY(0) scale(1);
+            }
+            33% {
+                transform: translateX(30px) translateY(-20px) scale(1.1);
+            }
+            66% {
+                transform: translateX(-20px) translateY(30px) scale(0.9);
+            }
+        }
+        
+        /* Puzzle Particles */
+        .puzzle-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            opacity: 0.6;
+            animation: particleFloat 25s infinite ease-in-out;
+        }
+        
+        .particle--orange {
+            background: linear-gradient(135deg, #FF8A48, #FFB366);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .particle--teal {
+            background: linear-gradient(135deg, #4AC1BC, #6ED4D0);
+            top: 20%;
+            right: 10%;
+            animation-delay: -6s;
+        }
+        
+        .particle--green {
+            background: linear-gradient(135deg, #84CC16, #A3E635);
+            bottom: 30%;
+            left: 10%;
+            animation-delay: -12s;
+        }
+        
+        .particle--navy {
+            background: linear-gradient(135deg, #1E293B, #334155);
+            bottom: 10%;
+            right: 5%;
+            animation-delay: -18s;
+        }
+        
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg) scale(1.2);
+            }
+            50% {
+                transform: translate(-20px, -40px) rotate(180deg) scale(0.8);
+            }
+            75% {
+                transform: translate(-40px, 20px) rotate(270deg) scale(1.1);
+            }
+        }
+        
+        /* Hero Section */
+        .carefull-hero {
+            text-align: center;
+            margin-bottom: clamp(4rem, 8vw, 6rem);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .eyebrow-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: 
+                linear-gradient(135deg, rgba(255,138,72,0.15) 0%, rgba(74,193,188,0.15) 100%),
+                rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255,138,72,0.3);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 2.5rem;
+            box-shadow: 
+                0 8px 32px rgba(255,138,72,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+            transition: all 0.4s ease;
+        }
+        
+        .eyebrow-premium:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 40px rgba(255,138,72,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+        
+        .carefull-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .title-main {
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-teal) 50%, var(--primary-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            position: relative;
+        }
+        
+        .title-main::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-teal));
+            border-radius: 2px;
+        }
+        
+        .title-sub {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 500;
+            color: var(--primary-teal);
+            font-style: italic;
+        }
+        
+        .carefull-intro {
+            font-size: clamp(1.125rem, 3vw, 1.5rem);
+            line-height: 1.6;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Content Grid */
+        .carefull-content-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: clamp(3rem, 6vw, 5rem);
+            margin-bottom: clamp(4rem, 8vw, 6rem);
+            align-items: start;
+        }
+        
+        /* Story Container */
+        .carefull-story-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .glass-premium {
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%),
+                rgba(255,255,255,0.85);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: var(--border-radius-xl);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.1),
+                0 8px 16px rgba(0,0,0,0.05),
+                inset 0 1px 0 rgba(255,255,255,1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Problem Card */
+        .problem-card {
+            padding: 2.5rem;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .problem-header h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #dc2626;
+            margin: 0;
+        }
+        
+        .broken-chain {
+            font-size: 2rem;
+        }
+        
+        .problem-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .problem-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(239,68,68,0.05);
+            border-radius: var(--border-radius-lg);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .problem-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* Solution Card */
+        .solution-card {
+            padding: 2.5rem;
+            border-left: 4px solid var(--primary-teal);
+        }
+        
+        .solution-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .solution-header h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary-teal);
+            margin: 0;
+        }
+        
+        .heart-icon {
+            font-size: 2rem;
+            animation: heartbeat 2s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .solution-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution-text strong {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        /* Puzzle Showcase */
+        .puzzle-showcase-modern {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .puzzle-container-3d {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            perspective: 1000px;
+        }
+        
+        /* Puzzle Pieces Grid */
+        .puzzle-pieces-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .puzzle-piece-modern {
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-xl);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--animation-smooth);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .puzzle-piece-modern:hover {
+            transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .puzzle-piece--senior {
+            border-color: rgba(255,138,72,0.3);
+            background: 
+                linear-gradient(145deg, rgba(255,138,72,0.1) 0%, rgba(255,255,255,0.9) 100%);
+        }
+        
+        .puzzle-piece--senior:hover {
+            border-color: var(--primary-orange);
+            box-shadow: 0 20px 40px rgba(255,138,72,0.3);
+        }
+        
+        .puzzle-piece--family {
+            border-color: rgba(74,193,188,0.3);
+            background: 
+                linear-gradient(145deg, rgba(74,193,188,0.1) 0%, rgba(255,255,255,0.9) 100%);
+        }
+        
+        .puzzle-piece--family:hover {
+            border-color: var(--primary-teal);
+            box-shadow: 0 20px 40px rgba(74,193,188,0.3);
+        }
+        
+        .puzzle-piece--provider {
+            border-color: rgba(132,204,22,0.3);
+            background: 
+                linear-gradient(145deg, rgba(132,204,22,0.1) 0%, rgba(255,255,255,0.9) 100%);
+        }
+        
+        .puzzle-piece--provider:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 20px 40px rgba(132,204,22,0.3);
+        }
+        
+        .puzzle-piece--platform {
+            border-color: rgba(30,41,59,0.3);
+            background: 
+                linear-gradient(145deg, rgba(30,41,59,0.1) 0%, rgba(255,255,255,0.9) 100%);
+        }
+        
+        .puzzle-piece--platform:hover {
+            border-color: var(--primary-dark);
+            box-shadow: 0 20px 40px rgba(30,41,59,0.3);
+        }
+        
+        .piece-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .piece-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .piece-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .piece-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        
+        .piece-details span {
+            background: rgba(74,193,188,0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        /* Connection Lines */
+        .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .connection-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Unified Heart */
+        .unified-heart {
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(74,193,188,0.1) 100%);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(74,193,188,0.3);
+            border-radius: var(--border-radius-xl);
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 20px 40px rgba(74,193,188,0.2);
+        }
+        
+        .heart-animation {
+            animation: heartPulse 3s infinite ease-in-out;
+        }
+        
+        .heart-symbol {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        .heart-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin: 0;
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Values Section */
+        .carefull-values {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .values-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: 
+                linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: var(--border-radius-xl);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s var(--animation-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+        }
+        
+        .value-card--trust::before {
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+        }
+        
+        .value-card--connection::before {
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));
+        }
+        
+        .value-card--completeness::before {
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-orange));
+        }
+        
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-card h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .value-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--gray-600);
+            margin: 0;
+        }
+        
+        /* Mobile Responsiveness for CareFull Section */
+        @media (max-width: 768px) {
+            .carefull-content-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .puzzle-showcase-modern {
+                position: static;
+            }
+            
+            .puzzle-pieces-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .puzzle-piece-modern:hover {
+                transform: translateY(-4px);
+            }
+            
+            .values-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             
-            .puzzle-piece {
-                width: 80px;
-                height: 80px;
-                font-size: 0.875rem;
-                margin: -5px;
+            .particle {
+                display: none;
             }
             
-            .story-section {
-                padding: 60px 0;
+            .connection-lines {
+                display: none;
             }
         }
     </style>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/케어풀로고(배경투명).png">
+    <link rel="icon" type="image/png" href="img/carefull-logo-transparent.png">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav">
         <div class="container nav__container">
             <a href="index.html" class="nav__logo">
-                <img src="img/케어풀로고(배경투명).png" alt="케어풀 로고">
+                <img src="img/carefull-logo-transparent.png" alt="케어풀 로고">
             </a>
             <ul class="nav__menu">
                 <li><a href="about.html" class="nav__link">소개</a></li>
                 <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
                 <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
                 <li><a href="portfolio.html" class="nav__link">케어풀 가맹현황</a></li>
-                <li><a href="ltci-apply.html" class="nav__link">장기요양등급신청대행</a></li>
+                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
             </ul>
             <div class="nav__cta">
                 <a href="index.html#contact" class="btn btn--primary">무료 상담 신청</a>
@@ -331,96 +1787,343 @@
     <main>
         <!-- Optional quick anchors removed for cleaner look -->
         <!-- Hero Section -->
-        <section id="about-hero" class="story-section story-hero" style="position: relative; overflow: hidden;">
+        <section class="hero" style="position: relative; overflow: hidden;">
             <!-- Hero Background Image -->
             <div class="hero-bg">
                 <picture>
                     <source srcset="img/hero-professional-setting.webp" type="image/webp">
-                    <img src="img/hero-professional-setting.jpg" width="1920" height="1080" alt="가족이 함께하는 따뜻한 모습" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="img/hero-professional-setting.jpg" fetchpriority="high" decoding="async" width="1920" height="1080" alt="가족이 함께하는 따뜻한 모습" style="width: 100%; height: 100%; object-fit: cover;">
                 </picture>
                 <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
             </div>
             
             <div class="container" style="position: relative; z-index: 1;">
-                <div class="hero__content text-center" style="margin: 0 auto;">
-                    <h1 class="hero__title" style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">두 개의 브랜드,<br>하나의 이야기</h1>
-                    <p class="hero__subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">12개의 노드가 이어져 만드는 더 나은 노년 생태계,<br>함께 만드는 돌봄으로 완성되는 따뜻한 내일</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Senior Life Lab Story -->
-        <section id="senior-life-lab" class="story-section section--soft">
-            <div class="container">
-                <div class="brand-story">
-                    <div class="story-content">
-                        <div class="title-group">
-                            <span class="eyebrow">About Senior Life Lab</span>
-                            <h2>시니어라이프랩</h2>
-                            <p class="lead">Lab-powered better ageing</p>
-                        </div>
-                        <p>2012년, 우리는 한 가지 질문에서 시작했습니다.<br>
-                        "왜 노년은 항상 '문제'로만 여겨질까?"</p>
-                        
-                        <p>시니어라이프랩은 노년을 바라보는 관점을 바꾸는 것에서 출발했습니다. 
-                        노화는 극복해야 할 문제가 아닌, 새로운 가능성의 시작입니다. 
-                        우리는 12년간 시니어의 진짜 목소리를 들으며, 데이터로 증명하며, 
-                        현장에서 실행하며 노년의 새로운 표준을 만들어왔습니다.</p>
-                        
-                        <div class="surface-card" style="margin-top: 1.5rem;">
-                            <h4 style="color: var(--primary-dark); margin-bottom: 1rem;">우리가 만드는 변화</h4>
-                            <ul class="list--check">
-                                <li>노년을 바라보는 새로운 시각</li>
-                                <li>데이터로 증명하는 시니어의 가치</li>
-                                <li>연구와 현장을 잇는 실용적 솔루션</li>
-                                <li>지속가능한 시니어 케어 생태계</li>
-                            </ul>
-                        </div>
-                        <div class="metrics">
-                            <div class="metric"><div class="metric__num">12+</div><div class="metric__label">연구년수</div></div>
-                            <div class="metric"><div class="metric__num">200+</div><div class="metric__label">현장 프로젝트</div></div>
-                            <div class="metric"><div class="metric__num">5만+</div><div class="metric__label">누적 서비스 시간</div></div>
-                            <div class="metric"><div class="metric__num">6</div><div class="metric__label">핵심 영역</div></div>
-                        </div>
-                    </div>
-                    <div class="circle-visual" aria-label="시니어라이프랩 네트워크 다이어그램">
-                        <img src="img/시니어라이브랩 써클.png" alt="시니어라이프랩 네트워크 다이어그램" width="800" height="800" loading="lazy" decoding="async">
+                <div class="hero__content">
+                    <h1 class="hero__title" style="color: white; text-shadow: 0 4px 12px rgba(0,0,0,0.5);">두 개의 브랜드,<br><span style="color: white; text-shadow: 0 4px 12px rgba(0,0,0,0.5); font-weight: 900; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.7); text-underline-offset: 0.2em;">하나의 이야기</span></h1>
+                    <p class="hero__subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 2px 4px rgba(0,0,0,0.3);">시니어라이프랩의 연구와 현장 경험이 만나<br>탄생한 케어풀의 이야기를 소개합니다.</p>
+                    <div class="hero__buttons">
+                        <a href="#senior-life-lab" class="btn btn--primary btn--large" style="background: white; color: var(--primary-teal); border: none;">시니어라이프랩 알아보기</a>
+                        <a href="#carefull" class="btn btn--secondary btn--large" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; backdrop-filter: blur(10px);">케어풀 이야기</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CareFull Story -->
-        <section id="carefull" class="story-section section--alt">
+        <!-- Senior Life Lab Story - Modern Redesigned -->
+        <section id="senior-life-lab" class="story-section senior-lab-section">
+            <!-- Background Pattern -->
+            <div class="section-bg-pattern">
+                <div class="floating-elements">
+                    <div class="float-circle float-circle--1"></div>
+                    <div class="float-circle float-circle--2"></div>
+                    <div class="float-circle float-circle--3"></div>
+                </div>
+            </div>
+            
             <div class="container">
-                <div class="brand-story brand-story--reverse">
-                    <div class="puzzle-image" aria-label="케어풀 4색 퍼즐 구성">
-                        <img src="img/시니어라이브랩 구성.png" alt="시니어, 가족, 서비스 제공자, 플랫폼 운영자 퍼즐 구성" width="1200" height="700" loading="lazy" decoding="async">
+                <!-- Section Header -->
+                <div class="section-header-modern">
+                    <div class="eyebrow-modern">
+                        <span class="eyebrow-icon">🧪</span>
+                        <span>About Senior Life Lab</span>
                     </div>
-                    <div class="story-content">
-                        <div class="title-group">
-                            <span class="eyebrow">About CareFull</span>
-                            <h2>케어풀</h2>
-                            <p class="lead">함께 만드는 돌봄</p>
+                    <h2 class="section-title-xl">
+                        <span class="title-primary">시니어라이프랩</span>
+                        <span class="title-accent">Lab-powered better ageing</span>
+                    </h2>
+                    <p class="section-intro">2012년부터 시작된 우리의 여정, 노년을 바라보는 새로운 시각을 제시합니다</p>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="lab-content-grid">
+                    <!-- Story Content -->
+                    <div class="lab-story-card glass-enhanced">
+                        <div class="story-badge">
+                            <span class="badge-text">Our Journey</span>
                         </div>
-                        <p>케어풀은 시니어라이프랩의 12년 연구와 경험이 만든 결실입니다.</p>
                         
-                        <p>시니어 돌봄 시장에는 네 주체가 있습니다. 시니어, 가족, 서비스 제공자, 
-                        그리고 플랫폼 운영자. 지금까지 이 네 조각은 서로 단절되어 있었습니다. 
-                        정보의 비대칭, 신뢰의 부재, 소통의 단절이 반복되었죠.</p>
+                        <div class="story-quote">
+                            <blockquote>
+                                <p class="quote-text">"왜 노년은 항상 '문제'로만 여겨질까?"</p>
+                                <cite class="quote-year">- 2012년, 우리의 시작</cite>
+                            </blockquote>
+                        </div>
+
+                        <div class="story-content-modern">
+                            <p class="story-paragraph">시니어라이프랩은 노년을 바라보는 관점을 바꾸는 것에서 출발했습니다. 노화는 극복해야 할 문제가 아닌, <strong>새로운 가능성의 시작</strong>입니다.</p>
+                            
+                            <p class="story-paragraph">우리는 12년간 시니어의 진짜 목소리를 들으며, 데이터로 증명하며, 현장에서 실행하며 노년의 새로운 표준을 만들어왔습니다.</p>
+                        </div>
+
+                        <!-- Impact Cards -->
+                        <div class="impact-grid">
+                            <div class="impact-item">
+                                <div class="impact-icon">👁️</div>
+                                <h4>새로운 시각</h4>
+                                <p>노년을 바라보는 관점의 전환</p>
+                            </div>
+                            <div class="impact-item">
+                                <div class="impact-icon">📊</div>
+                                <h4>데이터 기반</h4>
+                                <p>증명되는 시니어의 가치</p>
+                            </div>
+                            <div class="impact-item">
+                                <div class="impact-icon">🔗</div>
+                                <h4>실용적 솔루션</h4>
+                                <p>연구와 현장을 잇는 다리</p>
+                            </div>
+                            <div class="impact-item">
+                                <div class="impact-icon">♻️</div>
+                                <h4>지속가능성</h4>
+                                <p>시니어 케어 생태계 구축</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Network Visualization - 메인 콘텐츠로 확대 -->
+                <div class="network-container-modern">
+                    <div class="network-header">
+                        <h3>연결된 생태계</h3>
+                        <p>시니어 케어의 모든 이해관계자를 하나로 연결하는 통합 플랫폼</p>
+                    </div>
+                    <div class="circle-visual-enhanced">
+                        <img src="img/senior-life-lab-circle.png" alt="시니어라이프랩 네트워크 다이어그램" width="800" height="800" loading="lazy" decoding="async">
+                        <div class="network-pulse"></div>
+                    </div>
+                    
+                    <!-- 네트워크 통계 및 특징 -->
+                    <div class="network-stats">
+                        <div class="network-stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">연결 노드</span>
+                        </div>
+                        <div class="network-stat">
+                            <span class="stat-number">360°</span>
+                            <span class="stat-label">통합 케어</span>
+                        </div>
+                        <div class="network-stat">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">확장 가능성</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 네트워크 특징 패널 -->
+                    <div class="network-info-panel">
+                        <div class="network-features">
+                            <span class="feature-tag">
+                                <span class="feature-icon">🏥</span>
+                                <span>의료기관</span>
+                            </span>
+                            <span class="feature-tag">
+                                <span class="feature-icon">🏠</span>
+                                <span>요양기관</span>
+                            </span>
+                            <span class="feature-tag">
+                                <span class="feature-icon">👨‍⚕️</span>
+                                <span>전문인력</span>
+                            </span>
+                            <span class="feature-tag">
+                                <span class="feature-icon">👪</span>
+                                <span>가족돌봄</span>
+                            </span>
+                            <span class="feature-tag">
+                                <span class="feature-icon">🔬</span>
+                                <span>연구기관</span>
+                            </span>
+                            <span class="feature-tag">
+                                <span class="feature-icon">📊</span>
+                                <span>데이터 플랫폼</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Metrics Section -->
+                <div class="metrics-showcase">
+                    <h3 class="metrics-title">우리가 만든 변화의 숫자</h3>
+                    <div class="metrics-grid-modern">
+                        <div class="metric-card-modern">
+                            <div class="metric-icon">📅</div>
+                            <div class="metric-number">12+</div>
+                            <div class="metric-label">연구년수</div>
+                            <div class="metric-desc">지속적인 연구와 혁신</div>
+                        </div>
+                        <div class="metric-card-modern">
+                            <div class="metric-icon">🚀</div>
+                            <div class="metric-number">200+</div>
+                            <div class="metric-label">현장 프로젝트</div>
+                            <div class="metric-desc">실제 현장에서의 성과</div>
+                        </div>
+                        <div class="metric-card-modern">
+                            <div class="metric-icon">⏰</div>
+                            <div class="metric-number">5만+</div>
+                            <div class="metric-label">누적 서비스 시간</div>
+                            <div class="metric-desc">축적된 경험과 노하우</div>
+                        </div>
+                        <div class="metric-card-modern">
+                            <div class="metric-icon">🎯</div>
+                            <div class="metric-number">6</div>
+                            <div class="metric-label">핵심 영역</div>
+                            <div class="metric-desc">전문성을 갖춘 분야</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CareFull Story - Complete Redesign -->
+        <section id="carefull" class="story-section carefull-section">
+            <!-- Animated Background -->
+            <div class="carefull-bg">
+                <div class="bg-gradient-animation"></div>
+                <div class="puzzle-particles">
+                    <div class="particle particle--orange"></div>
+                    <div class="particle particle--teal"></div>
+                    <div class="particle particle--green"></div>
+                    <div class="particle particle--navy"></div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <!-- Hero Header -->
+                <div class="carefull-hero">
+                    <div class="eyebrow-premium">
+                        <span class="eyebrow-icon">💝</span>
+                        <span>About CareFull</span>
+                    </div>
+                    <h2 class="carefull-title">
+                        <span class="title-main">케어풀</span>
+                        <span class="title-sub">함께 만드는 돌봄</span>
+                    </h2>
+                    <p class="carefull-intro">시니어라이프랩의 12년 연구와 경험이 만든 결실,<br>네 조각이 하나로 만드는 완전한 돌봄의 이야기</p>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="carefull-content-grid">
+                    <!-- Story Section -->
+                    <div class="carefull-story-container">
+                        <!-- Problem Statement -->
+                        <div class="problem-card glass-premium">
+                            <div class="problem-header">
+                                <h3>지금까지의 현실</h3>
+                                <div class="broken-chain">⛓️‍💥</div>
+                            </div>
+                            <div class="problem-list">
+                                <div class="problem-item">
+                                    <span class="problem-icon">📊</span>
+                                    <span>정보의 비대칭</span>
+                                </div>
+                                <div class="problem-item">
+                                    <span class="problem-icon">💔</span>
+                                    <span>신뢰의 부재</span>
+                                </div>
+                                <div class="problem-item">
+                                    <span class="problem-icon">🚧</span>
+                                    <span>소통의 단절</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Solution Story -->
+                        <div class="solution-card glass-premium">
+                            <div class="solution-header">
+                                <h3>케어풀의 답</h3>
+                                <div class="heart-icon">💙</div>
+                            </div>
+                            <div class="solution-content">
+                                <p class="solution-text">케어풀의 4색 퍼즐 하트는 이 네 조각을 하나로 맞춰 <strong>'완전한 돌봄'</strong>을 만들겠다는 약속입니다.</p>
+                                <p class="solution-text">각자의 색깔을 유지하면서도 하나의 완성된 그림을 만드는 것, 그것이 케어풀이 꿈꾸는 돌봄입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Puzzle Section -->
+                    <div class="puzzle-showcase-modern">
+                        <div class="puzzle-container-3d">
+                            <!-- 4 Puzzle Pieces -->
+                            <div class="puzzle-pieces-grid">
+                                <div class="puzzle-piece-modern puzzle-piece--senior" data-piece="senior">
+                                    <div class="piece-icon">🤗</div>
+                                    <div class="piece-title">시니어</div>
+                                    <div class="piece-subtitle">따뜻한 경험과 지혜</div>
+                                    <div class="piece-details">
+                                        <span>주인공</span>
+                                        <span>경험의 보고</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="puzzle-piece-modern puzzle-piece--family" data-piece="family">
+                                    <div class="piece-icon">👨‍👩‍👧‍👦</div>
+                                    <div class="piece-title">가족</div>
+                                    <div class="piece-subtitle">깊은 사랑과 신뢰</div>
+                                    <div class="piece-details">
+                                        <span>든든한 지지자</span>
+                                        <span>무조건적 사랑</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="puzzle-piece-modern puzzle-piece--provider" data-piece="provider">
+                                    <div class="piece-icon">🔧</div>
+                                    <div class="piece-title">서비스<br>제공자</div>
+                                    <div class="piece-subtitle">전문성과 성장</div>
+                                    <div class="piece-details">
+                                        <span>전문 케어</span>
+                                        <span>지속적 개선</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="puzzle-piece-modern puzzle-piece--platform" data-piece="platform">
+                                    <div class="piece-icon">🖥️</div>
+                                    <div class="piece-title">플랫폼<br>운영자</div>
+                                    <div class="piece-subtitle">견고한 기반과 혁신</div>
+                                    <div class="piece-details">
+                                        <span>기술 혁신</span>
+                                        <span>안정적 운영</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Connection Lines -->
+                            <div class="connection-lines">
+                                <svg class="connection-svg" viewBox="0 0 400 400">
+                                    <path class="connection-path" d="M200,100 L300,200 L200,300 L100,200 Z" stroke="var(--primary-teal)" stroke-width="2" fill="none" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite"/>
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
                         
-                        <p>케어풀의 4색 퍼즐 하트는 이 네 조각을 하나로 맞춰 '완전한 돌봄'을 
-                        만들겠다는 약속입니다. 각자의 색깔을 유지하면서도 하나의 완성된 
-                        그림을 만드는 것, 그것이 케어풀이 꿈꾸는 돌봄입니다.</p>
-                        
-                        <div class="surface-card" style="margin-top: 1.5rem;">
-                            <h4 style="color: var(--primary-dark); margin-bottom: 1rem;">4색 퍼즐의 의미</h4>
-                            <ul class="legend" role="list">
-                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--orange" aria-hidden="true"></span><strong>주황(시니어)</strong>: 따뜻한 경험과 지혜</li>
-                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--teal" aria-hidden="true"></span><strong>청록(가족)</strong>: 깊은 사랑과 신뢰</li>
-                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--green" aria-hidden="true"></span><strong>초록(서비스 제공자)</strong>: 전문성과 성장</li>
-                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--navy" aria-hidden="true"></span><strong>딥블루(플랫폼 운영자)</strong>: 견고한 기반과 혁신</li>
-                            </ul>
+                        <!-- Unified Heart -->
+                        <div class="unified-heart">
+                            <div class="heart-animation">
+                                <span class="heart-symbol">💙</span>
+                                <p class="heart-text">완전한 돌봄</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Values Grid -->
+                <div class="carefull-values">
+                    <h3 class="values-title">케어풀이 추구하는 가치</h3>
+                    <div class="values-grid">
+                        <div class="value-card value-card--trust">
+                            <div class="value-icon">🤝</div>
+                            <h4>신뢰</h4>
+                            <p>투명하고 일관된 소통으로 모든 이해관계자 간의 신뢰를 구축합니다</p>
+                        </div>
+                        <div class="value-card value-card--connection">
+                            <div class="value-icon">🔗</div>
+                            <h4>연결</h4>
+                            <p>단절된 돌봄 생태계를 하나로 연결하여 시너지를 만듭니다</p>
+                        </div>
+                        <div class="value-card value-card--completeness">
+                            <div class="value-icon">🧩</div>
+                            <h4>완성</h4>
+                            <p>각자의 강점을 살려 완전한 돌봄 솔루션을 제공합니다</p>
                         </div>
                     </div>
                 </div>
@@ -463,17 +2166,17 @@
                 <h2 class="text-center mb-5">두 브랜드, 하나의 이야기</h2>
                 <p class="text-center subtitle mb-5">시니어라이프랩이 연구하고, 케어풀이 실행합니다</p>
                 
-                <div class="feature">
-                    <div class="feature__content">
-                        <h3>시니어라이프랩은 '왜'를 묻습니다</h3>
+                <div class="feature" style="align-items: flex-start;">
+                    <div class="feature__content" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                        <h3 style="white-space: nowrap; margin-top: 0;">시니어라이프랩은 '왜'를 묻습니다</h3>
                         <p>왜 노년은 문제로만 여겨질까? 왜 시니어 케어는 이렇게 복잡할까? 
                         왜 좋은 의도가 좋은 결과로 이어지지 않을까?</p>
                         
                         <p>12년간의 연구, 수천 명의 시니어와의 만남, 수백 개 기관과의 협업을 통해 
                         우리는 답을 찾았습니다. 그리고 그 답을 케어풀이라는 이름으로 세상에 내놓았습니다.</p>
                     </div>
-                    <div class="feature__content">
-                        <h3>케어풀은 '어떻게'를 실행합니다</h3>
+                    <div class="feature__content" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                        <h3 style="white-space: nowrap; margin-top: 0;">케어풀은 '어떻게'를 실행합니다</h3>
                         <p>어떻게 하면 요양원 원장님이 서류가 아닌 어르신께 집중할 수 있을까? 
                         어떻게 하면 가족들이 안심하고 부모님을 맡길 수 있을까? 
                         어떻게 하면 모두가 신뢰하는 돌봄 생태계를 만들 수 있을까?</p>
@@ -491,14 +2194,14 @@
                 <h2>CI에 담긴 우리의 다짐</h2>
                 <div class="grid grid--2" style="max-width: 800px; margin: 3rem auto;">
                     <div>
-                        <img src="img/시니어라이프랩 로고.png" alt="시니어라이프랩 로고" style="max-width: 200px; margin-bottom: 1rem;">
+                        <img src="img/senior-life-lab-logo-transparent.png" alt="시니어라이프랩 로고" style="max-width: 200px; margin-bottom: 1rem;">
                         <p><strong>열린 네트워크</strong><br>
                         12개의 노드가 연결된 네트워크는<br>
                         시니어 생태계의 모든 이해관계자를<br>
                         하나로 연결하는 열린 플랫폼을 상징합니다.</p>
                     </div>
                     <div>
-                        <img src="img/케어풀 로고.png" alt="케어풀 로고" style="max-width: 200px; margin-bottom: 1rem;">
+                        <img src="img/carefull-logo-transparent.png" alt="케어풀 로고" style="max-width: 200px; margin-bottom: 1rem;">
                         <p><strong>완성되는 퍼즐</strong><br>
                         4색의 퍼즐 조각이 만드는 하트는<br>
                         모두가 함께할 때 비로소 완성되는<br>
@@ -524,21 +2227,19 @@
             <div class="footer__content">
                 <div class="footer__brand">
                     <div class="footer__logos">
-                        <img src="img/케어풀로고(배경투명).png" alt="케어풀" class="footer__logo">
-                        <img src="img/시니어라이프랩_로고(배경투명).png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
+                        <img src="img/carefull-logo-transparent.png" alt="케어풀" class="footer__logo">
+                        <img src="img/senior-life-lab-logo-transparent.png" alt="시니어라이프랩" class="footer__logo footer__logo--secondary">
                     </div>
                     <p class="footer__description">
                         케어풀은 시니어라이프랩이 만드는<br>
                         시니어 케어 통합 플랫폼입니다.<br>
-                        함께 만드는 돌봄, 모두가 안심하는 내일.<br><br>
-                        <strong>시니어 서비스를 쉽고 간편하고 편리하게,<br>
-                        모두와 함께 만들어 갑니다.</strong>
+                        함께 만드는 돌봄, 모두가 안심하는 내일.
                     </p>
                 </div>
                 <div class="footer__column">
                     <h4>요양 정보</h4>
                     <ul class="footer__list">
-                        <li><a href="ltci-guide.html">장기요양보험이란?</a></li>
+                        <li><a href="ltci-guide.html">요양보험 안내</a></li>
                         <li><a href="ltci-guide.html#grades">등급 체계</a></li>
                         <li><a href="ltci-guide.html#services">서비스 종류</a></li>
                         <li><a href="ltci-guide.html#calculator">비용 계산기</a></li>
@@ -563,10 +2264,14 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="footer__slogan">
+                <p class="footer__slogan-text">"시니어 서비스를 쉽고 간편하게, 모두와 함께 만들어 갑니다."</p>
+            </div>
             <div class="footer__bottom">
                 <div class="footer__copyright">
-                    <p>주식회사 시니어라이프랩 | 대표이사: 홍길동 | 사업자등록번호: 123-45-67890</p>
-                    <p>© 2024 CareFull. All rights reserved.</p>
+                    <p>주식회사 시니어라이프랩<br>대표이사: 이혜란 | 사업자등록번호: 865-87-03216<br>대전광역시 유성구 죽동로297번길 22, 6층 601-ㄷ133호(죽동) | 전화: 1577-2586</p>
+                    <p>© 2025 CareFull. All rights reserved.</p>
                 </div>
                 <div class="footer__legal">
                     <a href="privacy.html" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>

@@ -218,17 +218,7 @@ function showStep(step) {
         }
     });
     
-    // Scroll to top
-    try {
-        var container = document.querySelector('#calculator');
-        var navEl = document.querySelector('.nav');
-        var offset = (navEl ? navEl.offsetHeight : 0) + 16;
-        var rectTop = container && container.getBoundingClientRect ? container.getBoundingClientRect().top : 0;
-        var top = rectTop + window.pageYOffset - offset;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-    } catch (e) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // Removed automatic scroll to calculator section for better UX
 }
 
 // Calculate cost

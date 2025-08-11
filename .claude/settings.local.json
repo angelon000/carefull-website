@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ren:*)",
+      "Bash(mv:*)",
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(cp:*)",
+      "Bash(start chrome index.html)",
+      "Bash(git add:*)",
+      "Bash(for file in b2b_services.html ltci-guide.html portfolio.html ltci-apply.html calculator.html)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(done)",
+      "Bash(do sed -i '/<\\/div>.*<div class=\"\"footer__bottom\"\">/i\\            <div class=\"\"footer__slogan\"\">\\n                <p class=\"\"footer__slogan-text\"\">\"\"시니어 서비스를 쉽고 간편하게, 모두와 함께 만들어 갑니다.\"\"</p>\\n            </div>' \"$file\")",
+      "Bash(for file in \"D:\\dev\\carefull-website\"*.html)",
+      "Bash(for file in \"D:\\dev\\carefull-website\"/*.html)",
+      "Bash(do sed -i 's/대표이사: 홍길동/대표이사: 이혜란/g' \"$file\")",
+      "Bash(do sed -i 's/123-45-67890/865-87-03216/g' \"$file\")",
+      "Bash(do sed -i 's/© 2024 CareFull/© 2025 CareFull/g' \"$file\")",
+      "Bash(do sed -i 's/대표이사: 이혜란 | 사업자등록번호: 865-87-03216/대표이사: 이혜란 | 사업자등록번호: 865-87-03216<br>대전광역시 유성구 죽동로297번길 22, 6층 601-ㄷ133호(죽동) | 전화: 1577-2586/g' \"$file\")"
+    ],
+    "deny": []
+  }
+}
