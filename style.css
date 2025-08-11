@@ -995,6 +995,8 @@ small, .text-sm {
     max-width: 500px;
 }
 
+.feature__content li { word-break: keep-all; }
+
 .feature__image {
     position: relative;
     border-radius: 24px;
