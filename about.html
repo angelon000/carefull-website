@@ -123,6 +123,30 @@
             text-align: center;
         }
         
+        /* Circle Visual (replaces node orbit for cleaner design) */
+        .circle-visual {
+            display: grid;
+            place-items: center;
+            width: min(560px, 44vw);
+            aspect-ratio: 1 / 1;
+            justify-self: end;
+            padding: 24px;
+            border-radius: 28px;
+            background:
+                radial-gradient(60% 60% at 50% 50%, rgba(74,193,188,0.12) 0%, rgba(74,193,188,0.06) 50%, transparent 70%),
+                linear-gradient(180deg, #0f1720 0%, #0b111a 100%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+        .circle-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+        }
+        @media (max-width: 768px) {
+            .circle-visual { width: 100%; justify-self: center; padding: 16px; border-radius: 20px; }
+        }
+        
         .network-center {
             width: 120px;
             height: 120px;
@@ -321,16 +345,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="network-visual">
-                        <div class="network-center network-node">시니어<br>라이프랩</div>
-                        <ul class="network-orbit" aria-label="시니어라이프랩 네트워크">
-                            <li class="network-item"><span class="label">연구</span></li>
-                            <li class="network-item"><span class="label">교육</span></li>
-                            <li class="network-item"><span class="label">컨설팅</span></li>
-                            <li class="network-item"><span class="label">플랫폼</span></li>
-                            <li class="network-item"><span class="label">데이터</span></li>
-                            <li class="network-item"><span class="label">정책</span></li>
-                        </ul>
+                    <div class="circle-visual" aria-label="시니어라이프랩 네트워크 다이어그램">
+                        <img src="img/시니어라이브랩 써클.png" alt="시니어라이프랩 네트워크 다이어그램" width="800" height="800" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
