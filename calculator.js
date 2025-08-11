@@ -109,7 +109,11 @@ document.querySelectorAll('[data-reduction]').forEach(card => {
 });
 
 // Navigation buttons
-document.getElementById('next-1')?.addEventListener('click', () => {
+document.getElementById('next-1')?.addEventListener('click', (e) => {
+    if (e.currentTarget.disabled) {
+        alert('먼저 등급을 선택해주세요.');
+        return;
+    }
     showStep(2);
 });
 
@@ -117,7 +121,11 @@ document.getElementById('prev-2')?.addEventListener('click', () => {
     showStep(1);
 });
 
-document.getElementById('next-2')?.addEventListener('click', () => {
+document.getElementById('next-2')?.addEventListener('click', (e) => {
+    if (e.currentTarget.disabled) {
+        alert('서비스를 선택해주세요.');
+        return;
+    }
     showStep(3);
 });
 
@@ -125,7 +133,11 @@ document.getElementById('prev-3')?.addEventListener('click', () => {
     showStep(2);
 });
 
-document.getElementById('calculate')?.addEventListener('click', () => {
+document.getElementById('calculate')?.addEventListener('click', (e) => {
+    if (e.currentTarget.disabled) {
+        alert('감경 대상을 선택해주세요.');
+        return;
+    }
     calculateCost();
     showStep(4);
 });
