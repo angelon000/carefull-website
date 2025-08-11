@@ -149,6 +149,45 @@ img[data-category] {
 }
 .circle-visual img { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18)); }
 
+/* Modern tokens & components */
+.eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary-teal);
+    margin-bottom: 0.75rem;
+}
+
+.button-group { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    background: var(--bg-secondary);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-200);
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.section--soft {
+    background: linear-gradient(180deg, #ffffff 0%, rgba(74, 193, 188, 0.06) 100%);
+}
+
+.surface-card {
+    background: #fff;
+    border: 1px solid var(--gray-100);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+}
+
 /* Mobile Image Optimization */
 @media (max-width: 768px) {
     .hero-bg img,
