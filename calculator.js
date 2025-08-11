@@ -49,6 +49,7 @@ document.querySelectorAll('[data-grade]').forEach(card => {
         
         // Enable next button
         document.getElementById('next-1').disabled = false;
+        document.getElementById('next-1').setAttribute('aria-disabled', 'false');
     });
 });
 
@@ -67,9 +68,11 @@ document.querySelectorAll('[data-service]').forEach(card => {
         if (this.dataset.service === 'home') {
             homeServices.classList.remove('hidden');
             document.getElementById('next-2').disabled = calculatorState.homeServices.length === 0;
+            document.getElementById('next-2').setAttribute('aria-disabled', String(calculatorState.homeServices.length === 0));
         } else {
             homeServices.classList.add('hidden');
             document.getElementById('next-2').disabled = false;
+            document.getElementById('next-2').setAttribute('aria-disabled', 'false');
         }
     });
 });
@@ -90,6 +93,7 @@ document.querySelectorAll('[data-home-service]').forEach(item => {
         
         // Enable/disable next button
         document.getElementById('next-2').disabled = calculatorState.homeServices.length === 0;
+        document.getElementById('next-2').setAttribute('aria-disabled', String(calculatorState.homeServices.length === 0));
     });
 });
 
@@ -176,7 +180,14 @@ function showStep(step) {
     });
     
     // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+        const container = document.querySelector('#calculator');
+        const offset = (document.querySelector('.nav')?.offsetHeight || 0) + 16;
+        const top = (container?.getBoundingClientRect().top || 0) + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+    } catch (e) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 // Calculate cost
