@@ -142,7 +142,7 @@ img[data-category] {
 /* About - circle visual container (shared) */
 .circle-visual {
     background: linear-gradient(180deg, rgba(74,193,188,0.08) 0%, rgba(74,193,188,0.04) 100%), #ffffff;
-    border-radius: 28px;
+    border-radius: var(--radius-xl);
     padding: 24px;
     box-shadow: 0 16px 30px rgba(74,193,188,0.12);
     border: 1px solid var(--gray-100);
@@ -183,7 +183,7 @@ img[data-category] {
 .surface-card {
     background: #fff;
     border: 1px solid var(--gray-100);
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     padding: 2rem;
 }
@@ -209,6 +209,15 @@ img[data-category] {
 /* CTA banner */
 .cta-banner { background: linear-gradient(135deg, var(--primary-teal), #3AABA5); color: #fff; border-radius: 24px; padding: 2.5rem; text-align: center; box-shadow: var(--shadow-lg); }
 .cta-banner .btn { margin-top: 0.75rem; }
+
+/* Check list */
+.list--check { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.list--check li { position: relative; padding-left: 1.5rem; }
+.list--check li::before { content: '✔'; position: absolute; left: 0; top: 0; color: var(--primary-green); font-weight: 800; }
+
+/* Consistent story-section spacing */
+.story-section { padding: var(--section-y) 0; }
+@media (max-width: 768px) { .story-section { padding: 64px 0; } }
 
 /* Mobile Image Optimization */
 @media (max-width: 768px) {
@@ -339,6 +348,11 @@ p {
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+    /* Design tokens - spacing & radius */
+    --section-y: 96px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
 }
 
 /* 4. Layout System */
@@ -349,9 +363,7 @@ p {
     padding: 0 24px;
 }
 
-.section {
-    padding: 80px 0;
-}
+.section { padding: var(--section-y) 0; }
 
 .section--large {
     padding: 120px 0;
