@@ -159,6 +159,21 @@ img[data-category] {
     }
 }
 
+/* Compact section modifier */
+.section--compact { padding: 48px 0; }
+.section--compact .feature { padding: 0; gap: 2rem; }
+.section--compact .feature__image { min-height: 260px; }
+.section--compact .feature__image img { height: 260px; object-fit: cover; }
+.section--compact .feature__content h2 { margin-bottom: 0.75rem; }
+.section--compact .subtitle { margin-bottom: 1rem; }
+.section--compact .stats { padding: 1.25rem; gap: 1rem; border-radius: 16px; }
+
+@media (max-width: 768px) {
+    .section--compact { padding: 36px 0; }
+    .section--compact .feature__image { min-height: 200px; }
+    .section--compact .feature__image img { height: 200px; }
+}
+
 body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
     color: #1a1a1a;
