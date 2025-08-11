@@ -269,6 +269,16 @@
             font-size: 2.5rem;
         }
         
+        /* Color legend */
+        .legend { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+        .legend__item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.0625rem; color: var(--gray-700); }
+        .legend__item strong { color: var(--gray-900); }
+        .legend__dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 2px solid rgba(0,0,0,0.05); }
+        .legend__dot--orange { background: var(--primary-orange); }
+        .legend__dot--teal { background: var(--primary-teal); }
+        .legend__dot--green { background: var(--primary-green); }
+        .legend__dot--navy { background: var(--primary-dark); }
+        
         @media (max-width: 768px) {
             .brand-story {
                 grid-template-columns: 1fr;
@@ -392,11 +402,11 @@
                         
                         <div style="background: white; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; box-shadow: var(--shadow-sm);">
                             <h4 style="color: var(--primary-dark); margin-bottom: 1rem;">4색 퍼즐의 의미</h4>
-                            <ul style="line-height: 2;">
-                                <li>🧡 <strong>주황색</strong>: 시니어의 따뜻한 경험과 지혜</li>
-                                <li>💙 <strong>청록색</strong>: 가족의 깊은 사랑과 신뢰</li>
-                                <li>💚 <strong>초록색</strong>: 서비스 제공자의 전문성과 성장</li>
-                                <li>🖤 <strong>검정색</strong>: 플랫폼의 견고한 기반과 혁신</li>
+                            <ul class="legend" role="list">
+                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--orange" aria-hidden="true"></span><strong>주황(시니어)</strong>: 따뜻한 경험과 지혜</li>
+                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--teal" aria-hidden="true"></span><strong>청록(가족)</strong>: 깊은 사랑과 신뢰</li>
+                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--green" aria-hidden="true"></span><strong>초록(서비스 제공자)</strong>: 전문성과 성장</li>
+                                <li class="legend__item" role="listitem"><span class="legend__dot legend__dot--navy" aria-hidden="true"></span><strong>딥블루(플랫폼 운영자)</strong>: 견고한 기반과 혁신</li>
                             </ul>
                         </div>
                     </div>
