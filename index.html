@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>케어풀 - 막막한 어르신 돌봄, 투명하고 든든한 길잡이</title>
     <meta name="description" content="장기요양보험 등급 신청부터 비용 계산, 우리 동네 좋은 기관 찾기까지. 케어풀이 함께 만드는 돌봄의 시작.">
+    <link rel="preload" as="image" href="img/main1.jpg">
+    <link rel="preload" as="image" href="img/hero-multi-generation.webp">
+    <meta property="og:title" content="케어풀 - 막막한 어르신 돌봄, 투명하고 든든한 길잡이">
+    <meta property="og:description" content="장기요양보험 등급 신청부터 비용 계산, 우리 동네 좋은 기관 찾기까지. 케어풀이 함께 만드는 돌봄의 시작.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angelon000.github.io/carefull-website/index.html">
+    <meta property="og:image" content="https://angelon000.github.io/carefull-website/img/hero-multi-generation.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://angelon000.github.io/carefull-website/index.html">
+    <meta name="theme-color" content="#4AC1BC">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -46,11 +57,12 @@
     <!-- Hero Section -->
     <section class="hero" style="position: relative; overflow: hidden;">
         <!-- Hero Background Image -->
-        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
-            <img src="img/main1.jpg" 
-                 alt="행복한 시니어 가족" 
-                 style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
+        <div class="hero-bg">
+            <picture>
+                <source srcset="img/hero-multi-generation.webp" type="image/webp">
+                <img src="img/main1.jpg" fetchpriority="high" decoding="async" width="1920" height="1080" alt="행복한 시니어 가족" style="width: 100%; height: 100%; object-fit: cover;">
+            </picture>
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
         </div>
         
         <div class="container" style="position: relative; z-index: 1;">
@@ -73,7 +85,7 @@
                 <div class="card" style="overflow: hidden;">
                     <!-- Feature Image -->
                     <div style="height: 200px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
-                        <img src="img/hero-multi-generation.jpg" 
+                        <img src="img/hero-multi-generation.jpg" loading="lazy" decoding="async"
                              alt="가족이 함께 요양 정보를 확인하는 모습" 
                              style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -89,7 +101,7 @@
                 <div class="card" style="overflow: hidden;">
                     <!-- Feature Image -->
                     <div style="height: 200px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
-                        <img src="img/roi-calculator.jpg" 
+                        <img src="img/roi-calculator.jpg" loading="lazy" decoding="async"
                              alt="태블릿으로 비용을 계산하는 모습" 
                              style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -105,7 +117,7 @@
                 <div class="card" style="overflow: hidden;">
                     <!-- Feature Image -->
                     <div style="height: 200px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
-                        <img src="img/home-healthcare-visit.jpg" 
+                        <img src="img/home-healthcare-visit.jpg" loading="lazy" decoding="async"
                              alt="요양보호사가 어르신을 돕는 모습" 
                              style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -117,7 +129,7 @@
                     </div>
                     <h3 class="card__title">검증된 기관 검색</h3>
                     <p class="card__description">광고가 아닌 실제 데이터 기반으로 우리 동네 요양시설, 주간보호센터를 찾아보세요.</p>
-                    <a href="#search" class="btn btn--outline btn--block mt-3">기관 찾아보기</a>
+                    <a href="portfolio.html" class="btn btn--outline btn--block mt-3">기관 찾아보기</a>
                 </div>
             </div>
         </div>
@@ -147,7 +159,7 @@
                     </div>
                 </div>
                 <div class="feature__image">
-                    <img src="img/family-caregiving.jpg" 
+            <img src="img/family-caregiving.jpg" loading="lazy" decoding="async" width="1200" height="400"
                          alt="전문 케어 상담" 
                          style="width: 100%; height: 400px; object-fit: cover; border-radius: 16px;">
                 </div>
@@ -159,7 +171,7 @@
     <section class="section" style="position: relative; overflow: hidden;">
         <!-- Background Image -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.05;">
-            <img src="img/healthcare-professionals-team.jpg" 
+            <img src="img/healthcare-professionals-team.jpg" loading="lazy" decoding="async"
                  alt="가족과 함께하는 돌봄" 
                  style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -220,7 +232,7 @@
     <section class="section" style="background: var(--gray-900); color: white; position: relative; overflow: hidden;">
         <!-- B2B Background Image -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.15;">
-            <img src="img/senior-care-professional.jpg" 
+            <img src="img/senior-care-professional.jpg" decoding="async"
                  alt="전문 요양기관 컨설팅" 
                  style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -237,7 +249,7 @@
     <section id="contact" class="section" style="scroll-margin-top: 84px; background: var(--bg-secondary); position: relative; overflow: hidden;">
         <!-- Contact Background Image -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.1;">
-            <img src="img/healthcare-technology-app.jpg" 
+            <img src="img/healthcare-technology-app.jpg" decoding="async"
                  alt="상담 서비스" 
                  style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -301,28 +313,28 @@
                 <div class="footer__column">
                     <h4>요양 정보</h4>
                     <ul class="footer__list">
-                        <li><a href="#">장기요양보험이란?</a></li>
-                        <li><a href="#">등급 신청 방법</a></li>
-                        <li><a href="#">서비스 종류</a></li>
-                        <li><a href="#">비용 계산기</a></li>
+                        <li><a href="ltci-guide.html">장기요양보험이란?</a></li>
+                        <li><a href="ltci-guide.html#grades">등급 체계</a></li>
+                        <li><a href="ltci-guide.html#services">서비스 종류</a></li>
+                        <li><a href="calculator.html">비용 계산기</a></li>
                     </ul>
                 </div>
                 <div class="footer__column">
                     <h4>기관 파트너</h4>
                     <ul class="footer__list">
-                        <li><a href="#">창업 컨설팅</a></li>
-                        <li><a href="#">운영 고도화</a></li>
-                        <li><a href="#">평가 대비</a></li>
-                        <li><a href="#">M&A 자문</a></li>
+                        <li><a href="b2b_services.html">창업 컨설팅</a></li>
+                        <li><a href="b2b_services.html">운영 고도화</a></li>
+                        <li><a href="b2b_services.html">평가 대비</a></li>
+                        <li><a href="b2b_services.html">M&A 자문</a></li>
                     </ul>
                 </div>
                 <div class="footer__column">
                     <h4>회사 정보</h4>
                     <ul class="footer__list">
-                        <li><a href="#">케어풀 소개</a></li>
-                        <li><a href="#">시니어라이프랩</a></li>
-                        <li><a href="#">채용 정보</a></li>
-                        <li><a href="#">제휴 문의</a></li>
+                        <li><a href="about.html">케어풀 소개</a></li>
+                        <li><a href="about.html">시니어라이프랩</a></li>
+                        <li><a href="index.html#contact">채용 정보</a></li>
+                        <li><a href="index.html#contact">제휴 문의</a></li>
                     </ul>
                 </div>
             </div>
@@ -332,8 +344,8 @@
                     <p>© 2024 CareFull. All rights reserved.</p>
                 </div>
                 <div class="footer__legal">
-                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
-                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                    <a href="privacy.html" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="terms.html" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
                 </div>
             </div>
         </div>

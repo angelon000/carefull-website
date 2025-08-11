@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>케어풀 소개 - 함께 만드는 돌봄</title>
     <meta name="description" content="케어풀은 시니어라이프랩의 연구와 전문성을 바탕으로 만들어진 시니어 케어 통합 플랫폼입니다.">
+    <link rel="preload" as="image" href="img/hero-professional-setting.jpg">
+    <meta property="og:title" content="케어풀 소개 - 함께 만드는 돌봄">
+    <meta property="og:description" content="연구와 현장 경험이 만난 케어풀의 이야기와 비전을 소개합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angelon000.github.io/carefull-website/about.html">
+    <meta property="og:image" content="https://angelon000.github.io/carefull-website/img/hero-professional-setting.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://angelon000.github.io/carefull-website/about.html">
+    <meta name="theme-color" content="#4AC1BC">
     
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -23,10 +32,10 @@
         
         .brand-story {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
             align-items: center;
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
         
         .brand-story--reverse {
@@ -90,11 +99,12 @@
         
         .network-visual {
             position: relative;
-            padding: 4rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
+            padding: 2rem;
+            display: grid;
+            place-items: center;
+            width: min(560px, 44vw);
+            aspect-ratio: 1 / 1;
+            justify-self: end;
         }
         
         .network-node {
@@ -119,6 +129,63 @@
             background: var(--primary-dark);
             position: relative;
             z-index: 10;
+        }
+        
+        /* Radial orbit (CSS trig) */
+        .network-orbit {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            grid-area: 1/1;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .network-item {
+            grid-area: 1/1;
+            --count: 6;                               /* total nodes */
+            --i: 0;                                   /* set by nth-child */
+            --start-angle: -30deg;                    /* rotate arc start */
+            --sweep: 240deg;                          /* arc sweep on right side */
+            --orbit-radius: clamp(200px, 30vw, 260px);
+            --item-size: 72px;
+            --angle: calc(var(--start-angle) + var(--i) * var(--sweep) / (var(--count) - 1));
+            width: var(--item-size);
+            height: var(--item-size);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: var(--primary-teal);
+            box-shadow: var(--shadow-md);
+            font-weight: 700;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            transform:
+                translate(
+                    calc(cos(var(--angle)) * var(--orbit-radius)),
+                    calc(sin(var(--angle)) * var(--orbit-radius) * -1)
+                );
+        }
+        .network-item .label { font-size: 0.8rem; line-height: 1.1; padding: 0 6px; }
+        .network-item:hover { box-shadow: 0 12px 28px rgba(0,0,0,0.18); transform:
+                translate(
+                    calc(cos(var(--angle)) * var(--orbit-radius)),
+                    calc(sin(var(--angle)) * var(--orbit-radius) * -1)
+                ) scale(1.06);
+        }
+        .network-item:nth-child(1) { --i: 0; }
+        .network-item:nth-child(2) { --i: 1; }
+        .network-item:nth-child(3) { --i: 2; }
+        .network-item:nth-child(4) { --i: 3; }
+        .network-item:nth-child(5) { --i: 4; }
+        .network-item:nth-child(6) { --i: 5; }
+        @media (max-width: 768px) {
+            .network-item { --orbit-radius: clamp(120px, 40vw, 180px); --item-size: 64px; font-size: 0.75rem; }
+            .network-visual { width: 100%; justify-self: center; }
         }
         
         .network-line {
@@ -163,7 +230,7 @@
         @media (max-width: 768px) {
             .brand-story {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
             
             .puzzle-piece {
@@ -195,10 +262,10 @@
                 <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
                 <li><a href="calculator.html" class="nav__link">계산기</a></li>
                 <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
-                <li><a href="#contact" class="nav__link">문의</a></li>
+                <li><a href="index.html#contact" class="nav__link">문의</a></li>
             </ul>
             <div class="nav__cta">
-                <a href="#contact" class="btn btn--primary">무료 상담 신청</a>
+                <a href="index.html#contact" class="btn btn--primary">무료 상담 신청</a>
             </div>
             <button class="nav__toggle" aria-label="메뉴 열기">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -214,16 +281,19 @@
         <!-- Hero Section -->
         <section class="story-section story-hero" style="position: relative; overflow: hidden;">
             <!-- Hero Background Image -->
-            <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
-                <img src="img/hero-professional-setting.jpg" 
-                     alt="가족이 함께하는 따뜻한 모습" 
-                     style="width: 100%; height: 100%; object-fit: cover;">
-                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
+            <div class="hero-bg">
+                <picture>
+                    <source srcset="img/hero-professional-setting.webp" type="image/webp">
+                    <img src="img/hero-professional-setting.jpg" width="1920" height="1080" alt="가족이 함께하는 따뜻한 모습" style="width: 100%; height: 100%; object-fit: cover;">
+                </picture>
+                <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(255, 138, 72, 0.6) 100%);"></div>
             </div>
             
-            <div class="container text-center" style="position: relative; z-index: 1;">
-                <h1 style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">두 개의 브랜드,<br>하나의 이야기</h1>
-                <p class="subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">12개의 노드가 이어져 만드는 더 나은 노년 생태계,<br>함께 만드는 돌봄으로 완성되는 따뜻한 내일</p>
+            <div class="container" style="position: relative; z-index: 1;">
+                <div class="hero__content text-center" style="margin: 0 auto;">
+                    <h1 class="hero__title" style="color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">두 개의 브랜드,<br>하나의 이야기</h1>
+                    <p class="hero__subtitle" style="color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.1);">12개의 노드가 이어져 만드는 더 나은 노년 생태계,<br>함께 만드는 돌봄으로 완성되는 따뜻한 내일</p>
+                </div>
             </div>
         </section>
 
@@ -254,12 +324,14 @@
                     </div>
                     <div class="network-visual">
                         <div class="network-center network-node">시니어<br>라이프랩</div>
-                        <div class="network-node" style="top: 0; left: 50%; transform: translateX(-50%);">연구</div>
-                        <div class="network-node" style="top: 25%; right: 0;">교육</div>
-                        <div class="network-node" style="bottom: 25%; right: 0;">컨설팅</div>
-                        <div class="network-node" style="bottom: 0; left: 50%; transform: translateX(-50%);">플랫폼</div>
-                        <div class="network-node" style="bottom: 25%; left: 0;">데이터</div>
-                        <div class="network-node" style="top: 25%; left: 0;">정책</div>
+                        <ul class="network-orbit" aria-label="시니어라이프랩 네트워크">
+                            <li class="network-item"><span class="label">연구</span></li>
+                            <li class="network-item"><span class="label">교육</span></li>
+                            <li class="network-item"><span class="label">컨설팅</span></li>
+                            <li class="network-item"><span class="label">플랫폼</span></li>
+                            <li class="network-item"><span class="label">데이터</span></li>
+                            <li class="network-item"><span class="label">정책</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -456,8 +528,8 @@
                     <p>© 2024 CareFull. All rights reserved.</p>
                 </div>
                 <div class="footer__legal">
-                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
-                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                    <a href="privacy.html" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="terms.html" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
                 </div>
             </div>
         </div>

@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>요양 비용 계산기 - 케어풀</title>
     <meta name="description" content="장기요양보험 등급별, 서비스별 본인부담금을 쉽고 빠르게 계산해보세요.">
+    <link rel="preload" as="image" href="img/roi-calculator.jpg">
+    <meta property="og:title" content="요양 비용 계산기 - 케어풀">
+    <meta property="og:description" content="등급과 서비스만 선택하면 예상 본인부담금을 바로 확인하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angelon000.github.io/carefull-website/calculator.html">
+    <meta property="og:image" content="https://angelon000.github.io/carefull-website/img/roi-calculator.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://angelon000.github.io/carefull-website/calculator.html">
+    <meta name="theme-color" content="#4AC1BC">
     
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -216,10 +225,10 @@
                 <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
                 <li><a href="calculator.html" class="nav__link">계산기</a></li>
                 <li><a href="portfolio.html" class="nav__link">케어풀 현황</a></li>
-                <li><a href="#contact" class="nav__link">문의</a></li>
+                <li><a href="index.html#contact" class="nav__link">문의</a></li>
             </ul>
             <div class="nav__cta">
-                <a href="/#contact" class="btn btn--primary">무료 상담 신청</a>
+                <a href="index.html#contact" class="btn btn--primary">무료 상담 신청</a>
             </div>
             <button class="nav__toggle" aria-label="메뉴 열기">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -232,13 +241,14 @@
     </nav>
 
     <!-- Page Hero -->
-    <section class="hero" style="min-height: 50vh; position: relative; overflow: hidden;">
+    <section class="hero" style="position: relative; overflow: hidden;">
         <!-- Hero Background Image -->
-        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
-            <img src="img/roi-calculator.jpg" 
-                 alt="태블릿으로 계산하는 모습" 
-                 style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.85) 0%, rgba(255, 138, 72, 0.7) 100%);"></div>
+        <div class="hero-bg">
+            <picture>
+                <source srcset="img/roi-calculator.webp" type="image/webp">
+                <img src="img/roi-calculator.jpg" width="1920" height="1080" alt="태블릿으로 계산하는 모습" style="width: 100%; height: 100%; object-fit: cover;">
+            </picture>
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.85) 0%, rgba(255, 138, 72, 0.7) 100%);"></div>
         </div>
         
         <div class="container" style="position: relative; z-index: 1;">
@@ -250,7 +260,7 @@
     </section>
 
     <!-- Calculator -->
-    <section class="section" style="padding-top: 0;">
+    <section class="section">
         <div class="container">
             <div class="calculator">
                 <!-- Progress -->
@@ -277,7 +287,7 @@
                 <div class="calculator__step" id="step-1">
                     <!-- Step Image -->
                     <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 2rem; border-radius: 16px 16px 0 0;">
-                        <img src="img/professional-consultation.jpg" 
+                        <img src="img/professional-consultation.jpg" loading="lazy" decoding="async"
                              alt="장기요양 등급 평가" 
                              style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -320,7 +330,7 @@
                 <div class="calculator__step hidden" id="step-2">
                     <!-- Step Image -->
                     <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 2rem; border-radius: 16px 16px 0 0;">
-                        <img src="img/healthcare-technology-app.jpg" 
+                        <img src="img/healthcare-technology-app.jpg" loading="lazy" decoding="async"
                              alt="요양 서비스 선택" 
                              style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -420,7 +430,7 @@
                     <div class="card" style="background: white; border-radius: 16px; overflow: hidden;">
                         <!-- Info Image -->
                         <div style="height: 150px; overflow: hidden; margin: -2rem -2rem 1.5rem; border-radius: 16px 16px 0 0;">
-                            <img src="img/success-stories.jpg" 
+                            <img src="img/success-stories.jpg" loading="lazy" decoding="async"
                                  alt="요양 관련 정보" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
@@ -435,7 +445,7 @@
                     
                     <div class="text-center mt-4">
                         <button class="btn btn--secondary btn--large" id="recalculate">다시 계산하기</button>
-                        <a href="/#contact" class="btn btn--primary btn--large ml-2">상담 신청하기</a>
+                        <a href="index.html#contact" class="btn btn--primary btn--large ml-2">상담 신청하기</a>
                     </div>
                 </div>
             </div>
@@ -463,7 +473,7 @@
                         <li><a href="ltci-guide.html">장기요양보험이란?</a></li>
                         <li><a href="ltci-guide.html#grades">등급 체계</a></li>
                         <li><a href="ltci-guide.html#services">서비스 종류</a></li>
-                        <li><a href="#">비용 계산기</a></li>
+                        <li><a href="calculator.html">비용 계산기</a></li>
                     </ul>
                 </div>
                 <div class="footer__column">
@@ -491,8 +501,8 @@
                     <p>© 2024 CareFull. All rights reserved.</p>
                 </div>
                 <div class="footer__legal">
-                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
-                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                    <a href="privacy.html" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="terms.html" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
                 </div>
             </div>
         </div>

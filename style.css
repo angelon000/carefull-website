@@ -1,3 +1,14 @@
+.hero--tight + .section,
+.hero + .section {
+    padding-top: 64px;
+}
+
+@media (max-width: 768px) {
+    .hero--tight + .section,
+    .hero + .section {
+        padding-top: 40px;
+    }
+}
 /* 토스 스타일 디자인 시스템 - CareFull */
 
 /* 1. CSS Reset & Base */
@@ -43,7 +54,7 @@ img[data-category] {
     object-fit: cover;
     object-position: center;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Card Images - Consistent Heights */
@@ -64,8 +75,9 @@ img[data-category] {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
+    will-change: transform;
 }
 
 .hero-bg img {
@@ -73,6 +85,8 @@ img[data-category] {
     min-height: 100%;
     object-fit: cover;
     object-position: center;
+    transform: translateZ(0);
+    will-change: opacity, transform;
 }
 
 /* Background Images - Professional Overlay */
@@ -541,14 +555,22 @@ p {
 
 /* Hero Section */
 .hero {
-    padding-top: 200px;
+    padding-top: 160px;
     padding-bottom: 80px;
-    min-height: 75vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     position: relative;
     overflow: hidden;
+}
+
+/* Story hero (About page) */
+.story-hero {
+    padding-top: 200px;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
 }
 
 .hero::before {
@@ -566,7 +588,8 @@ p {
 .hero__content {
     max-width: 720px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    margin-top: 6vh;
 }
 
 .hero__content > * {
@@ -607,11 +630,17 @@ p {
     line-height: 1.6;
 }
 
+/* Create consistent spacing after hero across pages */
+.hero + .section {
+    padding-top: 40px;
+}
+
 .hero__buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
+    .hero__content { margin-top: 0; }
 
 /* Grid System */
 .grid {
@@ -1014,9 +1043,10 @@ p {
         padding: 80px 0;
     }
     
-    .hero {
-        padding-top: 100px;
-        min-height: auto;
+    .hero,
+    .story-hero {
+        padding-top: 84px;
+        min-height: 56vh;
     }
     
     .hero__buttons {
@@ -1151,9 +1181,13 @@ p {
     h2 {
         font-size: 1.75rem;
     }
+    .hero__content { margin-top: 0; }
     
-    .hero {
-        padding-top: 80px;
+    .hero,
+    .story-hero,
+    .service-hero {
+        padding-top: 72px;
+        min-height: 50vh;
     }
     
     .card {

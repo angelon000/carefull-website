@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>기관 파트너 서비스 - 케어풀</title>
     <meta name="description" content="요양기관의 성공적인 내일을 위한 전문 컨설팅. 창업부터 운영, 평가 대비, M&A까지 원스톱 솔루션.">
+    <link rel="preload" as="image" href="img/hero-services-main.jpg">
+    <meta property="og:title" content="기관 파트너 서비스 - 케어풀">
+    <meta property="og:description" content="창업부터 운영 고도화, 2025 평가 대비, M&A까지 원스톱 컨설팅.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angelon000.github.io/carefull-website/b2b_services.html">
+    <meta property="og:image" content="https://angelon000.github.io/carefull-website/img/hero-services-main.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://angelon000.github.io/carefull-website/b2b_services.html">
+    <meta name="theme-color" content="#4AC1BC">
     
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -316,11 +325,12 @@
     <!-- Hero Section -->
     <section class="hero service-hero" style="position: relative; overflow: hidden;">
         <!-- Hero Background Image -->
-        <div class="hero-bg" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;">
-            <img src="img/hero-services-main.jpg" 
-                 alt="비즈니스 컨설팅 모습" 
-                 style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(60, 72, 88, 0.85) 0%, rgba(74, 193, 188, 0.7) 100%);"></div>
+        <div class="hero-bg">
+            <picture>
+                <source srcset="img/hero-services-main.webp" type="image/webp">
+                <img src="img/hero-services-main.jpg" width="1920" height="1080" alt="비즈니스 컨설팅 모습" style="width: 100%; height: 100%; object-fit: cover;">
+            </picture>
+            <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(60, 72, 88, 0.85) 0%, rgba(74, 193, 188, 0.7) 100%);"></div>
         </div>
         
         <div class="container" style="position: relative; z-index: 1;">
@@ -770,7 +780,7 @@
                 <p class="subtitle">전문가가 직접 방문하여 기관의 현재 상황을 진단하고 맞춤형 솔루션을 제안합니다</p>
             </div>
             <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <form id="b2bContactForm">
+                <form id="b2bContactForm" data-webhook-url="https://api.example.com/b2b-contact">
                     <div class="grid grid--2">
                         <div class="form-group">
                             <label class="form-label" for="institution">기관명 *</label>
@@ -866,8 +876,8 @@
                     <p>© 2024 CareFull. All rights reserved.</p>
                 </div>
                 <div class="footer__legal">
-                    <a href="#" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
-                    <a href="#" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
+                    <a href="privacy.html" style="color: var(--gray-400); text-decoration: none; margin-right: 1rem;">개인정보처리방침</a>
+                    <a href="terms.html" style="color: var(--gray-400); text-decoration: none;">이용약관</a>
                 </div>
             </div>
         </div>
@@ -875,32 +885,5 @@
 
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
-    <script>
-        // B2B Contact form handling
-        const b2bForm = document.getElementById('b2bContactForm');
-        b2bForm?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                institution: document.getElementById('institution').value,
-                position: document.getElementById('position').value,
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Here you would normally send the data to a server
-            console.log('B2B Form submitted:', formData);
-            
-            // Show success message
-            alert('무료 진단 신청이 완료되었습니다. 영업일 기준 1일 이내에 담당자가 연락드리겠습니다.');
-            
-            // Reset form
-            b2bForm.reset();
-        });
-    </script>
 </body>
 </html>

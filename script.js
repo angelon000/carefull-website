@@ -60,6 +60,7 @@ let mobileMenuOpen = false;
 
 navToggle?.addEventListener('click', function() {
     mobileMenuOpen = !mobileMenuOpen;
+    navToggle.setAttribute('aria-expanded', mobileMenuOpen ? 'true' : 'false');
     
     if (mobileMenuOpen) {
         // Create mobile menu overlay
@@ -214,10 +215,16 @@ function removeMobileMenu() {
 
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
-contactForm?.addEventListener('submit', function(e) {
+contactForm?.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Get form data
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton?.textContent;
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = '전송 중...';
+    }
+    
     const formData = {
         name: document.getElementById('name').value,
         phone: document.getElementById('phone').value,
@@ -226,14 +233,27 @@ contactForm?.addEventListener('submit', function(e) {
         message: document.getElementById('message').value
     };
     
-    // Here you would normally send the data to a server
-    console.log('Form submitted:', formData);
-    
-    // Show success message
-    alert('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
-    
-    // Reset form
-    contactForm.reset();
+    try {
+        const webhookUrl = window.CAREFULL_CONTACT_WEBHOOK || '';
+        if (webhookUrl) {
+            const res = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ source: 'carefull-website', ...formData })
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        }
+        alert('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+        contactForm.reset();
+    } catch (err) {
+        console.warn('Form submit failed, falling back to alert only:', err);
+        alert('상담 신청이 접수되었습니다. 네트워크 상태에 따라 처리에 시간이 걸릴 수 있습니다.');
+    } finally {
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText || '상담 신청하기';
+        }
+    }
 });
 
 // Scroll animations
@@ -425,15 +445,25 @@ function initLazyLoading() {
 // Parallax effect for hero sections
 function initParallax() {
     const parallaxElements = document.querySelectorAll('.hero, .story-hero');
-    
-    window.addEventListener('scroll', () => {
+    if (!parallaxElements.length) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (reduceMotion || isMobile) return;
+    let ticking = false;
+    const update = () => {
         const scrolled = window.pageYOffset;
-        
         parallaxElements.forEach(element => {
-            const rate = scrolled * -0.3;
-            element.style.transform = `translateY(${rate}px)`;
+            const rate = scrolled * -0.15;
+            element.style.transform = `translate3d(0, ${rate}px, 0)`;
         });
-    });
+        ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 // Form validation enhancement
