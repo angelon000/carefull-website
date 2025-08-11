@@ -113,54 +113,76 @@ document.querySelectorAll('[data-reduction]').forEach(card => {
 });
 
 // Navigation buttons
-document.getElementById('next-1')?.addEventListener('click', (e) => {
-    if (e.currentTarget.disabled) {
-        alert('먼저 등급을 선택해주세요.');
-        return;
-    }
-    showStep(2);
-});
+var next1Btn = document.getElementById('next-1');
+if (next1Btn) {
+    next1Btn.addEventListener('click', function(e) {
+        if (!calculatorState.grade) {
+            alert('먼저 등급을 선택해주세요.');
+            return;
+        }
+        showStep(2);
+    });
+}
 
-document.getElementById('prev-2')?.addEventListener('click', () => {
-    showStep(1);
-});
+var prev2Btn = document.getElementById('prev-2');
+if (prev2Btn) {
+    prev2Btn.addEventListener('click', function() {
+        showStep(1);
+    });
+}
 
-document.getElementById('next-2')?.addEventListener('click', (e) => {
-    if (e.currentTarget.disabled) {
-        alert('서비스를 선택해주세요.');
-        return;
-    }
-    showStep(3);
-});
+var next2Btn = document.getElementById('next-2');
+if (next2Btn) {
+    next2Btn.addEventListener('click', function() {
+        if (!calculatorState.serviceType) {
+            alert('서비스를 선택해주세요.');
+            return;
+        }
+        if (calculatorState.serviceType === 'home' && calculatorState.homeServices.length === 0) {
+            alert('재가급여 서비스를 하나 이상 선택해주세요.');
+            return;
+        }
+        showStep(3);
+    });
+}
 
-document.getElementById('prev-3')?.addEventListener('click', () => {
-    showStep(2);
-});
+var prev3Btn = document.getElementById('prev-3');
+if (prev3Btn) {
+    prev3Btn.addEventListener('click', function() {
+        showStep(2);
+    });
+}
 
-document.getElementById('calculate')?.addEventListener('click', (e) => {
-    if (e.currentTarget.disabled) {
-        alert('감경 대상을 선택해주세요.');
-        return;
-    }
-    calculateCost();
-    showStep(4);
-});
+var calcBtn = document.getElementById('calculate');
+if (calcBtn) {
+    calcBtn.addEventListener('click', function() {
+        if (calculatorState.reduction == null) {
+            alert('감경 대상을 선택해주세요.');
+            return;
+        }
+        calculateCost();
+        showStep(4);
+    });
+}
 
-document.getElementById('recalculate')?.addEventListener('click', () => {
-    // Reset state
-    calculatorState.grade = null;
-    calculatorState.serviceType = null;
-    calculatorState.homeServices = [];
-    calculatorState.reduction = null;
-    
-    // Reset UI
-    document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-    document.getElementById('next-1').disabled = true;
-    document.getElementById('next-2').disabled = true;
-    document.getElementById('calculate').disabled = true;
-    
-    showStep(1);
-});
+var recalcBtn = document.getElementById('recalculate');
+if (recalcBtn) {
+    recalcBtn.addEventListener('click', function() {
+        // Reset state
+        calculatorState.grade = null;
+        calculatorState.serviceType = null;
+        calculatorState.homeServices = [];
+        calculatorState.reduction = null;
+        
+        // Reset UI
+        document.querySelectorAll('.selected').forEach(function(el){ el.classList.remove('selected'); });
+        var n1 = document.getElementById('next-1'); if (n1) n1.disabled = true;
+        var n2 = document.getElementById('next-2'); if (n2) n2.disabled = true;
+        var cal = document.getElementById('calculate'); if (cal) cal.disabled = true;
+        
+        showStep(1);
+    });
+}
 
 // Show specific step
 function showStep(step) {
@@ -181,10 +203,12 @@ function showStep(step) {
     
     // Scroll to top
     try {
-        const container = document.querySelector('#calculator');
-        const offset = (document.querySelector('.nav')?.offsetHeight || 0) + 16;
-        const top = (container?.getBoundingClientRect().top || 0) + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+        var container = document.querySelector('#calculator');
+        var navEl = document.querySelector('.nav');
+        var offset = (navEl ? navEl.offsetHeight : 0) + 16;
+        var rectTop = container && container.getBoundingClientRect ? container.getBoundingClientRect().top : 0;
+        var top = rectTop + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
     } catch (e) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
