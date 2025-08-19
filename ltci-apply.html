@@ -23,17 +23,23 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="container nav__container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.html" class="nav__logo" style="margin-right: auto; margin-left: -1rem;">
                 <img src="img/carefull-logo-transparent.png" alt="케어풀 로고">
             </a>
             <ul class="nav__menu">
-                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
                 <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
                 <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
                 <li><a href="portfolio.html" class="nav__link">케어풀 가맹현황</a></li>
-                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
+                <li><a href="about.html" class="nav__link">소개</a></li>
             </ul>
-            <div class="nav__cta">
+            <div class="nav__cta" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="tel:1577-2586" style="color: var(--primary-teal); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span style="white-space: nowrap;">1577-2586</span>
+                </a>
                 <a href="index.html#contact" class="btn btn--primary">무료 상담 신청</a>
             </div>
             <button class="nav__toggle" aria-label="메뉴 열기">
@@ -50,8 +56,8 @@
     <section class="hero" style="position: relative; overflow: hidden;">
         <div class="hero-bg">
             <picture>
-                <source srcset="img/medical-assessment.webp" type="image/webp">
-                <img src="img/medical-assessment.jpg" fetchpriority="high" decoding="async" width="1920" height="1080" alt="장기요양 등급 신청 안내" style="width: 100%; height: 100%; object-fit: cover;">
+                <source srcset="img/ltci-hero-new.jpg" type="image/jpeg">
+                <img src="img/ltci-hero-new.jpg" fetchpriority="high" decoding="async" width="1920" height="1080" alt="장기요양 등급 신청 안내" style="width: 100%; height: 100%; object-fit: cover;">
             </picture>
             <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.8) 0%, rgba(60, 72, 88, 0.7) 100%);"></div>
         </div>
@@ -67,11 +73,11 @@
         </div>
     </section>
 
-    <!-- Simple Value Proposition -->
+    <!-- Trust Indicators -->
     <section class="section" style="background: linear-gradient(135deg, #f8fdfc 0%, #e6f7f5 100%);">
         <div class="container text-center">
-            <h2 style="margin-bottom: 3rem;">🎯 케어풀 대행 서비스 3가지 핵심</h2>
-            <div class="grid grid--3" style="gap: 2rem;">
+            <h2 style="margin-bottom: 3rem;">🏆 케어풀이 선택받는 이유</h2>
+            <div class="grid grid--3" style="gap: 2rem; margin-bottom: 4rem;">
                 <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--primary-teal);">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📋</div>
                     <h3 style="color: var(--primary-teal); margin-bottom: 0.5rem;">서류 준비</h3>
@@ -88,68 +94,378 @@
                     <p style="color: var(--gray-600); font-size: 0.9rem;">10년 경력<br>1:1 맞춤 컨설팅</p>
                 </div>
             </div>
+            
+            <!-- Trust Stats -->
+            <div style="background: white; padding: 2rem 1rem; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 1000px; margin: 0 auto;">
+                <style>
+                    @media (max-width: 768px) {
+                        .trust-stats-container {
+                            padding: 1.5rem 0.5rem !important;
+                        }
+                        .trust-stat-item {
+                            min-width: 70px !important;
+                        }
+                        .trust-stat-number {
+                            font-size: 1.5rem !important;
+                        }
+                        .trust-stat-label {
+                            font-size: 0.7rem !important;
+                        }
+                    }
+                </style>
+                <div class="trust-stats-container" style="display: flex; justify-content: space-around; align-items: center; flex-wrap: nowrap; gap: 0.5rem; text-align: center;">
+                    <div class="trust-stat-item" style="flex: 1;">
+                        <div class="trust-stat-number" style="font-size: 2rem; font-weight: 700; color: var(--primary-teal); margin-bottom: 0.25rem;">2,000+</div>
+                        <p class="trust-stat-label" style="color: var(--gray-600); font-size: 0.8rem; margin: 0; white-space: nowrap;">누적신청건수</p>
+                    </div>
+                    <div class="trust-stat-item" style="flex: 1;">
+                        <div class="trust-stat-number" style="font-size: 2rem; font-weight: 700; color: var(--primary-orange); margin-bottom: 0.25rem;">95%</div>
+                        <p class="trust-stat-label" style="color: var(--gray-600); font-size: 0.8rem; margin: 0; white-space: nowrap;">등급승인율</p>
+                    </div>
+                    <div class="trust-stat-item" style="flex: 1;">
+                        <div class="trust-stat-number" style="font-size: 2rem; font-weight: 700; color: var(--primary-green); margin-bottom: 0.25rem;">15일</div>
+                        <p class="trust-stat-label" style="color: var(--gray-600); font-size: 0.8rem; margin: 0; white-space: nowrap;">평균처리단축</p>
+                    </div>
+                    <div class="trust-stat-item" style="flex: 1;">
+                        <div class="trust-stat-number" style="font-size: 2rem; font-weight: 700; color: #8B5CF6; margin-bottom: 0.25rem;">4.9</div>
+                        <p class="trust-stat-label" style="color: var(--gray-600); font-size: 0.8rem; margin: 0; white-space: nowrap;">고객만족도</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Simplified Requirements -->
-    <section id="application-info" class="section" style="scroll-margin-top: 84px;">
-        <div class="container text-center">
-            <h2 style="margin-bottom: 4rem;">📋 신청 조건과 필요 서류</h2>
+    <!-- Modern Requirements Section -->
+    <section id="application-info" class="section" style="scroll-margin-top: 84px; background: linear-gradient(180deg, #ffffff 0%, #f8fffe 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 1rem;">신청 자격 확인</h2>
+                <p style="color: var(--gray-600); font-size: 1.125rem;">아래 조건 중 하나라도 해당되면 신청 가능합니다</p>
+            </div>
             
-            <!-- Visual Requirements Check -->
-            <div style="background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); margin-bottom: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                <div class="grid grid--2" style="gap: 4rem; align-items: center;">
-                    <!-- Requirements Checklist -->
-                    <div style="text-align: left;">
-                        <h3 style="color: var(--primary-teal); margin-bottom: 2rem; font-size: 1.5rem;">✅ 신청 가능한 분</h3>
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px;">
-                                <div style="font-size: 2rem;">👴</div>
-                                <div>
-                                    <strong style="color: var(--primary-dark);">65세 이상</strong><br>
-                                    <small style="color: var(--gray-600);">또는 노인성 질병 보유</small>
-                                </div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px;">
-                                <div style="font-size: 2rem;">🏥</div>
-                                <div>
-                                    <strong style="color: var(--primary-dark);">일상생활 도움 필요</strong><br>
-                                    <small style="color: var(--gray-600);">6개월 이상 지속</small>
-                                </div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px;">
-                                <div style="font-size: 2rem;">🇰🇷</div>
-                                <div>
-                                    <strong style="color: var(--primary-dark);">국내 거주</strong><br>
-                                    <small style="color: var(--gray-600);">건강보험 가입자</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Modern Card Layout -->
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                     
-                    <!-- Document Flow -->
-                    <div style="text-align: center;">
-                        <h3 style="color: var(--primary-orange); margin-bottom: 2rem; font-size: 1.5rem;">📄 준비할 서류</h3>
-                        <div style="position: relative;">
-                            <!-- Flow arrows and documents -->
-                            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
-                                <div style="background: linear-gradient(135deg, var(--primary-teal), rgba(74, 193, 188, 0.8)); color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 600; min-width: 200px;">
-                                    📋 신청서
+                    <!-- Left: Eligibility Requirements -->
+                    <div style="background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; overflow: hidden;">
+                        <!-- Decorative gradient border -->
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));"></div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-teal), rgba(74, 193, 188, 0.7)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                <span style="color: white; font-size: 1.5rem;">✓</span>
+                            </div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); margin: 0;">신청 가능한 분</h3>
+                        </div>
+                        
+                        <div style="space-y: 1rem;">
+                            <!-- Age Requirement -->
+                            <div style="display: flex; align-items: start; padding: 1.25rem; background: #f8fffe; border-radius: 16px; border-left: 3px solid var(--primary-teal); margin-bottom: 1rem; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 20px rgba(74,193,188,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
+                                <div style="width: 40px; height: 40px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                    <span style="font-size: 1.25rem;">👴</span>
                                 </div>
-                                <div style="color: var(--primary-teal); font-size: 1.5rem;">↓</div>
-                                <div style="background: linear-gradient(135deg, var(--primary-orange), rgba(255, 138, 72, 0.8)); color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 600; min-width: 200px;">
-                                    🏥 의사소견서
-                                </div>
-                                <div style="color: var(--primary-orange); font-size: 1.5rem;">↓</div>
-                                <div style="background: linear-gradient(135deg, var(--primary-green), rgba(126, 211, 33, 0.8)); color: white; padding: 1rem 2rem; border-radius: 16px; font-weight: 600; min-width: 200px;">
-                                    🆔 신분증
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-dark); margin-bottom: 0.25rem;">65세 이상</div>
+                                    <div style="color: var(--gray-600); font-size: 0.875rem;">또는 노인성 질병 보유</div>
                                 </div>
                             </div>
                             
-                            <!-- Helper text -->
-                            <div style="margin-top: 2rem; padding: 1rem; background: rgba(139, 92, 246, 0.1); border-radius: 12px; color: #8B5CF6;">
-                                <strong>🎯 케어풀이 모두 대행</strong><br>
-                                <small>복잡한 서류 작성부터 제출까지</small>
+                            <!-- Daily Life Support -->
+                            <div style="display: flex; align-items: start; padding: 1.25rem; background: #fff9f5; border-radius: 16px; border-left: 3px solid var(--primary-orange); margin-bottom: 1rem; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 20px rgba(255,138,72,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
+                                <div style="width: 40px; height: 40px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                    <span style="font-size: 1.25rem;">🏥</span>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-dark); margin-bottom: 0.25rem;">일상생활 도움 필요</div>
+                                    <div style="color: var(--gray-600); font-size: 0.875rem;">6개월 이상 지속</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Residence -->
+                            <div style="display: flex; align-items: start; padding: 1.25rem; background: #f5fff5; border-radius: 16px; border-left: 3px solid var(--primary-green); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 4px 20px rgba(126,211,33,0.15)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
+                                <div style="width: 40px; height: 40px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">
+                                    <span style="font-size: 1.25rem;">🇰🇷</span>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; color: var(--primary-dark); margin-bottom: 0.25rem;">국내 거주</div>
+                                    <div style="color: var(--gray-600); font-size: 0.875rem;">건강보험 가입자</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Document Flow -->
+                    <div style="background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; overflow: hidden;">
+                        <!-- Decorative gradient border -->
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary-orange), #8B5CF6);"></div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-orange), rgba(255, 138, 72, 0.7)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                <span style="color: white; font-size: 1.5rem;">📄</span>
+                            </div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); margin: 0;">준비할 서류</h3>
+                        </div>
+                        
+                        <!-- Modern Document Flow -->
+                        <div style="position: relative; padding-left: 2rem;">
+                            <!-- Vertical Line -->
+                            <div style="position: absolute; left: 20px; top: 0; bottom: 20px; width: 2px; background: linear-gradient(180deg, var(--primary-teal) 0%, var(--primary-orange) 50%, var(--primary-green) 100%);"></div>
+                            
+                            <!-- Document Items -->
+                            <div style="position: relative; margin-bottom: 2rem;">
+                                <div style="position: absolute; left: -26px; top: 12px; width: 14px; height: 14px; background: var(--primary-teal); border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(74,193,188,0.3);"></div>
+                                <div style="background: linear-gradient(135deg, #f0fffe, #ffffff); padding: 1rem 1.5rem; border-radius: 16px; border: 1px solid rgba(74,193,188,0.2);">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span style="font-size: 1.25rem;">📋</span>
+                                        <div>
+                                            <div style="font-weight: 600; color: var(--primary-dark);">신청서</div>
+                                            <div style="color: var(--gray-600); font-size: 0.75rem;">기본 정보 작성</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative; margin-bottom: 2rem;">
+                                <div style="position: absolute; left: -26px; top: 12px; width: 14px; height: 14px; background: var(--primary-orange); border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(255,138,72,0.3);"></div>
+                                <div style="background: linear-gradient(135deg, #fff9f5, #ffffff); padding: 1rem 1.5rem; border-radius: 16px; border: 1px solid rgba(255,138,72,0.2);">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span style="font-size: 1.25rem;">🏥</span>
+                                        <div>
+                                            <div style="font-weight: 600; color: var(--primary-dark);">의사소견서</div>
+                                            <div style="color: var(--gray-600); font-size: 0.75rem;">의료 기록 첨부</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -26px; top: 12px; width: 14px; height: 14px; background: var(--primary-green); border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(126,211,33,0.3);"></div>
+                                <div style="background: linear-gradient(135deg, #f5fff5, #ffffff); padding: 1rem 1.5rem; border-radius: 16px; border: 1px solid rgba(126,211,33,0.2);">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span style="font-size: 1.25rem;">🆔</span>
+                                        <div>
+                                            <div style="font-weight: 600; color: var(--primary-dark);">신분증</div>
+                                            <div style="color: var(--gray-600); font-size: 0.75rem;">본인 확인용</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Box -->
+                        <div style="margin-top: 2rem; padding: 1.25rem; background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(139,92,246,0.1)); border-radius: 16px; border: 1px solid rgba(139,92,246,0.2); text-align: center;">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                                <span style="color: #8B5CF6; font-size: 1.25rem;">🎯</span>
+                                <strong style="color: #8B5CF6;">케어풀이 모두 대행</strong>
+                            </div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem; margin-top: 0.25rem;">복잡한 서류 작성부터 제출까지</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Process Flow -->
+    <section id="process" class="section" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 2rem;">🚀 장기요양등급 신청 프로세스</h2>
+            <p style="color: var(--gray-600); margin-bottom: 4rem; font-size: 1.125rem;">케어풀과 함께하면 <strong style="color: var(--primary-teal);">모든 단계를 전문가가 대행</strong>합니다</p>
+            
+            <!-- Interactive Process Timeline -->
+            <div style="background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 1200px; margin: 0 auto;">
+                <!-- Process Steps with Timeline -->
+                <div style="position: relative; padding: 0 2rem;">
+                    <!-- Timeline Line -->
+                    <div style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 80%; height: 4px; background: linear-gradient(90deg, var(--primary-teal) 0%, var(--primary-orange) 33%, var(--primary-green) 66%, #8B5CF6 100%); border-radius: 2px; z-index: 0;"></div>
+                    
+                    <!-- Steps Container -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; z-index: 1;">
+                        <!-- Step 1: Application -->
+                        <div style="text-align: center;">
+                            <div style="background: white; border: 4px solid var(--primary-teal); width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="font-size: 2.5rem;">📝</div>
+                                <div style="position: absolute; top: -10px; right: -10px; background: var(--primary-teal); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem;">1</div>
+                            </div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.125rem;">신청 접수</h4>
+                            <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 1rem;">공단 또는 센터 접수</p>
+                            <div style="background: rgba(74, 193, 188, 0.1); padding: 0.75rem; border-radius: 12px;">
+                                <div style="color: var(--primary-teal); font-weight: 600; font-size: 0.875rem;">🕒 1~2일</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem; margin-top: 0.25rem;">케어풀이 대행</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Investigation -->
+                        <div style="text-align: center;">
+                            <div style="background: white; border: 4px solid var(--primary-orange); width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="font-size: 2.5rem;">🏠</div>
+                                <div style="position: absolute; top: -10px; right: -10px; background: var(--primary-orange); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem;">2</div>
+                            </div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.125rem;">방문 조사</h4>
+                            <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 1rem;">신체/인지 평가</p>
+                            <div style="background: rgba(255, 138, 72, 0.1); padding: 0.75rem; border-radius: 12px;">
+                                <div style="color: var(--primary-orange); font-weight: 600; font-size: 0.875rem;">🕒 7~14일</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem; margin-top: 0.25rem;">조사 준비 지원</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Decision -->
+                        <div style="text-align: center;">
+                            <div style="background: white; border: 4px solid var(--primary-green); width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="font-size: 2.5rem;">⚖️</div>
+                                <div style="position: absolute; top: -10px; right: -10px; background: var(--primary-green); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem;">3</div>
+                            </div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.125rem;">등급 판정</h4>
+                            <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 1rem;">위원회 심의</p>
+                            <div style="background: rgba(126, 211, 33, 0.1); padding: 0.75rem; border-radius: 12px;">
+                                <div style="color: var(--primary-green); font-weight: 600; font-size: 0.875rem;">🕒 14~21일</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem; margin-top: 0.25rem;">결과 통보</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Service -->
+                        <div style="text-align: center;">
+                            <div style="background: white; border: 4px solid #8B5CF6; width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="font-size: 2.5rem;">🎉</div>
+                                <div style="position: absolute; top: -10px; right: -10px; background: #8B5CF6; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem;">4</div>
+                            </div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.125rem;">서비스 이용</h4>
+                            <p style="color: var(--gray-600); font-size: 0.875rem; margin-bottom: 1rem;">요양 서비스 시작</p>
+                            <div style="background: rgba(139, 92, 246, 0.1); padding: 0.75rem; border-radius: 12px;">
+                                <div style="color: #8B5CF6; font-weight: 600; font-size: 0.875rem;">🎆 완료!</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem; margin-top: 0.25rem;">케어 시작</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Total Timeline -->
+                <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(74, 193, 188, 0.05), rgba(255, 138, 72, 0.05)); border-radius: 16px; border: 2px solid var(--primary-teal);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.25rem;">📅 총 소요 기간</h3>
+                            <p style="color: var(--gray-600); margin: 0;">케어풀 대행 시 평균 처리 기간</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="display: flex; gap: 2rem; align-items: center;">
+                                <div>
+                                    <div style="color: var(--gray-500); text-decoration: line-through; font-size: 1.5rem; font-weight: 300;">45~60일</div>
+                                    <div style="color: var(--gray-500); font-size: 0.75rem;">일반 신청</div>
+                                </div>
+                                <div>
+                                    <div style="color: var(--primary-teal); font-size: 2rem; font-weight: 700;">30~35일</div>
+                                    <div style="color: var(--primary-teal); font-size: 0.875rem; font-weight: 600;">케어풀 대행</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Key Support Points -->
+                <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📝</div>
+                        <div style="color: var(--primary-teal); font-weight: 600; font-size: 0.875rem;">서류 작성</div>
+                        <div style="color: var(--gray-600); font-size: 0.75rem;">전문가 대행</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🏥</div>
+                        <div style="color: var(--primary-orange); font-weight: 600; font-size: 0.875rem;">병원 연계</div>
+                        <div style="color: var(--gray-600); font-size: 0.75rem;">소견서 발급</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📞</div>
+                        <div style="color: var(--primary-green); font-weight: 600; font-size: 0.875rem;">진행 알림</div>
+                        <div style="color: var(--gray-600); font-size: 0.75rem;">실시간 업데이트</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(139, 92, 246, 0.05); border-radius: 12px;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤝</div>
+                        <div style="color: #8B5CF6; font-weight: 600; font-size: 0.875rem;">이의신청</div>
+                        <div style="color: var(--gray-600); font-size: 0.75rem;">필요 시 지원</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Cases -->
+    <section class="section" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 1rem;">🌟 실제 성공 사례</h2>
+            <p style="color: var(--gray-600); margin-bottom: 3rem;">케어풀과 함께 장기요양등급을 받으신 분들의 이야기</p>
+            
+            <div class="grid grid--3" style="gap: 2rem; max-width: 1100px; margin: 0 auto;">
+                <!-- Case 1 -->
+                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-align: left; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 20px; background: var(--primary-teal); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">3등급 승인</div>
+                    <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-teal), rgba(74, 193, 188, 0.6)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">김○○</div>
+                            <div>
+                                <div style="font-weight: 600; color: var(--primary-dark);">서울시 강남구, 78세</div>
+                                <div style="color: var(--gray-600); font-size: 0.875rem;">치매 초기 진단</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">"혼자서는 엄두도 못 냈을 서류 준비를 케어풀이 모두 대행해주셔서 <strong>단 30일 만에 3등급</strong>을 받았습니다. 지금은 주간보호센터를 이용하고 있어요."</p>
+                        <div style="display: flex; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary);">
+                            <div style="flex: 1;">
+                                <div style="color: var(--primary-teal); font-weight: 700; font-size: 1.125rem;">30일</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem;">처리 기간</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="color: var(--primary-orange); font-weight: 700; font-size: 1.125rem;">100%</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem;">서류 대행</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 2 -->
+                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-align: left; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 20px; background: var(--primary-orange); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">2등급 승인</div>
+                    <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-orange), rgba(255, 138, 72, 0.6)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">박○○</div>
+                            <div>
+                                <div style="font-weight: 600; color: var(--primary-dark);">경기도 성남시, 82세</div>
+                                <div style="color: var(--gray-600); font-size: 0.875rem;">파킨슨병 진단</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">"처음 신청했을 때 등급 외 판정을 받았지만, 케어풀의 도움으로 <strong>이의신청 성공</strong>하여 2등급을 받았습니다. 전문가의 도움이 정말 중요해요."</p>
+                        <div style="display: flex; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary);">
+                            <div style="flex: 1;">
+                                <div style="color: var(--primary-teal); font-weight: 700; font-size: 1.125rem;">25일</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem;">재신청 기간</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="color: var(--primary-green); font-weight: 700; font-size: 1.125rem;">성공</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem;">이의신청</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case 3 -->
+                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-align: left; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 20px; background: var(--primary-green); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; font-weight: 600;">4등급 승인</div>
+                    <div style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-green), rgba(126, 211, 33, 0.6)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">이○○</div>
+                            <div>
+                                <div style="font-weight: 600; color: var(--primary-dark);">인천시 부평구, 75세</div>
+                                <div style="color: var(--gray-600); font-size: 0.875rem;">뇌졸중 후유증</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">"의사소견서 작성부터 막막했는데, 케어풀에서 <strong>병원 연계</strong>까지 해주셔서 순조롭게 진행됐어요. 지금은 방문요양 서비스를 받고 있습니다."</p>
+                        <div style="display: flex; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary);">
+                            <div style="flex: 1;">
+                                <div style="color: var(--primary-teal); font-weight: 700; font-size: 1.125rem;">35일</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem;">처리 기간</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="color: #8B5CF6; font-weight: 700; font-size: 1.125rem;">병원</div>
+                                <div style="color: var(--gray-600); font-size: 0.75rem;">연계 지원</div>
                             </div>
                         </div>
                     </div>
@@ -158,94 +474,134 @@
         </div>
     </section>
 
-    <!-- Simple Process Flow -->
-    <section id="process" class="section" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
-        <div class="container text-center">
-            <h2 style="margin-bottom: 2rem;">🚀 신청부터 이용까지 <span style="color: var(--primary-teal);">45일</span></h2>
-            <p style="color: var(--gray-600); margin-bottom: 4rem; font-size: 1.125rem;">케어풀 대행 시 <strong style="color: var(--primary-teal);">평균 15일 단축</strong></p>
-            
-            <!-- Visual Process -->
-            <div style="background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 1000px; margin: 0 auto;">
-                <!-- Horizontal Flow -->
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; align-items: center; margin-bottom: 3rem;">
-                    <!-- Step 1 -->
-                    <div style="position: relative;">
-                        <div style="background: linear-gradient(135deg, var(--primary-teal), rgba(74, 193, 188, 0.8)); color: white; padding: 2rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📝</div>
-                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-dark);">신청</h4>
-                        <p style="font-size: 0.9rem; color: var(--gray-600); margin: 0;">서류 준비<br>& 제출</p>
-                        <div style="position: absolute; top: 40px; right: -20px; color: var(--primary-teal); font-size: 1.5rem; z-index: 1;">→</div>
-                    </div>
-                    
-                    <!-- Step 2 -->
-                    <div style="position: relative;">
-                        <div style="background: linear-gradient(135deg, var(--primary-orange), rgba(255, 138, 72, 0.8)); color: white; padding: 2rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🏠</div>
-                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-dark);">조사</h4>
-                        <p style="font-size: 0.9rem; color: var(--gray-600); margin: 0;">가정 방문<br>& 평가</p>
-                        <div style="position: absolute; top: 40px; right: -20px; color: var(--primary-orange); font-size: 1.5rem; z-index: 1;">→</div>
-                    </div>
-                    
-                    <!-- Step 3 -->
-                    <div style="position: relative;">
-                        <div style="background: linear-gradient(135deg, var(--primary-green), rgba(126, 211, 33, 0.8)); color: white; padding: 2rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">⚖️</div>
-                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-dark);">판정</h4>
-                        <p style="font-size: 0.9rem; color: var(--gray-600); margin: 0;">등급<br>결정</p>
-                        <div style="position: absolute; top: 40px; right: -20px; color: var(--primary-green); font-size: 1.5rem; z-index: 1;">→</div>
-                    </div>
-                    
-                    <!-- Step 4 -->
-                    <div>
-                        <div style="background: linear-gradient(135deg, #8B5CF6, rgba(139, 92, 246, 0.8)); color: white; padding: 2rem; border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎉</div>
-                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-dark);">이용</h4>
-                        <p style="font-size: 0.9rem; color: var(--gray-600); margin: 0;">서비스<br>시작</p>
-                    </div>
-                </div>
-                
-                <!-- Key Benefits -->
-                <div style="border-top: 2px solid var(--bg-secondary); padding-top: 2rem;">
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-                        <div style="padding: 1rem; background: rgba(74, 193, 188, 0.05); border-radius: 12px; border-left: 4px solid var(--primary-teal);">
-                            <strong style="color: var(--primary-teal);">✨ 전문가 대행</strong><br>
-                            <small style="color: var(--gray-600);">복잡한 서류 작성 대신</small>
-                        </div>
-                        <div style="padding: 1rem; background: rgba(255, 138, 72, 0.05); border-radius: 12px; border-left: 4px solid var(--primary-orange);">
-                            <strong style="color: var(--primary-orange);">⚡ 신속 처리</strong><br>
-                            <small style="color: var(--gray-600);">평균 15일 단축</small>
-                        </div>
-                        <div style="padding: 1rem; background: rgba(126, 211, 33, 0.05); border-radius: 12px; border-left: 4px solid var(--primary-green);">
-                            <strong style="color: var(--primary-green);">🔄 진행 알림</strong><br>
-                            <small style="color: var(--gray-600);">실시간 상황 업데이트</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Simple FAQ -->
+    <!-- Enhanced FAQ -->
     <section class="section">
-        <div class="container text-center">
-            <h2 style="margin-bottom: 4rem;">❓ 자주 묻는 질문 TOP 4</h2>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 1rem;">❓ 자주 묻는 질문</h2>
+            <p style="text-align: center; color: var(--gray-600); margin-bottom: 4rem;">궁금하신 점을 빠르게 확인하세요</p>
             
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--primary-teal); text-align: left;">
-                    <h4 style="color: var(--primary-teal); margin-bottom: 1rem; font-size: 1.125rem;">💰 비용은 얼마인가요?</h4>
-                    <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin: 0;">기본 상담은 <strong>무료</strong>이며, 대행 서비스 비용은 개별 상황에 따라 달라집니다.</p>
-                </div>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Accordion Style FAQ -->
+                <details style="background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-teal);">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--primary-dark); font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        💰 장기요양등급 신청 비용은 얼마인가요?
+                        <span style="color: var(--primary-teal); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary); color: var(--gray-700); line-height: 1.8;">
+                        <p style="margin-bottom: 1rem;">장기요양등급 신청 자체는 <strong>무료</strong>입니다. 국민건강보험공단에서 처리하는 공적 서비스이기 때문입니다.</p>
+                        <p style="margin-bottom: 1rem;">다만, 필요한 비용은 다음과 같습니다:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">✅ <strong>의사소견서 발급비</strong>: 병원마다 다르나 보통 5~10만원</li>
+                            <li style="margin-bottom: 0.5rem;">✅ <strong>케어풀 대행 서비스</strong>: 개별 상담 후 안내 (기본 상담 무료)</li>
+                            <li>✅ <strong>기타 서류 발급비</strong>: 주민등록등본 등 소액</li>
+                        </ul>
+                    </div>
+                </details>
                 
-                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--primary-orange); text-align: left;">
-                    <h4 style="color: var(--primary-orange); margin-bottom: 1rem; font-size: 1.125rem;">⏱️ 얼마나 걸리나요?</h4>
-                    <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin: 0;">일반적으로 45일이지만, 케어풀 대행 시 <strong>평균 15일 단축</strong> 가능합니다.</p>
-                </div>
+                <details style="background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-orange);">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--primary-dark); font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        ⏱️ 신청부터 등급 판정까지 얼마나 걸리나요?
+                        <span style="color: var(--primary-orange); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary); color: var(--gray-700); line-height: 1.8;">
+                        <p style="margin-bottom: 1rem;">일반적으로 <strong>45~60일</strong> 정도 소요되나, 케어풀 대행 시 <strong>평균 30~35일</strong>로 단축됩니다.</p>
+                        <p style="margin-bottom: 1rem;">세부 일정:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">📝 신청서 접수: 1~2일</li>
+                            <li style="margin-bottom: 0.5rem;">🏠 방문조사 일정 조율: 7~14일</li>
+                            <li style="margin-bottom: 0.5rem;">🔍 방문조사 실시: 1일</li>
+                            <li style="margin-bottom: 0.5rem;">⚖️ 등급판정위원회 심의: 14~21일</li>
+                            <li>📮 결과 통보: 2~3일</li>
+                        </ul>
+                    </div>
+                </details>
                 
-                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid var(--primary-green); text-align: left;">
-                    <h4 style="color: var(--primary-green); margin-bottom: 1rem; font-size: 1.125rem;">❌ 등급이 안 나오면?</h4>
-                    <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin: 0;">등급 외 판정 시 <strong>이의신청</strong>을 도와드리며, 재신청 절차도 함께 진행합니다.</p>
-                </div>
+                <details style="background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-green);">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--primary-dark); font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        ❌ 등급이 안 나오면 어떻게 하나요?
+                        <span style="color: var(--primary-green); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary); color: var(--gray-700); line-height: 1.8;">
+                        <p style="margin-bottom: 1rem;">등급 외 판정을 받으셨다면 포기하지 마세요! <strong>이의신청</strong>과 <strong>재신청</strong>이 가능합니다.</p>
+                        <p style="margin-bottom: 1rem;">케어풀이 도와드리는 것:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">🔄 <strong>이의신청</strong>: 90일 이내 가능, 추가 자료 준비 지원</li>
+                            <li style="margin-bottom: 0.5rem;">📋 <strong>재신청 준비</strong>: 6개월 후 재신청 시 더 철저한 준비</li>
+                            <li style="margin-bottom: 0.5rem;">🏥 <strong>의료 기록 보완</strong>: 필요한 진단서, 치료 기록 확보</li>
+                            <li>💡 <strong>성공 전략 수립</strong>: 개인별 맞춤 전략 제공</li>
+                        </ul>
+                    </div>
+                </details>
                 
-                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 4px solid #8B5CF6; text-align: left;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 1rem; font-size: 1.125rem;">🌍 전국 서비스 가능?</h4>
-                    <p style="color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; margin: 0;">네, <strong>전국 어디서나</strong> 온라인 및 전화 상담을 통해 서비스를 이용하실 수 있습니다.</p>
-                </div>
+                <details style="background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid #8B5CF6;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--primary-dark); font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        🌍 지방에 거주해도 서비스 이용이 가능한가요?
+                        <span style="color: #8B5CF6; font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary); color: var(--gray-700); line-height: 1.8;">
+                        <p style="margin-bottom: 1rem;">네, <strong>전국 어디서나</strong> 케어풀 서비스를 이용하실 수 있습니다!</p>
+                        <p style="margin-bottom: 1rem;">지원 방법:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">📱 <strong>화상 상담</strong>: 카카오톡, 줌으로 대면 상담과 동일한 효과</li>
+                            <li style="margin-bottom: 0.5rem;">📞 <strong>전화 상담</strong>: 1577-2586으로 언제든 문의</li>
+                            <li style="margin-bottom: 0.5rem;">📧 <strong>서류 전달</strong>: 이메일/우편으로 안전하게 처리</li>
+                            <li>🤝 <strong>지역 파트너</strong>: 주요 도시별 협력 기관 연계</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <details style="background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-teal);">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--primary-dark); font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        📋 어떤 서류를 준비해야 하나요?
+                        <span style="color: var(--primary-teal); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary); color: var(--gray-700); line-height: 1.8;">
+                        <p style="margin-bottom: 1rem;">필수 서류와 상황별 추가 서류가 있습니다:</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>필수 서류:</strong></p>
+                        <ul style="list-style: none; padding-left: 0; margin-bottom: 1rem;">
+                            <li style="margin-bottom: 0.5rem;">✅ 장기요양인정 신청서</li>
+                            <li style="margin-bottom: 0.5rem;">✅ 의사소견서 (또는 진단서)</li>
+                            <li>✅ 신분증 사본</li>
+                        </ul>
+                        <p style="margin-bottom: 0.5rem;"><strong>추가 서류 (해당 시):</strong></p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">📄 대리 신청 시: 위임장, 대리인 신분증</li>
+                            <li style="margin-bottom: 0.5rem;">📄 국가유공자: 국가유공자증</li>
+                            <li>📄 기초생활수급자: 수급자 증명서</li>
+                        </ul>
+                        <p style="margin-top: 1rem; padding: 1rem; background: rgba(74, 193, 188, 0.1); border-radius: 8px;">
+                            💡 <strong>케어풀 팁:</strong> 서류 준비가 막막하시다면, 무료 상담을 통해 개인별 필요 서류를 정확히 안내해드립니다!
+                        </p>
+                    </div>
+                </details>
+                
+                <details style="background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-orange);">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--primary-dark); font-size: 1.125rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        👴 몇 살부터 신청 가능한가요?
+                        <span style="color: var(--primary-orange); font-size: 1.5rem;">+</span>
+                    </summary>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--bg-secondary); color: var(--gray-700); line-height: 1.8;">
+                        <p style="margin-bottom: 1rem;">나이 기준은 다음과 같습니다:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">👵 <strong>65세 이상</strong>: 노인성 질병 여부와 관계없이 신청 가능</li>
+                            <li style="margin-bottom: 0.5rem;">👨 <strong>65세 미만</strong>: 노인성 질병이 있는 경우 신청 가능</li>
+                        </ul>
+                        <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>노인성 질병 종류:</strong></p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 0.5rem;">• 치매 (알츠하이머, 혈관성 치매 등)</li>
+                            <li style="margin-bottom: 0.5rem;">• 파킨슨병</li>
+                            <li style="margin-bottom: 0.5rem;">• 뇌졸중 (뇌경색, 뇌출혈)</li>
+                            <li>• 기타 대통령령으로 정하는 노인성 질병</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- FAQ CTA -->
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-teal), rgba(74, 193, 188, 0.8)); border-radius: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="color: white; margin-bottom: 1rem;">더 궁금한 점이 있으신가요?</h3>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">전문 상담사가 친절하게 답변해드립니다</p>
+                <a href="#contact" class="btn btn--secondary btn--large" style="background: white; color: var(--primary-teal); border: none;">무료 상담 받기</a>
             </div>
         </div>
     </section>
@@ -295,7 +651,7 @@
                                 </div>
                                 <div>
                                     <div style="font-weight: 700; color: white; font-size: 1.125rem;">방문 상담</div>
-                                    <div style="color: rgba(255, 255, 255, 0.95); font-size: 1rem; margin-top: 0.25rem;">서울시 강남구 (예약 후 방문)</div>
+                                    <div style="color: rgba(255, 255, 255, 0.95); font-size: 1rem; margin-top: 0.25rem;">대전시 유성성구 (예약 후 방문)</div>
                                 </div>
                             </div>
                         </div>
@@ -391,5 +747,6 @@
 
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
+    <script src="parallax.js"></script>
 </body>
 </html>

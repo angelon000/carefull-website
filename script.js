@@ -4,7 +4,31 @@
 document.addEventListener('DOMContentLoaded', function() {
     initializeScrollEffects();
     initializeSmoothScrolling();
+    initializeAOS();
 });
+
+// Simple AOS (Animate On Scroll) implementation
+function initializeAOS() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const animateOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+                // Optional: stop observing after animation
+                animateOnScroll.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all elements with data-aos attribute
+    document.querySelectorAll('[data-aos]').forEach(element => {
+        animateOnScroll.observe(element);
+    });
+}
 
 // Initialize Scroll Effects for Navigation
 function initializeScrollEffects() {
@@ -592,4 +616,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     
     console.log("CareFull website script loaded successfully with all enhancements");
+    // Puzzle assembly observer
+    try {
+        const puzzle = document.getElementById('puzzle-assembly');
+        if (puzzle) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        puzzle.classList.add('in-view');
+                        io.unobserve(puzzle);
+                    }
+                });
+            }, { threshold: 0.3 });
+            io.observe(puzzle);
+        }
+    } catch (e) { console.debug('Puzzle animation init skipped:', e); }
 });

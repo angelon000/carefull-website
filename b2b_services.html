@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>기관 파트너 서비스 - 케어풀</title>
     <meta name="description" content="요양기관의 성공적인 내일을 위한 전문 컨설팅. 창업부터 운영, 평가 대비, M&A까지 원스톱 솔루션.">
-    <link rel="preload" as="image" href="img/hero-services-main.jpg">
+    <link rel="preload" as="image" href="img/hero-services-main.jpg?v=2">
     <meta property="og:title" content="기관 파트너 서비스 - 케어풀">
     <meta property="og:description" content="창업부터 운영 고도화, 2025 평가 대비, M&A까지 원스톱 컨설팅.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://angelon000.github.io/carefull-website/b2b_services.html">
-    <meta property="og:image" content="https://angelon000.github.io/carefull-website/img/hero-services-main.jpg">
+    <meta property="og:image" content="https://angelon000.github.io/carefull-website/img/hero-services-main.jpg?v=2">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://angelon000.github.io/carefull-website/b2b_services.html">
     <meta name="theme-color" content="#4AC1BC">
+    
+    <!-- Disable caching for image updates -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -298,18 +303,18 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="container nav__container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.html" class="nav__logo" style="margin-right: auto; margin-left: -1rem;">
                 <img src="img/carefull-logo-transparent.png" alt="케어풀 로고">
             </a>
             <ul class="nav__menu">
-                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
                 <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
                 <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
                 <li><a href="portfolio.html" class="nav__link">케어풀 가맹현황</a></li>
-                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
+                <li><a href="about.html" class="nav__link">소개</a></li>
             </ul>
-            <div class="nav__cta">
-                <a href="#contact" class="btn btn--primary">무료 초기 진단</a>
+            <div class="nav__cta" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="tel:1577-2586" style="color: var(--primary-teal); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span style="white-space: nowrap;">1577-2586</span></a><a href="#contact" class="btn btn--primary">무료 초기 진단</a>
             </div>
             <button class="nav__toggle" aria-label="메뉴 열기">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -326,8 +331,8 @@
         <!-- Hero Background Image -->
         <div class="hero-bg">
             <picture>
-                <source srcset="img/hero-services-main.webp" type="image/webp">
-                <img src="img/hero-services-main.jpg" width="1920" height="1080" alt="비즈니스 컨설팅 모습" style="width: 100%; height: 100%; object-fit: cover;">
+                <source srcset="img/hero-services-main.jpg?v=2" type="image/jpeg">
+                <img src="img/hero-services-main.jpg?v=2" width="1920" height="1080" alt="비즈니스 컨설팅 모습" style="width: 100%; height: 100%; object-fit: cover;">
             </picture>
             <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(60, 72, 88, 0.85) 0%, rgba(74, 193, 188, 0.7) 100%);"></div>
         </div>
@@ -353,7 +358,7 @@
             <div class="service-card">
                 <!-- Service Image -->
                 <div style="height: 200px; overflow: hidden; margin: -3rem -3rem 2rem; border-radius: 24px 24px 0 0;">
-                    <img src="img/business-handshake-healthcare.jpg" 
+                    <img src="img/business-handshake-healthcare.jpg?v=9" 
                          alt="요양기관 창업 컨설팅" 
                          style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -387,7 +392,7 @@
             <div class="service-card">
                 <!-- Service Image -->
                 <div style="height: 200px; overflow: hidden; margin: -3rem -3rem 2rem; border-radius: 24px 24px 0 0;">
-                    <img src="img/corporate-healthcare-setting.jpg" 
+                    <img src="img/corporate-healthcare-setting.jpg?v=3" 
                          alt="요양기관 운영 평가" 
                          style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -425,7 +430,7 @@
             <div class="service-card">
                 <!-- Service Image -->
                 <div style="height: 200px; overflow: hidden; margin: -3rem -3rem 2rem; border-radius: 24px 24px 0 0;">
-                    <img src="img/healthcare-business-meeting.jpg" 
+                    <img src="img/healthcare-business-meeting.jpg?v=2" 
                          alt="M&A 자문 서비스" 
                          style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -455,7 +460,7 @@
     <section class="section" style="background: var(--bg-secondary); position: relative; overflow: hidden;">
         <!-- Background Image -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.1;">
-            <img src="img/healthcare-technology-app.jpg" 
+            <img src="img/portfolio-hero-bg.jpg" 
                  alt="디지털 트랜스포메이션 배경" 
                  style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -500,7 +505,7 @@
                         
                         <!-- Timeline Step Image -->
                         <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
-                            <img src="img/consulting.jpg" 
+                            <img src="img/consulting.jpg?v=1" 
                                  alt="전략적 현황 진단 과정" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(255, 138, 72, 0.8), rgba(255, 138, 72, 0.6));"></div>
@@ -561,7 +566,7 @@
                         
                         <!-- Timeline Step Image -->
                         <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
-                            <img src="img/healthcare-professionals-team.jpg" 
+                            <img src="img/healthcare-professionals-team.jpg?v=1" 
                                  alt="전문가 팀 구성" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(74, 193, 188, 0.8), rgba(74, 193, 188, 0.6));"></div>
@@ -614,7 +619,7 @@
                         
                         <!-- Timeline Step Image -->
                         <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
-                            <img src="img/operation.jpg" 
+                            <img src="img/operation.jpg?v=1" 
                                  alt="전략적 실행계획 수립" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(126, 211, 33, 0.8), rgba(126, 211, 33, 0.6));"></div>
@@ -671,7 +676,7 @@
                         
                         <!-- Timeline Step Image -->
                         <div style="height: 150px; overflow: hidden; margin: 2rem 0; border-radius: 12px; position: relative;">
-                            <img src="img/performance.jpg" 
+                            <img src="img/performance.jpg?v=1" 
                                  alt="성과 관리 및 최적화" 
                                  style="width: 100%; height: 100%; object-fit: cover;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(60, 72, 88, 0.8), rgba(60, 72, 88, 0.6));"></div>
@@ -705,7 +710,7 @@
     <section class="section" style="background: var(--primary-dark); color: white; position: relative; overflow: hidden;">
         <!-- CTA Background Image -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; opacity: 0.2;">
-            <img src="img/success-stories.jpg" 
+            <img src="img/success-stories.jpg?v=1" 
                  alt="케어풀과 함께하는 성공" 
                  style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -836,5 +841,6 @@
 
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
+    <script src="parallax.js"></script>
 </body>
 </html>

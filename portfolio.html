@@ -263,18 +263,18 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="container nav__container">
-            <a href="index.html" class="nav__logo">
+            <a href="index.html" class="nav__logo" style="margin-right: auto; margin-left: -1rem;">
                 <img src="img/carefull-logo-transparent.png" alt="케어풀 로고">
             </a>
             <ul class="nav__menu">
-                <li><a href="about.html" class="nav__link">소개</a></li>
+                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
                 <li><a href="ltci-guide.html" class="nav__link">요양정보</a></li>
                 <li><a href="b2b_services.html" class="nav__link">서비스</a></li>
                 <li><a href="portfolio.html" class="nav__link">케어풀 가맹현황</a></li>
-                <li><a href="ltci-apply.html" class="nav__link">등급신청대행</a></li>
+                <li><a href="about.html" class="nav__link">소개</a></li>
             </ul>
-            <div class="nav__cta">
-                <a href="index.html#contact" class="btn btn--primary">무료 상담 신청</a>
+            <div class="nav__cta" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="tel:1577-2586" style="color: var(--primary-teal); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span style="white-space: nowrap;">1577-2586</span></a><a href="index.html#contact" class="btn btn--primary">무료 상담 신청</a>
             </div>
             <button class="nav__toggle" aria-label="메뉴 열기">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -291,8 +291,8 @@
         <!-- Hero Background Image -->
         <div class="hero-bg">
             <picture>
-                <source srcset="img/hero-healthcare-setting.webp" type="image/webp">
-                <img src="img/hero-healthcare-setting.jpg" width="1920" height="1080" alt="케어풀 파트너 기관들" style="width: 100%; height: 100%; object-fit: cover;">
+                <source srcset="img/hero-healthcare-setting.jpg?v=1" type="image/jpeg">
+                <img src="img/hero-healthcare-setting.jpg?v=1" width="1920" height="1080" alt="케어풀 파트너 기관들" style="width: 100%; height: 100%; object-fit: cover;">
             </picture>
             <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(74, 193, 188, 0.9) 0%, rgba(126, 211, 33, 0.8) 100%);"></div>
         </div>
@@ -343,6 +343,11 @@
                 <button class="filter-btn" data-filter="nursing-home">요양원</button>
                 <button class="filter-btn" data-filter="day-care">주간보호센터</button>
                 <button class="filter-btn" data-filter="home-care">방문요양센터</button>
+                <button class="filter-btn" data-filter="group-home">노인공동생활지정</button>
+                <button class="filter-btn" data-filter="home-visit">방문요양</button>
+                <button class="filter-btn" data-filter="home-nursing">방문간호</button>
+                <button class="filter-btn" data-filter="home-bath">방문목욕</button>
+                <button class="filter-btn" data-filter="welfare-equipment">복지용구</button>
             </div>
 
             <!-- Portfolio Grid -->
@@ -350,7 +355,7 @@
                 <!-- 케어풀 1호 요양원 -->
                 <div class="portfolio-card" data-category="nursing-home" onclick="openGallery('carefull-1')">
                     <div class="portfolio-card__image">
-                        <img src="img/hospital-environment.jpg" loading="lazy" decoding="async"
+                        <img src="img/hospital-environment.jpg" data-category="healthcare" loading="lazy" decoding="async"
                              alt="케어풀 1호 요양원">
                         <div class="portfolio-card__badge">요양원</div>
                     </div>
@@ -388,18 +393,18 @@
                 <!-- 케어풀 1호 주간보호센터 -->
                 <div class="portfolio-card" data-category="day-care" onclick="openGallery('carefull-dc-1')">
                     <div class="portfolio-card__image">
-                        <img src="img/elderly-couple-smiling.jpg" loading="lazy" decoding="async"
-                             alt="케어풀 1호 주간보호센터">
+                        <img src="img/elderly-couple-smiling.jpg?v=3" loading="lazy" decoding="async"
+                             alt="케어풀 1호 가장제일주간보호센터">
                         <div class="portfolio-card__badge">주간보호센터</div>
                     </div>
                     <div class="portfolio-card__content">
-                        <h3 class="portfolio-card__title">케어풀 1호 주간보호센터</h3>
+                        <h3 class="portfolio-card__title">케어풀 1호 가장제일주간보호센터</h3>
                         <div class="portfolio-card__location">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            경기도 성남시
+                            대전광역시 서구 도산로 322
                         </div>
                         <div class="portfolio-card__features">
                             <span class="feature-tag">스칸디나비아 디자인</span>
@@ -426,7 +431,7 @@
                 <!-- 케어풀 1호 방문요양센터 -->
                 <div class="portfolio-card" data-category="home-care" onclick="openGallery('carefull-hc-1')">
                     <div class="portfolio-card__image">
-                        <img src="img/home-healthcare-visit.jpg" loading="lazy" decoding="async"
+                        <img src="img/home-healthcare-visit.jpg" data-category="homecare" loading="lazy" decoding="async"
                              alt="케어풀 1호 방문요양센터">
                         <div class="portfolio-card__badge">방문요양센터</div>
                     </div>
@@ -464,7 +469,7 @@
                 <!-- 추가 기관들 -->
                 <div class="portfolio-card" data-category="nursing-home" onclick="openGallery('carefull-2')">
                     <div class="portfolio-card__image">
-                        <img src="img/senior-care-professional.jpg" loading="lazy" decoding="async"
+                        <img src="img/senior-care-professional.jpg" data-category="professional" loading="lazy" decoding="async"
                              alt="케어풀 2호 요양원">
                         <div class="portfolio-card__badge">요양원</div>
                     </div>
@@ -501,7 +506,7 @@
 
                 <div class="portfolio-card" data-category="day-care" onclick="openGallery('carefull-dc-2')">
                     <div class="portfolio-card__image">
-                        <img src="img/family-caregiving.jpg" loading="lazy" decoding="async"
+                        <img src="img/family-caregiving.jpg" data-category="family" loading="lazy" decoding="async"
                              alt="케어풀 2호 주간보호센터">
                         <div class="portfolio-card__badge">주간보호센터</div>
                     </div>
@@ -538,7 +543,7 @@
 
                 <div class="portfolio-card" data-category="nursing-home" onclick="openGallery('carefull-3')">
                     <div class="portfolio-card__image">
-                        <img src="img/caregiver-helping-senior-v2.jpg" loading="lazy" decoding="async"
+                        <img src="img/caregiver-helping-senior-v2.jpg" data-category="homecare" loading="lazy" decoding="async"
                              alt="케어풀 3호 요양원">
                         <div class="portfolio-card__badge">요양원</div>
                     </div>
@@ -608,9 +613,9 @@
                     </div>
                 </div>
                 <div class="feature__image">
-                    <img src="img/main3.jpg" loading="lazy" decoding="async"
+                    <img src="img/rest-area-new.jpg" loading="lazy" decoding="async"
                          alt="북유럽 스타일 인테리어" 
-                         style="width: 100%; height: 500px; object-fit: cover; border-radius: 24px;">
+                         style="width: 100%; height: 700px; object-fit: cover; border-radius: 24px;">
                 </div>
             </div>
         </div>
@@ -712,6 +717,7 @@
 
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
+    <script src="parallax.js"></script>
     <script>
         // 갤러리 데이터
         const galleryData = {
@@ -729,14 +735,14 @@
                 programs: ['원예 치료', '음악 치료', '미술 치료', '가족 참여 프로그램']
             },
             'carefull-dc-1': {
-                title: '케어풀 1호 주간보호센터',
-                description: '경기도 성남시의 케어풀 1호 주간보호센터는 35인 정원의 스칸디나비아 스타일 시설입니다. 낮 시간 동안 어르신들께 전문적인 돌봄과 다양한 프로그램을 제공합니다.',
+                title: '케어풀 1호 가장제일주간보호센터',
+                description: '대전광역시 서구 도산로 322의 케어풀 1호 주간보호센터는 35인 정원의 스칸디나비아 스타일 시설입니다. 낮 시간 동안 어르신들께 전문적인 돌봄과 다양한 프로그램을 제공합니다.',
                 mainImage: 'img/elderly-couple-smiling.jpg',
                 interiors: [
-                    { image: 'img/multi-generation-family.jpg', label: '활동실' },
-                    { image: 'img/emotional-support.jpg', label: '휴게공간' },
-                    { image: 'img/services.jpg', label: '식당' },
-                    { image: 'img/education.jpg', label: '프로그램실' }
+                    { image: 'img/multi-generation-family.jpg?v=3', label: '활동실' },
+                    { image: 'img/rest-area-real.jpg', label: '휴게공간' },
+                    { image: 'img/services.jpg?v=3', label: '식당' },
+                    { image: 'img/education.jpg?v=3', label: '프로그램실' }
                 ],
                 services: ['송영 서비스', '중식 및 간식 제공', '건강 관리', '인지 활동 프로그램'],
                 programs: ['치매 예방 프로그램', '신체 활동 프로그램', '사회 활동 프로그램', '취미 활동']
