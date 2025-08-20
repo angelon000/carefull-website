@@ -732,46 +732,45 @@
                 <p class="subtitle">전문가가 직접 방문하여 기관의 현재 상황을 진단하고 맞춤형 솔루션을 제안합니다</p>
             </div>
             <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <form id="b2bContactForm" data-webhook-url="https://api.example.com/b2b-contact">
+                <form id="b2bContactForm" class="contact-form" data-form-type="B2B 무료진단 문의">
                     <div class="grid grid--2">
                         <div class="form-group">
                             <label class="form-label" for="institution">기관명 *</label>
-                            <input type="text" id="institution" class="form-input" placeholder="○○요양원" required>
+                            <input type="text" id="institution" name="institution" class="form-input" placeholder="○○요양원" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="position">직책 *</label>
-                            <input type="text" id="position" class="form-input" placeholder="원장/시설장" required>
+                            <input type="text" id="position" name="position" class="form-input" placeholder="원장/시설장" required>
                         </div>
                     </div>
                     <div class="grid grid--2">
                         <div class="form-group">
                             <label class="form-label" for="name">담당자명 *</label>
-                            <input type="text" id="name" class="form-input" placeholder="홍길동" required>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="홍길동" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="phone">연락처 *</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="010-1234-5678" required>
+                            <input type="tel" id="phone" name="contact" class="form-input" placeholder="010-1234-5678" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email">이메일 *</label>
-                        <input type="email" id="email" class="form-input" placeholder="example@email.com" required>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="example@email.com" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="service">관심 서비스 *</label>
-                        <select id="service" class="form-input" required>
+                        <select id="service" name="inquiryType" class="form-input" required>
                             <option value="">선택해주세요</option>
-                            <option value="startup">창업 컨설팅</option>
-                            <option value="operation">운영 고도화</option>
-                            <option value="evaluation">2025년 평가 대비</option>
-                            <option value="ma">M&A 자문</option>
-                            
-                            <option value="other">기타</option>
+                            <option value="창업컨설팅">창업 컨설팅</option>
+                            <option value="운영고도화">운영 고도화</option>
+                            <option value="평가대비">2025년 평가 대비</option>
+                            <option value="M&A자문">M&A 자문</option>
+                            <option value="기타">기타</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="message">상담 내용</label>
-                        <textarea id="message" class="form-input" rows="4" placeholder="현재 고민이나 필요하신 도움을 자유롭게 작성해주세요"></textarea>
+                        <textarea id="message" name="message" class="form-input" rows="4" placeholder="현재 고민이나 필요하신 도움을 자유롭게 작성해주세요"></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--large btn--block">무료 진단 신청하기</button>
                 </form>
@@ -842,5 +841,6 @@
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
     <script src="parallax.js"></script>
+    <script src="form-handler.js"></script>
 </body>
 </html>

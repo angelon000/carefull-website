@@ -336,33 +336,29 @@
                 <p class="subtitle">어떤 도움이 필요하신지 알려주세요. 전문가가 연락드리겠습니다.</p>
             </div>
             <div class="card" style="max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">
-                <form id="contactForm">
+                <form id="contactForm" class="contact-form" data-form-type="메인페이지 문의">
                     <div class="grid grid--2">
                         <div class="form-group">
                             <label class="form-label" for="name">성함 *</label>
-                            <input type="text" id="name" class="form-input" placeholder="홍길동" required>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="홍길동" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="phone">연락처 *</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="010-1234-5678" required>
+                            <input type="tel" id="phone" name="contact" class="form-input" placeholder="010-1234-5678" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="email">이메일</label>
-                        <input type="email" id="email" class="form-input" placeholder="example@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="type">문의 유형 *</label>
-                        <select id="type" class="form-input" required>
+                        <label class="form-label" for="inquiryType">문의 유형 *</label>
+                        <select id="inquiryType" name="inquiryType" class="form-input" required>
                             <option value="">선택해주세요</option>
-                            <option value="family">가족 요양 상담</option>
-                            <option value="institution">기관 운영 상담</option>
-                            <option value="other">기타 문의</option>
+                            <option value="요양상담">가족 요양 상담</option>
+                            <option value="기관컨설팅">기관 운영 상담</option>
+                            <option value="기타">기타 문의</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="message">문의 내용</label>
-                        <textarea id="message" class="form-input" rows="4" placeholder="궁금하신 점을 자유롭게 작성해주세요"></textarea>
+                        <textarea id="message" name="message" class="form-input" rows="4" placeholder="궁금하신 점을 자유롭게 작성해주세요"></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--large btn--block">상담 신청하기</button>
                 </form>
@@ -460,5 +456,6 @@
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
     <script src="parallax.js"></script>
+    <script src="form-handler.js"></script>
 </body>
 </html>

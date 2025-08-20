@@ -666,17 +666,17 @@
                                 opacity: 1;
                             }
                         </style>
-                        <form class="contact-form" style="display: flex; flex-direction: column; gap: 1rem;">
-                            <input type="text" placeholder="이름" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500;" required>
-                            <input type="tel" placeholder="연락처" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500;" required>
-                            <select style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500;" required>
+                        <form class="contact-form" data-form-type="등급신청대행 문의" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <input type="text" name="name" placeholder="이름" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500;" required>
+                            <input type="tel" name="contact" placeholder="연락처" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500;" required>
+                            <select name="inquiryType" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500;" required>
                                 <option value="" style="color: rgba(0, 0, 0, 0.7);">상담 유형 선택</option>
-                                <option value="application" style="color: black;">신청 대행 상담</option>
-                                <option value="process" style="color: black;">신청 절차 문의</option>
-                                <option value="documents" style="color: black;">서류 준비 도움</option>
-                                <option value="other" style="color: black;">기타 문의</option>
+                                <option value="신청대행상담" style="color: black;">신청 대행 상담</option>
+                                <option value="신청절차문의" style="color: black;">신청 절차 문의</option>
+                                <option value="서류준비도움" style="color: black;">서류 준비 도움</option>
+                                <option value="기타문의" style="color: black;">기타 문의</option>
                             </select>
-                            <textarea placeholder="문의 내용을 자세히 적어주세요" rows="4" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500; resize: vertical;"></textarea>
+                            <textarea name="message" placeholder="문의 내용을 자세히 적어주세요" rows="4" style="padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: rgba(255, 255, 255, 0.15); color: white; font-size: 1rem; font-weight: 500; resize: vertical;"></textarea>
                             <button type="submit" class="btn btn--primary btn--large" style="background: white; color: var(--primary-dark); border: none; width: 100%;">무료 상담 신청하기</button>
                         </form>
                     </div>
@@ -748,5 +748,6 @@
     <script src="script.js"></script>
     <script src="image-manager.js"></script>
     <script src="parallax.js"></script>
+    <script src="form-handler.js"></script>
 </body>
 </html>

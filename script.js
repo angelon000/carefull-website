@@ -237,48 +237,48 @@ function removeMobileMenu() {
     }
 }
 
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-contactForm?.addEventListener('submit', async function(e) {
-    e.preventDefault();
+// Contact form handling - Disabled (Using form-handler.js instead)
+// const contactForm = document.getElementById('contactForm');
+// contactForm?.addEventListener('submit', async function(e) {
+//     e.preventDefault();
+//     
+//     const submitButton = contactForm.querySelector('button[type="submit"]');
+//     const originalText = submitButton?.textContent;
+//     if (submitButton) {
+//         submitButton.disabled = true;
+//         submitButton.textContent = '전송 중...';
+//     }
+//     
+//     const formData = {
+//         name: document.getElementById('name').value,
+//         phone: document.getElementById('phone').value,
+//         email: document.getElementById('email').value,
+//         type: document.getElementById('type').value,
+//         message: document.getElementById('message').value
+//     };
     
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton?.textContent;
-    if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = '전송 중...';
-    }
-    
-    const formData = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        type: document.getElementById('type').value,
-        message: document.getElementById('message').value
-    };
-    
-    try {
-        const webhookUrl = window.CAREFULL_CONTACT_WEBHOOK || '';
-        if (webhookUrl) {
-            const res = await fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ source: 'carefull-website', ...formData })
-            });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        }
-        alert('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
-        contactForm.reset();
-    } catch (err) {
-        console.warn('Form submit failed, falling back to alert only:', err);
-        alert('상담 신청이 접수되었습니다. 네트워크 상태에 따라 처리에 시간이 걸릴 수 있습니다.');
-    } finally {
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = originalText || '상담 신청하기';
-        }
-    }
-});
+//     try {
+//         const webhookUrl = window.CAREFULL_CONTACT_WEBHOOK || '';
+//         if (webhookUrl) {
+//             const res = await fetch(webhookUrl, {
+//                 method: 'POST',
+//                 headers: { 'Content-Type': 'application/json' },
+//                 body: JSON.stringify({ source: 'carefull-website', ...formData })
+//             });
+//             if (!res.ok) throw new Error(`HTTP ${res.status}`);
+//         }
+//         alert('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+//         contactForm.reset();
+//     } catch (err) {
+//         console.warn('Form submit failed, falling back to alert only:', err);
+//         alert('상담 신청이 접수되었습니다. 네트워크 상태에 따라 처리에 시간이 걸릴 수 있습니다.');
+//     } finally {
+//         if (submitButton) {
+//             submitButton.disabled = false;
+//             submitButton.textContent = originalText || '상담 신청하기';
+//         }
+//     }
+// });
 
 // Scroll animations
 const observerOptions = {
