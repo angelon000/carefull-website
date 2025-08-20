@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서비스 카드 체크 마크 테스트</title>
+    <style>
+        .service-card {
+            position: relative;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 200px;
+            display: inline-block;
+        }
+        
+        .service-card:hover {
+            border-color: #4AC1BC;
+        }
+        
+        .service-card.selected {
+            border-color: #4AC1BC;
+            background: rgba(74, 193, 188, 0.05);
+        }
+        
+        .service-card .check-mark {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #4AC1BC;
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .service-card.selected .check-mark {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1>재가급여 서비스 카드 체크 마크 테스트</h1>
+    
+    <div class="home-services-cards">
+        <div class="service-card" data-home-service="visit-care">
+            <h5>방문요양</h5>
+            <p>요양보호사가 집으로 방문</p>
+            <div class="check-mark">✓</div>
+        </div>
+        <div class="service-card selected" data-home-service="day-care">
+            <h5>주야간보호</h5>
+            <p>낮 동안 센터에서 돌봄</p>
+            <div class="check-mark">✓</div>
+        </div>
+        <div class="service-card" data-home-service="visit-bath">
+            <h5>방문목욕</h5>
+            <p>목욕 전문 서비스</p>
+            <div class="check-mark">✓</div>
+        </div>
+        <div class="service-card" data-home-service="equipment">
+            <h5>복지용구</h5>
+            <p>휠체어, 전동침대 등</p>
+            <div class="check-mark">✓</div>
+        </div>
+    </div>
+    
+    <script>
+        // 서비스 카드 클릭 이벤트
+        document.querySelectorAll('.service-card[data-home-service]').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('selected');
+                console.log(`${this.dataset.homeService} 카드 클릭됨. Selected: ${this.classList.contains('selected')}`);
+            });
+        });
+        
+        console.log('테스트 페이지 로드됨. 각 카드를 클릭해보세요.');
+    </script>
+</body>
+</html>
