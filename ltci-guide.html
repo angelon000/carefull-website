@@ -514,22 +514,75 @@
 
                 <!-- Step 2: Service Selection -->
                 <div class="calculator__step hidden" id="step-2">
-                    <div class="step-media">
-                        <img src="img/healthcare-technology-app.jpg" data-category="technology" loading="lazy" decoding="async" alt="요양 서비스 선택">
-                    </div>
                     <h2>어떤 서비스를 이용하실 예정인가요?</h2>
                     <p class="subtitle">여러 서비스를 함께 이용할 수 있어요</p>
-                    <div class="option-grid">
-                        <div class="option-card" data-service="home"><h4>재가급여</h4><p>집에서 받는 서비스</p></div>
-                        <div class="option-card" data-service="facility"><h4>시설급여</h4><p>요양시설 입소</p></div>
+                    
+                    <!-- 재가급여/시설급여 선택 -->
+                    <div class="service-type-selection">
+                        <div class="service-type-card selected" data-service="home">
+                            <h4>재가급여</h4>
+                            <p>집에서 받는 서비스</p>
+                            <div class="check-mark">✓</div>
+                        </div>
+                        <div class="service-type-card" data-service="facility">
+                            <h4>시설급여</h4>
+                            <p>요양시설 입소</p>
+                            <div class="check-mark">✓</div>
+                        </div>
                     </div>
-                    <div class="service-selector hidden mt-4" id="home-services">
-                        <h3 class="mb-3">재가급여 서비스 선택</h3>
-                        <div class="service-item" data-home-service="visit-care"><h5>방문요양</h5><p>요양보호사가 집으로 방문</p></div>
-                        <div class="service-item" data-home-service="day-care"><h5>주야간보호</h5><p>낮 동안 센터에서 돌봄</p></div>
-                        <div class="service-item" data-home-service="visit-bath"><h5>방문목욕</h5><p>목욕 전문 서비스</p></div>
-                        <div class="service-item" data-home-service="equipment"><h5>복지용구</h5><p>휠체어, 전동침대 등</p></div>
+                    
+                    <!-- 재가급여 서비스 상세 선택 -->
+                    <div class="home-services-container" id="home-services">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">재가급여 서비스 선택</h3>
+                        
+                        <div class="home-services-layout">
+                            <!-- 좌측: 서비스 카드 -->
+                            <div class="home-services-cards">
+                                <div class="service-card" data-home-service="visit-care">
+                                    <h5>방문요양</h5>
+                                    <p>요양보호사가 집으로 방문</p>
+                                    <div class="check-mark">✓</div>
+                                </div>
+                                <div class="service-card" data-home-service="day-care">
+                                    <h5>주야간보호</h5>
+                                    <p>낮 동안 센터에서 돌봄</p>
+                                    <div class="check-mark">✓</div>
+                                </div>
+                                <div class="service-card" data-home-service="visit-bath">
+                                    <h5>방문목욕</h5>
+                                    <p>목욕 전문 서비스</p>
+                                    <div class="check-mark">✓</div>
+                                </div>
+                                <div class="service-card" data-home-service="equipment">
+                                    <h5>복지용구</h5>
+                                    <p>휠체어, 전동침대 등</p>
+                                    <div class="check-mark">✓</div>
+                                </div>
+                            </div>
+                            
+                            <!-- 우측: 주야간보호 시간 선택 (주야간보호 선택 시만 표시) -->
+                            <div class="daycare-time-container" id="daycare-hours">
+                                <div class="daycare-time-box">
+                                    <h5 style="margin-bottom: 1rem;">주야간보호 이용시<br>간을 선택해주세요</h5>
+                                    <div class="time-options">
+                                        <div class="time-option" data-hours="3">
+                                            <span>3시간</span>
+                                        </div>
+                                        <div class="time-option" data-hours="6">
+                                            <span>6시간</span>
+                                        </div>
+                                        <div class="time-option" data-hours="8">
+                                            <span>8시간</span>
+                                        </div>
+                                        <div class="time-option" data-hours="10">
+                                            <span style="font-size: 0.9rem;">10시간 이상</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                     <p class="subtitle mt-3" style="text-align:center; color: var(--gray-600);">복수 선택 가능. 서비스별 예상 비용은 결과에서 확인됩니다.</p>
                     <div class="text-center mt-4">
                         <button type="button" class="btn btn--secondary btn--large" id="prev-2">이전 단계</button>
@@ -541,11 +594,27 @@
                 <div class="calculator__step hidden" id="step-3">
                     <h2>정부 지원 감경 대상이신가요?</h2>
                     <p class="subtitle">소득 수준에 따라 본인부담금이 줄어들어요</p>
-                    <div class="option-grid">
-                        <div class="option-card" data-reduction="0"><h4>일반</h4><p>감경 없음</p></div>
-                        <div class="option-card" data-reduction="40"><h4>40% 감경</h4><p>차상위계층</p></div>
-                        <div class="option-card" data-reduction="60"><h4>60% 감경</h4><p>저소득층</p></div>
-                        <div class="option-card" data-reduction="100"><h4>100% 감경</h4><p>기초생활수급자</p></div>
+                    <div class="reduction-container">
+                        <div class="reduction-top-row">
+                            <div class="reduction-card" data-reduction="0">
+                                <h4>일반</h4>
+                                <p>본인부담 15%</p>
+                            </div>
+                            <div class="reduction-card" data-reduction="40">
+                                <h4>경감대상자</h4>
+                                <p>본인부담 9%</p>
+                            </div>
+                            <div class="reduction-card" data-reduction="60">
+                                <h4>감</h4>
+                                <p>본인부담 6%</p>
+                            </div>
+                        </div>
+                        <div class="reduction-bottom-row">
+                            <div class="reduction-card" data-reduction="100">
+                                <h4>기초수급권자</h4>
+                                <p>본인부담 0%</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center mt-4">
                         <button type="button" class="btn btn--secondary btn--large" id="prev-3">이전 단계</button>
