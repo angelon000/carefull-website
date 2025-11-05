@@ -3872,16 +3872,30 @@ select:focus {
     }
     
     .actor-card {
-        padding: 1.5rem;
-        min-height: 280px;
+        padding: 0;
+        min-height: 200px;
         max-width: none;
         width: 100%;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 1 / 1;
     }
-    
+
+    .card-content {
+        padding: 1.5rem 1.25rem !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
     .actor-card__icon {
-        width: 60px;
-        height: 60px;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 1rem !important;
+    }
+
+    .actor-card__icon svg {
+        width: 32px;
+        height: 32px;
     }
 
     /* 균형 레이아웃: 위치 강제 해제 및 타이포 스케일 조정 */
@@ -3894,8 +3908,18 @@ select:focus {
         align-self: stretch;
     }
 
-    .actor-card__title { font-size: 1.25rem; }
-    .actor-card__desc { font-size: 1rem; }
+    .actor-card__title {
+        font-size: 1.1rem;
+        word-break: keep-all;
+        white-space: normal;
+        margin-bottom: 0.5rem !important;
+    }
+    .actor-card__desc {
+        font-size: 0.875rem;
+        word-break: keep-all;
+        white-space: normal;
+        line-height: 1.5;
+    }
 }
 
 /* AOS Animation Integration */
