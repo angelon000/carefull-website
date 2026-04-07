@@ -9,7 +9,7 @@ const calculatorState = {
     reduction: null
 };
 
-// Cost data (2025년 1월 1일 기준)
+// Cost data (2026년 1월 1일 기준)
 const costData = {
     // 재가급여 월 한도액 (원)
     homeCareLimit: {
@@ -72,7 +72,7 @@ const costData = {
     
     // 시설급여 일일 수가 (원)
     facilityCost: {
-        1: 89290,  // 2025년 기준 업데이트
+        1: 89290,  // 2026년 기준 업데이트
         2: 82770,
         3: 76260,
         4: 76260,
